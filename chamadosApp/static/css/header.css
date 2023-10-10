@@ -1,0 +1,31 @@
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
+
+img {
+    max-width: 100%; 
+}
+
+.btn-header {
+    border: none; 
+    background-color: transparent; 
+    padding: 5px; 
+    cursor: pointer; 
+    transition: color 0.3s ease;
+    transition: transform 0.3s ease;
+    /* border: 1px solid black;
+    border-radius: 20px;  */
+}
+
+.btn-header:hover {
+    color: #007bff;;
+    transform: scale(1.1)
+}
