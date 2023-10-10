@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
-    {% load bootstrap5 %}
     <meta charset="UTF-8" />
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&family=Montserrat&family=Roboto:wght@700;900&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -21,7 +20,7 @@
   </head>
 
   <body class="container-fluid" cz-shortcut-listen="true">
-    {% include 'header.html' %}
+    {% include 'header-login.html' %}
     <main class='row'>{% block main %}{% endblock %}</main>
     {% include 'footer.html' %}
   </body>

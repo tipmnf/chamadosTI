@@ -7,25 +7,31 @@ nav {
 .logo-container {
     display: flex;
     align-items: center;
-    gap: 10px; 
+    gap: 50px; 
 }
 
 img {
     max-width: 100%; 
 }
 
-.btn-header {
+.btn-header, .logout-btn {
     border: none; 
     background-color: transparent; 
     padding: 5px; 
     cursor: pointer; 
     transition: color 0.3s ease;
     transition: transform 0.3s ease;
+    font-size: 0.9em;
     /* border: 1px solid black;
     border-radius: 20px;  */
 }
 
-.btn-header:hover {
+.logout-btn {
+    text-decoration: none;
+    color: black;
+}
+
+.btn-header:hover, .logout-btn:hover {
     color: #007bff;;
     transform: scale(1.1)
 }
