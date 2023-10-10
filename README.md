@@ -10,7 +10,7 @@ This project is a service order. Therefore, its functionality is restricted to i
 
 
 
-## Appendix
+## Credits
 
-Project initially started by
+Credits for
 - [@salarini-e](https://www.github.com/salarini-e)
