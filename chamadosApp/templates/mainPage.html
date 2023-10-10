@@ -1,10 +1,29 @@
 {% extends "template.html" %}
 {% block title %}
-- Página Principal
+Página Principal
 {% endblock  %}
 {% block main %}
-    <body>
-        <p id="p">HELLO WORLD!!!</p>
-    </body>
-</html>
+<div class="row">
+    <div class="col d-flex py-5"> 
+          <div class="row w-100">
+              <div class="col-10 pb-4 m-auto bg-white">                          
+                  <div class="row">
+                      <div class="col px-4">                                             
+                          <div class="pt-4 px-2">
+                              <form method="POST">
+                                  <h2 style="text-align: center">Abrir Chamado</h2>
+                                  {% csrf_token %}
+                                  {{form}}
+                                  <button type="submit" class="btn btn-primary">
+                                  Enviar
+                                  </button>
+                              </form>
+                          </div>
+                      </div>
+                      
+                  </div>
+              </div>
+          </div>    
+    </div>
+  </div>
 {% endblock %}
