@@ -31,3 +31,8 @@
 .login-form input[type="submit"]:hover {
     background-color: #0056b3;
 }
+
+.container-fluid{
+    padding-left: 0;
+    padding-right: 0;
+}
