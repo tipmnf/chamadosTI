@@ -9,8 +9,3 @@ This project is a service order. Therefore, its functionality is restricted to i
 - [@PedroSchuenk](https://www.github.com/PedroSchuenk)
 
 
-
-## Credits
-
-Credits for
-- [@salarini-e](https://www.github.com/salarini-e)
