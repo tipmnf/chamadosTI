@@ -9,6 +9,16 @@ from .models import *
 
 @login_required
 def mainPage(request):
+    chamados = Chamado.objects.all()
+    
+    context = {
+        'chamados': chamados,
+    }
+    
+    return render(request, 'mainPage.html', context)
+
+@login_required
+def abrirChamado(request):
     form = Chamado_Form()
     
     if request.method=='POST':
@@ -17,25 +27,21 @@ def mainPage(request):
          chamado=form.save(commit=False)
          chamado.save()
          
-         return redirect('chamado/')
+         return render(request, 'chamado.html', {'chamado': chamado})
     
     context={
         'form': form,
     }
             
     
-    return render(request, 'mainPage.html', context)
+    return render(request, 'abrirChamado.html', context)
 
 @login_required
-def chamado(request):
-    requisitante = request.POST.get('requisitante')  
-    tipo = request.POST.get('tipo') 
-    assunto = 'yan me ajuda' 
+def chamado(request, idChamado):
+    chamado = Chamado.objects.get(id=idChamado) 
 
     context = {
-        'requisitante': requisitante,
-        'tipo': tipo,
-        'assunto': assunto,
+        'chamado': chamado,
     }
 
     return render(request, 'chamado.html', context)

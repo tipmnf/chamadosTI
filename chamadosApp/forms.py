@@ -10,4 +10,4 @@ class Chamado_Form(ModelForm):
         widgets = {
             'tipo': forms.Select(attrs={'readonly': True}),
         }
-        exclude = ['dataAbertura', 'dataFechamento']
+        exclude = ['dataAbertura', 'dataFechamento', 'prioridade', 'status']
