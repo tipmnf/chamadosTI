@@ -6,12 +6,18 @@ from django.contrib.auth.models import User
 class Secretaria(models.Model):
     nome = models.CharField(max_length=70)
 
+    def __str__(self):
+        return self.nome
+
 class Setor(models.Model):
     secretaria = models.ForeignKey(Secretaria, verbose_name="Secretaria", on_delete=models.CASCADE)
     nome = models.CharField(max_length=100, default='')
     cep = models.CharField(max_length=8, default='')
     bairro = models.CharField(max_length=50, default='')
     logradouro = models.CharField(max_length=150, default='')
+    
+    def __str__(self):
+        return self.nome
     
 class Servidor(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -25,7 +31,7 @@ class Servidor(models.Model):
 class Tipo(models.Model):
     nome = models.CharField(max_length=30, verbose_name='Nome do Serviço', blank=True)
     sigla = models.CharField(max_length=3, verbose_name="Sigla", blank=True)
-    descricao = models.TextField()
+    descricao = models.TextField(default='')
     
     def __str__(self):
         return self.nome

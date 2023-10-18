@@ -6,7 +6,13 @@ Página principal
 Sou a pagina principal
 
 <button><a href= {% url 'abrirChamado' %}>Abrir Chamado</a></button>
-
+<div>
+    <form method=POST>
+        {% csrf_token %}
+        {{form}}
+        <button>Pesquisar</button>
+    </form>
+</div>
 <table>
     <thead>
         <th>Tabela de Chamados</th>
