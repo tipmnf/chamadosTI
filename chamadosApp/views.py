@@ -5,6 +5,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.db import connection
 from .forms import *
 from .models import *
+from django.utils import timezone
 
 # Create your views here
 
@@ -42,10 +43,12 @@ def abrirChamado(request):
     if request.method=='POST':
         form = Chamado_Form(request.POST)
         if form.is_valid():
+         ano = timezone.now().year
          chamado=form.save(commit=False)
+         chamado.setNumero()
          chamado.save()
          
-         return render(request, 'chamado.html', {'chamado': chamado})
+         return render(request, 'chamado.html', {'chamado': chamado, 'ano': ano})
     
     context={
         'form': form,
@@ -58,6 +61,7 @@ def abrirChamado(request):
 def chamado(request, idChamado):
     chamado = Chamado.objects.get(id=idChamado)
     atendentes = Atendente.objects.all() 
+    ano = timezone.now().year
     
     if request.method == 'POST':
         chamado = atualizaChamado(request, chamado)
@@ -65,6 +69,7 @@ def chamado(request, idChamado):
     context = {
         'chamado': chamado,
         'atendentes': atendentes,
+        'ano': ano,
     }
 
     return render(request, 'chamado.html', context)

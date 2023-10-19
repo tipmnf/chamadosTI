@@ -11,7 +11,7 @@ class Chamado_Form(ModelForm):
         widgets = {
             'tipo': forms.Select(attrs={'readonly': True}),
         }
-        exclude = ['dataAbertura', 'dataFechamento', 'prioridade', 'status']
+        exclude = ['dataAbertura', 'dataFechamento', 'prioridade', 'status', 'numero', 'atendente']
         
 class SearchForm(Form):
     
@@ -23,7 +23,7 @@ class SearchForm(Form):
     SECRETARIA_CHOICES = [(False,'-')]+[(obj.id, obj.nome) for obj in Secretaria.objects.all()]
     SETOR_CHOICES = [(False,'-')]+[(obj.id, obj.nome) for obj in Setor.objects.all()]
     
-    numero = forms.IntegerField(label='Numero', required=False)
+    numero = forms.CharField(label='Numero', max_length=10, required=False)
     assunto = forms.CharField(label='Assunto', required=False)
     requisitante = forms.ChoiceField(label='Requisitante', choices=REQUISITANTE_CHOICES, required=False)
     tipo = forms.ChoiceField(label='Tipo', choices=TIPO_CHOICES, required=False)

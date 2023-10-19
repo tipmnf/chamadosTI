@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 # Create your models here.
 class Tipo(models.Model):
     nome = models.CharField(max_length=30, verbose_name='Nome do Serviço', blank=True)
@@ -64,6 +65,7 @@ class Chamado(models.Model):
     atendente = models.ForeignKey(Atendente, verbose_name='Atendente', on_delete=models.CASCADE, related_name='atendente', null=True, default=None)
     dataAbertura = models.DateTimeField(auto_now_add=True)
     dataFechamento = models.DateTimeField(null=True, blank=False)
+    numero = models.CharField(max_length=10, default=0)
     
     def getPrioridade(self):
         for choice in self.prioridadeChoices:
@@ -76,3 +78,11 @@ class Chamado(models.Model):
             if choice[0] == self.status:
                 return choice[1]
         return "Desconhecido"
+    
+    def setNumero(self):
+        ultimoChamado = Chamado.objects.last()
+        if ultimoChamado:
+            self.numero = str((int(ultimoChamado.numero) + 1)).zfill(5)
+        else:
+            self.numero = '00001'
+        self.save()
