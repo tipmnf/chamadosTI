@@ -2,6 +2,13 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
+class Tipo(models.Model):
+    nome = models.CharField(max_length=30, verbose_name='Nome do Serviço', blank=True)
+    sigla = models.CharField(max_length=3, verbose_name="Sigla", blank=True)
+    descricao = models.TextField(default='')
+    
+    def __str__(self):
+        return self.nome
     
 class Secretaria(models.Model):
     nome = models.CharField(max_length=70)
@@ -27,14 +34,9 @@ class Servidor(models.Model):
     
     def __str__(self):
         return self.nome
-    
-class Tipo(models.Model):
-    nome = models.CharField(max_length=30, verbose_name='Nome do Serviço', blank=True)
-    sigla = models.CharField(max_length=3, verbose_name="Sigla", blank=True)
-    descricao = models.TextField(default='')
-    
-    def __str__(self):
-        return self.nome
+
+class Atendente(Servidor):
+    tipo = models.ManyToManyField(Tipo, verbose_name='Tipo')    
     
 class Chamado(models.Model):
     
@@ -53,14 +55,24 @@ class Chamado(models.Model):
     
     secretaria = models.ForeignKey(Secretaria, verbose_name='Secretaria', on_delete=models.CASCADE, null=True)
     setor = models.ForeignKey(Setor, verbose_name='Setor', on_delete=models.CASCADE, null=True)
-    requisitante = models.ForeignKey(Servidor, on_delete=models.CASCADE)
+    requisitante = models.ForeignKey(Servidor, on_delete=models.CASCADE, related_name='requisitante')
     tipo = models.ForeignKey(Tipo, on_delete=models.CASCADE)
     assunto = models.CharField(max_length=150)
     prioridade = models.CharField(max_length=1, choices=prioridadeChoices, default='0')
     status = models.CharField(max_length=1, choices=statusChoices, default='0')
     descricao = models.TextField(default='')
+    atendente = models.ForeignKey(Atendente, verbose_name='Atendente', on_delete=models.CASCADE, related_name='atendente', null=True, default=None)
     dataAbertura = models.DateTimeField(auto_now_add=True)
     dataFechamento = models.DateTimeField(null=True, blank=False)
     
-class Atendente(Servidor):
-    tipo = models.ManyToManyField(Tipo, verbose_name='Tipo')
+    def getPrioridade(self):
+        for choice in self.prioridadeChoices:
+            if choice[0] == self.prioridade:
+                return choice[1]
+        return "Desconhecido"
+    
+    def getStatus(self):
+        for choice in self.statusChoices:
+            if choice[0] == self.status:
+                return choice[1]
+        return "Desconhecido"

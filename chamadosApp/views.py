@@ -56,10 +56,15 @@ def abrirChamado(request):
 
 @login_required
 def chamado(request, idChamado):
-    chamado = Chamado.objects.get(id=idChamado) 
+    chamado = Chamado.objects.get(id=idChamado)
+    atendentes = Atendente.objects.all() 
+    
+    if request.method == 'POST':
+        chamado = atualizaChamado(request, chamado)
 
     context = {
         'chamado': chamado,
+        'atendentes': atendentes,
     }
 
     return render(request, 'chamado.html', context)
@@ -131,6 +136,24 @@ def filtraChamado(request, form):
     return chamados
     
 
+<<<<<<< HEAD
 @login_required
 def indicadores(request):
     return render(request, 'indicadores.html', {})
+=======
+def atualizaChamado(request, chamado):
+    
+    newPrioridade = request.POST.get('prioridade')
+    newStatus = request.POST.get('status')
+    
+    newAtendente = request.POST.get('atendente')
+    newAtendente = Atendente.objects.get(id=newAtendente)
+    
+    chamado.prioridade = newPrioridade
+    chamado.status = newStatus
+    chamado.atendente = newAtendente
+    
+    chamado.save()
+    
+    return chamado
+>>>>>>> fc2548d91e4f342d9dc816ee49ba09687c4cf36f
