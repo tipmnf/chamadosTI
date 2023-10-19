@@ -3,30 +3,41 @@
 Página principal
 {% endblock  %}
 {% block main %}
-Sou a pagina principal
 
-<button><a href= {% url 'abrirChamado' %}>Abrir Chamado</a></button>
+<a id="button-chamado" href= {% url 'abrirChamado' %}>Abrir Chamado</a>
 <div>
     <form method=POST>
         {% csrf_token %}
         {{form}}
-        <button>Pesquisar</button>
+        <button class="btn btn-success">Pesquisar</button>
     </form>
 </div>
-<table>
+<table class="table">
     <thead>
-        <th>Tabela de Chamados</th>
+      <tr>
+        <th>Requisitante</th>
+        <th>Tipo</th>
+        <th>Assunto</th>
+        <th>Data de Abertura</th>
+        <th>Detalhes</th>
+      </tr>
     </thead>
     <tbody>
-        {% for chamado in chamados %}
-        <tr>
-            <td>{{chamado.requisitante}}</td>
-            <td>{{chamado.tipo}}</td>
-            <td>{{chamado.assunto}}</td>
-            <td>{{chamado.dataAbertura}}</td>
-            <td><button><a href="{% url 'chamado' chamado.id %}">Detalhes</a></button></td>
-        </tr>
-        {% endfor %}
+        {% for chamado in chamados  %}
+      <tr>
+        <td>{{chamado.requisitante}}</td>
+        <td>{{chamado.tipo}}</td>
+        <td>{{chamado.assunto}}</td>
+        <td>{{chamado.dataAbertura}}</td>
+        <td>
+          <a href="{% url 'chamado' chamado.id %}">
+            <button class="btn btn-primary">Detalhes</button>
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+      <!-- Add more rows here if needed -->
     </tbody>
-</table>
+  </table>
+  
 {% endblock %}

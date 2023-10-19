@@ -139,6 +139,11 @@ def filtraChamado(request, form):
     return chamados
     
 
+@login_required
+def indicadores(request):
+    return render(request, 'indicadores.html', {})
+
+
 def atualizaChamado(request, chamado):
     
     newPrioridade = request.POST.get('prioridade')

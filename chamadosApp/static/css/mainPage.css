@@ -1,3 +1,27 @@
 .form-main{
     text-align: center;
 }
+
+#button-chamado {
+    background-color: #0074d9; 
+    color: #ffffff; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 5px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    width: 15%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  #button-chamado:hover {
+    background-color: #0056b3; 
+  }
+
+  #button-chamado a {
+    text-decoration: none; 
+    color: #ffffff; 
+  }
