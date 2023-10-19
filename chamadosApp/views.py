@@ -130,3 +130,7 @@ def filtraChamado(request, form):
         
     return chamados
     
+
+@login_required
+def indicadores(request):
+    return render(request, 'indicadores.html', {})

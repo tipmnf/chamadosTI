@@ -5,8 +5,8 @@
     <link rel="stylesheet" href="/static/css/mainPage.css">
 
     <div class="logo-container">
-        <img src="/static/img/prefeitura.png" alt="Logo da PMNF">
-        <button class="btn-header">Header</button>
+        <a href="{% url "mainPage" %}"><img src="/static/img/prefeitura.png" alt="Logo da PMNF"></a>
+        <a href="{% url "indicadores" %}"><button class="btn-header">Indicadores</button> </a>
         <a class="logout-btn" href="{% url 'sairFunc' %}">Sair    <img width="30" src="/static/img/logout.png"></a>
     </div>
 </nav>

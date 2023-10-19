@@ -7,4 +7,5 @@ urlpatterns = [
     path('sairFunc/', views.sairFunc, name='sairFunc'),
     path('chamado/<int:idChamado>',views.chamado, name='chamado'),
     path('abrirChamado', views.abrirChamado, name='abrirChamado'),
+    path('indicadores', views.indicadores, name='indicadores'),
 ]
