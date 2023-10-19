@@ -15,7 +15,9 @@ Página principal
 <table class="table">
     <thead>
       <tr>
+        <th>Número</th>
         <th>Requisitante</th>
+        <th>Setor</th>
         <th>Tipo</th>
         <th>Assunto</th>
         <th>Data de Abertura</th>
@@ -25,10 +27,12 @@ Página principal
     <tbody>
         {% for chamado in chamados  %}
       <tr>
+        <td>{{chamado.numero}}</td>
         <td>{{chamado.requisitante}}</td>
-        <td>{{chamado.tipo}}</td>
+        <td>{{chamado.setor}}</td>
+        <td>{{chamado.tipo.sigla}}</td>
         <td>{{chamado.assunto}}</td>
-        <td>{{chamado.dataAbertura}}</td>
+        <td>{{chamado.dataAbertura|date:"d/m/y H:i"}}</td>
         <td>
           <a href="{% url 'chamado' chamado.id %}">
             <button class="btn btn-primary">Detalhes</button>
