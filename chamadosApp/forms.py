@@ -18,10 +18,10 @@ class SearchForm(Form):
     # ANO_CHOICES = [(None,'-')]+[(year, year) for year in range(2000, 2101)]
     # MES_CHOICES = [(None,'-')]+[(month, month) for month in range(1, 13)]
     # DIA_CHOICES = [(None,'-')]+[(day, day) for day in range(1, 32)]
-    REQUISITANTE_CHOICES = [(False,'-')]+[(obj.id, obj.nome) for obj in Servidor.objects.all()]
-    TIPO_CHOICES = [(False,'-')]+[(obj.id, obj.sigla) for obj in Tipo.objects.all()]
-    SECRETARIA_CHOICES = [(False,'-')]+[(obj.id, obj.nome) for obj in Secretaria.objects.all()]
-    SETOR_CHOICES = [(False,'-')]+[(obj.id, obj.nome) for obj in Setor.objects.all()]
+    REQUISITANTE_CHOICES = [(None,'-')]+[(obj.id, obj.nome) for obj in Servidor.objects.all()]
+    TIPO_CHOICES = [(None,'-')]+[(obj.id, obj.sigla) for obj in Tipo.objects.all()]
+    SECRETARIA_CHOICES = [(None,'-')]+[(obj.id, obj.nome) for obj in Secretaria.objects.all()]
+    SETOR_CHOICES = [(None,'-')]+[(obj.id, obj.nome) for obj in Setor.objects.all()]
     
     numero = forms.CharField(label='Numero', max_length=10, required=False)
     assunto = forms.CharField(label='Assunto', required=False)

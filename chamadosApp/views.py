@@ -27,8 +27,6 @@ def mainPage(request):
         else:
             chamados = Chamado.objects.filter(requisitante=request.user)
     
-    
-    
     context = {
         'chamados': chamados,
         'form': form,
@@ -134,9 +132,14 @@ def filtraChamado(request, form):
         cursor.execute(sql, params)
         query = cursor.fetchall()
     
+    print(sql)
+    print(query)
     
     idList = [idTuple[0] for idTuple in query]
     chamados = Chamado.objects.filter(id__in=idList)
+    
+    print(idList)
+    print(chamados)
         
     return chamados
     
