@@ -8,7 +8,7 @@ Página principal
 <div>
     <form method=POST>
         {% csrf_token %}
-        {{form.as_p}}
+        {{form}}
         <button class="btn btn-success">Pesquisar</button>
     </form>
 </div>
