@@ -14,10 +14,7 @@ class Chamado_Form(ModelForm):
         exclude = ['dataAbertura', 'dataFechamento', 'prioridade', 'status', 'numero', 'atendente']
         
 class SearchForm(Form):
-    
-    # ANO_CHOICES = [(None,'-')]+[(year, year) for year in range(2000, 2101)]
-    # MES_CHOICES = [(None,'-')]+[(month, month) for month in range(1, 13)]
-    # DIA_CHOICES = [(None,'-')]+[(day, day) for day in range(1, 32)]
+
     REQUISITANTE_CHOICES = [(None,'-')]+[(obj.id, obj.nome) for obj in Servidor.objects.all()]
     TIPO_CHOICES = [(None,'-')]+[(obj.id, obj.sigla) for obj in Tipo.objects.all()]
     SECRETARIA_CHOICES = [(None,'-')]+[(obj.id, obj.nome) for obj in Secretaria.objects.all()]
@@ -29,8 +26,20 @@ class SearchForm(Form):
     tipo = forms.ChoiceField(label='Tipo', choices=TIPO_CHOICES, required=False)
     secretaria = forms.ChoiceField(label='Secretaria', choices=SECRETARIA_CHOICES, required=False)
     setor = forms.ChoiceField(label='Setor', choices=SETOR_CHOICES, required=False)
-    # ano = forms.ChoiceField(choices=ANO_CHOICES, required=False)
-    # mes = forms.ChoiceField(choices=MES_CHOICES, required=False)
-    # dia = forms.ChoiceField(choices=DIA_CHOICES, required=False)
     
+    dataInicio = forms.DateField(label='Data início', widget=forms.DateInput(attrs={'type': 'date'}), required=False)
+    dataFim = forms.DateField(label='Data fim', widget=forms.DateInput(attrs={'type': 'date'}), required=False)
+    
+
+class editaChamadoForm(ModelForm):
+    class Meta:
+        model = Chamado
+        fields = ['secretaria', 'setor', 'requisitante','prioridade', 'status', 'atendente', 'tipo', 'descricao', 'assunto']
+        
+    def __init__(self, *args, **kwargs):
+        super(editaChamadoForm, self).__init__(*args, **kwargs)
+        self.fields['atendente'].required = False
+        self.fields['secretaria'].required = False
+        self.fields['setor'].required = False
+        self.fields['requisitante'].required = False
     

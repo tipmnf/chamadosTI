@@ -48,4 +48,8 @@ Chamados
 <p>Prioridade: {{ chamado.getPrioridade }}</p>
 <p>Descricao: {{ chamado.descricao }}</p>
 <p>Atendente responsável: {{ chamado.atendente }}</p>
+
+<button>
+    <a href="{% url 'editaChamado' chamado.id %}">Editar o Chamado</a>
+</button>
 {% endblock %}

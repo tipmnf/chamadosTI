@@ -8,4 +8,5 @@ urlpatterns = [
     path('chamado/<int:idChamado>',views.chamado, name='chamado'),
     path('abrirChamado', views.abrirChamado, name='abrirChamado'),
     path('indicadores', views.indicadores, name='indicadores'),
+    path('editaChamado/<int:idChamado>', views.editaChamado, name='editaChamado')
 ]
