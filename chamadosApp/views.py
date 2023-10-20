@@ -88,6 +88,12 @@ def loginView(request):
         
         return render(request, 'login.html', {'form': form})
     
+def cadastroView(request):
+    if request.user.is_authenticated:
+        return redirect('/')
+    else:
+        return render(request, 'cadastro.html')
+    
 @login_required
 def sairFunc(request):
     logout(request)
