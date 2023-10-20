@@ -3,6 +3,7 @@
 Editar Chamado
 {% endblock  %}
 {% block main %}
+<link rel="stylesheet" href="/static/css/form-chamado.css">
 <div class="row">
     <div class="col d-flex py-5"> 
           <div class="row w-100">
@@ -14,7 +15,7 @@ Editar Chamado
                                   <h2 style="text-align: center; margin-bottom: 30px">Editar Chamado</h2>
                                   {% csrf_token %}
                                   {{ form.as_p }}
-                                  <button type="submit" class="btn btn-primary">
+                                  <button id="save-button" type="submit" class="btn btn-primary">
                                   Salvar
                                   </button>
                               </form>

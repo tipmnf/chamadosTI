@@ -1,0 +1,61 @@
+.form-main label, .form-main input, .form-main button {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+#id_descricao {
+    width: 85%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none; 
+    height: 70px;
+}
+
+#id_descricao:focus {
+    border-color: #011c3a; 
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /
+}
+
+select {
+    width: 85%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: white;
+}
+
+
+select:focus {
+    border-color: #011c3a; 
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /
+}
+
+input[type="text"] {
+    width: 85%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+
+input[type="text"]:focus {
+    border-color: #011c3a; 
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /
+}
+
+label {
+    width: 10%;
+}
+
+#save-button{
+    width: 40%;
+    border-radius: 15px;
+}

@@ -3,6 +3,7 @@
 Chamados
 {% endblock  %}
 {% block main %}
+<link rel="stylesheet" href="/static/css/chamado.css">
 <h2>Detalhes do Chamado</h2>
 <form method=POST>
     {% csrf_token %}
@@ -35,21 +36,21 @@ Chamados
         {% endfor %}
     </select>
 
-    <input type="submit" value="Salvar">
+    <input class="btn btn-success" type="submit" value="Salvar">
 </form>
+<div id="p-div">
+    <p>Número: {{ chamado.numero }}/{{chamado.dataAbertura.year}}</p>
+    <p>Requisitante: {{ chamado.requisitante }}</p>
+    <p>Tipo: {{ chamado.tipo }}</p>
+    <p>Assunto: {{ chamado.assunto }}</p>
+    <p>Status: {{ chamado.getStatus }}</p>
+    <p>Secretaria: {{ chamado.secretaria }}</p>
+    <p>Setor: {{ chamado.setor }}</p>
+    <p>Prioridade: {{ chamado.getPrioridade }}</p>
+    <p>Descricao: {{ chamado.descricao }}</p>
+    <p>Atendente responsável: {{ chamado.atendente }}</p>
+</div>
 
-<p>Número: {{ chamado.numero }}/{{chamado.dataAbertura.year}}</p>
-<p>Requisitante: {{ chamado.requisitante }}</p>
-<p>Tipo: {{ chamado.tipo }}</p>
-<p>Assunto: {{ chamado.assunto }}</p>
-<p>Status: {{ chamado.getStatus }}</p>
-<p>Secretaria: {{ chamado.secretaria }}</p>
-<p>Setor: {{ chamado.setor }}</p>
-<p>Prioridade: {{ chamado.getPrioridade }}</p>
-<p>Descricao: {{ chamado.descricao }}</p>
-<p>Atendente responsável: {{ chamado.atendente }}</p>
 
-<button>
-    <a href="{% url 'editaChamado' chamado.id %}">Editar o Chamado</a>
-</button>
+   <a id="edita-chamado" class="btn btn-primary" href="{% url 'editaChamado' chamado.id %}">Editar o Chamado</a>
 {% endblock %}

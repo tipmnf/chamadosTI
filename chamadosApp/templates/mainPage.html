@@ -18,6 +18,7 @@ Página principal
         <th>Número</th>
         <th>Requisitante</th>
         <th>Setor</th>
+        <th>Status</th>
         <th>Tipo</th>
         <th>Assunto</th>
         <th>Data de Abertura</th>
@@ -30,6 +31,7 @@ Página principal
         <td>{{chamado.numero}}</td>
         <td>{{chamado.requisitante}}</td>
         <td>{{chamado.setor}}</td>
+        <td>{{chamado.getStatus}}</td>
         <td>{{chamado.tipo.sigla}}</td>
         <td>{{chamado.assunto}}</td>
         <td>{{chamado.dataAbertura|date:"d/m/y H:i"}}</td>
