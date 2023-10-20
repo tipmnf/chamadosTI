@@ -129,20 +129,21 @@ def filtraChamado(request, form):
         params.append(f'%{setor}%')
     
     if dataInicio and dataFim:
-        sql+= " AND dataAbertura BETWEEN %s AND %s"
-        params.append(f'%{dataInicio}%')
-        params.append(f'%{dataFim}%')
+        sql+= " AND DATE(dataAbertura) BETWEEN %s AND %s"
+        params.append(dataInicio)
+        params.append(dataFim)
     elif dataInicio:
-        sql+= " AND dataAbertura > %s"
-        params.append(f'%{dataInicio}%')
+        sql+= " AND DATE(dataAbertura) >= %s"
+        params.append(dataInicio)
     elif dataFim:
-        sql+= " AND dataAbertura < %s"
-        params.append(f'%{dataFim}%')
+        sql+= " AND DATE(dataAbertura) <= %s"
+        params.append(dataFim)
         
     with connection.cursor() as cursor:
         cursor.execute(sql, params)
         query = cursor.fetchall()
     
+    print(sql)
     print(dataInicio)
     print(dataFim)
     
