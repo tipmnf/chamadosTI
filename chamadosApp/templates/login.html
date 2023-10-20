@@ -8,6 +8,7 @@ Login
         {% csrf_token %}
         {{form.as_p}}
         <input type="submit" value="Entrar">
+        <button><a href="{% url 'cadastro' %}">Quero me cadastrar</a></button>
     </form>
 {% endblock %}
     
