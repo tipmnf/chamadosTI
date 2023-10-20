@@ -30,7 +30,6 @@ class Setor(models.Model):
 class Servidor(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     nome = models.CharField(max_length=75)
-    secretaria = models.ForeignKey(Secretaria, verbose_name='Secretaria', on_delete=models.CASCADE)
     setor = models.ForeignKey(Setor, verbose_name='Setor', on_delete=models.CASCADE)
     
     def __str__(self):
@@ -85,3 +84,4 @@ class Chamado(models.Model):
         else:
             self.numero = '00001'
         self.save()
+

@@ -37,19 +37,23 @@ def mainPage(request):
 
 @login_required
 def abrirChamado(request):
+    servidor = Servidor.objects.get(user=request.user)
     form = Chamado_Form()
     
     if request.method=='POST':
         form = Chamado_Form(request.POST)
         if form.is_valid():
-         chamado=form.save(commit=False)
-         chamado.setNumero()
-         chamado.save()
-         
-         return render(request, 'chamado.html', {'chamado': chamado})
+            chamado=form.save(commit=False)
+            chamado.requisitante = servidor
+            chamado.secretaria = servidor.setor.secretaria
+            chamado.setor = servidor.setor
+            chamado.setNumero()
+            
+            return render(request, 'chamado.html', {'chamado': chamado})
     
     context={
         'form': form,
+        'servidor': servidor,
     }
             
     

@@ -14,6 +14,18 @@ Abrir Chamado
                               <form class="form-main" method="POST">
                                   <h2 style="text-align: center; margin-bottom: 30px">Abrir Chamado</h2>
                                   {% csrf_token %}
+                                  <p>
+                                    <label for="id_requisitante">Requisitante:</label>
+                                    <p id="id_requisitante" name="requisitante">{{ servidor }}</p>
+                                  </p>
+                                  <p>
+                                    <label for="id_secretaria">Secretaria:</label>
+                                    <p id="id_secretaria" name="secretaria">{{ servidor.setor.secretaria }}</p>
+                                  </p>
+                                  <p>
+                                    <label for="id_setor">Setor:</label>
+                                    <p id="id_setor" name="setor">{{ servidor.setor }}</p>
+                                  </p>
                                   {{ form.as_p }}
                                   <button id="save-button" type="submit" class="btn btn-primary">
                                   Enviar
