@@ -50,8 +50,7 @@ class Chamado(models.Model):
     statusChoices = (
         ('0', 'Aberto'),
         ('1', 'Pendente'),
-        ('2', 'Resolvido'),
-        ('3', 'Finalizado')
+        ('2', 'Finalizado'),
     )
     
     secretaria = models.ForeignKey(Secretaria, verbose_name='Secretaria', on_delete=models.CASCADE, null=True)

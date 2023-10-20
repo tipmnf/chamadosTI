@@ -19,6 +19,13 @@ class SearchForm(Form):
     TIPO_CHOICES = [(None,'-')]+[(obj.id, obj.sigla) for obj in Tipo.objects.all()]
     SECRETARIA_CHOICES = [(None,'-')]+[(obj.id, obj.nome) for obj in Secretaria.objects.all()]
     SETOR_CHOICES = [(None,'-')]+[(obj.id, obj.nome) for obj in Setor.objects.all()]
+    STATUS_CHOICES = (
+        ('0', 'Aberto'),
+        ('1', 'Pendente'),
+        ('2', 'Finalizado'),
+        ('3', 'Todos')
+    )
+    
     
     numero = forms.CharField(label='Numero', max_length=10, required=False)
     assunto = forms.CharField(label='Assunto', required=False)
@@ -26,6 +33,7 @@ class SearchForm(Form):
     tipo = forms.ChoiceField(label='Tipo', choices=TIPO_CHOICES, required=False)
     secretaria = forms.ChoiceField(label='Secretaria', choices=SECRETARIA_CHOICES, required=False)
     setor = forms.ChoiceField(label='Setor', choices=SETOR_CHOICES, required=False)
+    status = forms.ChoiceField(label='Status', choices=STATUS_CHOICES, required=False)
     
     dataInicio = forms.DateField(label='Data início', widget=forms.DateInput(attrs={'type': 'date'}), required=False)
     dataFim = forms.DateField(label='Data fim', widget=forms.DateInput(attrs={'type': 'date'}), required=False)

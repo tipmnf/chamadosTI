@@ -104,11 +104,19 @@ def filtraChamado(request, form):
     setor = form.cleaned_data['setor']
     dataInicio = form.cleaned_data['dataInicio']
     dataFim = form.cleaned_data['dataFim']
+    status = form.cleaned_data['status']
     
-    sql = "SELECT id FROM chamadosApp_chamado WHERE status = '0'"
+    
+    sql = "SELECT id FROM chamadosApp_chamado WHERE "
     
     params = []
 
+    if status:
+        if status != '3':
+            sql += " status LIKE %s"
+            params.append(f'%{status}%')
+        else:
+            sql += " status IS NOT NULL ORDER BY status DESC"
     if numero:
         sql += " AND numero LIKE %s"
         params.append(f'%{numero}%')
@@ -127,6 +135,8 @@ def filtraChamado(request, form):
     if setor:
         sql += " AND setor_id LIKE %s"
         params.append(f'%{setor}%')
+
+
     
     if dataInicio and dataFim:
         sql+= " AND DATE(dataAbertura) BETWEEN %s AND %s"
