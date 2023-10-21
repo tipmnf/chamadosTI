@@ -41,3 +41,9 @@ ul li {
     font-weight: bold;
     font-size: 1.15em;
 }
+
+#setor-div, #secretaria-div {
+    display: inline-block;
+    width: 50%; 
+    vertical-align: top;
+}

@@ -5,6 +5,7 @@ Indicadores
 {% block main %}
 <link rel="stylesheet" href="/static/css/indicadores.css">
 <h1>Indicadores</h1>
+<div id="setor-div">
     <h2 id="setor">Chamados por Setor</h2>
     <ul>
         {% for setor in setores %}
@@ -17,7 +18,9 @@ Indicadores
             </li>
         {% endfor %}
     </ul>
-
+</div>
+   
+<div id="secretaria-div">
     <h2 id="secretaria">Chamados por Secretaria</h2>
     <ul>
         {% for secretaria in secretarias %}
@@ -29,4 +32,6 @@ Indicadores
             </ul>
         </li>
     {% endfor %}
+</div>
+    
 {% endblock %}

@@ -10,6 +10,7 @@ Indicadores
         <li>
             <strong>Nome:</strong> {{ atendente.nome }}<br>
             <strong>Setor:</strong> {{ atendente.setor.nome }}<br>
+            <strong>Secretaria:</strong> {{ atendente.setor.secretaria }}<br>
             <strong>Tipos:</strong>
             <ul>
                 {% for tipo in atendente.tipo.all %}
