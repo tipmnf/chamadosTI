@@ -17,7 +17,8 @@ class Secretaria(models.Model):
     nome = models.CharField(max_length=70)
 
     def total_chamados(self):
-        return Chamado.objects.filter(secretaria=self).count()
+        chamados_por_tipo = Chamado.objects.filter(secretaria=self).values('tipo__nome').annotate(total=Count('tipo')).order_by('tipo')
+        return chamados_por_tipo
 
     def __str__(self):
         return self.nome
@@ -30,7 +31,8 @@ class Setor(models.Model):
     logradouro = models.CharField(max_length=150, default='')
 
     def total_chamados(self):
-        return Chamado.objects.filter(setor=self).count()
+        chamados_por_tipo = Chamado.objects.filter(setor=self).values('tipo__nome').annotate(total=Count('tipo')).order_by('tipo')
+        return chamados_por_tipo
     
     def __str__(self):
         return self.nome

@@ -3,18 +3,30 @@
 Indicadores
 {% endblock  %}
 {% block main %}
+<link rel="stylesheet" href="/static/css/indicadores.css">
 <h1>Indicadores</h1>
-    <h2>Chamados por Setor</h2>
+    <h2 id="setor">Chamados por Setor</h2>
     <ul>
         {% for setor in setores %}
-            <li>{{ setor.nome }}: {{ setor.total_chamados }}</li>
+            <li><p class="item-name">{{ setor.nome }}</p>
+                <ul>
+                    {% for tipo_info in setor.total_chamados %}
+                        <li>{{ tipo_info.tipo__nome }}: {{ tipo_info.total }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
         {% endfor %}
     </ul>
 
-    <h2>Chamados por Secretaria</h2>
+    <h2 id="secretaria">Chamados por Secretaria</h2>
     <ul>
         {% for secretaria in secretarias %}
-            <li>{{ secretaria.nome }}: {{ secretaria.total_chamados}}</li>
-        {% endfor %}
-    </ul>
+        <li><p class="item-name">{{ secretaria.nome }}</p>
+            <ul>
+                {% for tipo_info in secretaria.total_chamados %}
+                    <li>{{ tipo_info.tipo__nome }}: {{ tipo_info.total }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
 {% endblock %}
