@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import Count
+
 
 
 # Create your models here.
@@ -14,6 +16,9 @@ class Tipo(models.Model):
 class Secretaria(models.Model):
     nome = models.CharField(max_length=70)
 
+    def total_chamados(self):
+        return Chamado.objects.filter(secretaria=self).count()
+
     def __str__(self):
         return self.nome
 
@@ -23,6 +28,9 @@ class Setor(models.Model):
     cep = models.CharField(max_length=8, default='')
     bairro = models.CharField(max_length=50, default='')
     logradouro = models.CharField(max_length=150, default='')
+
+    def total_chamados(self):
+        return Chamado.objects.filter(setor=self).count()
     
     def __str__(self):
         return self.nome

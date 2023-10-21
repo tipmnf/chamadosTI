@@ -212,7 +212,14 @@ def editaChamado(request, idChamado):
 
 @login_required
 def indicadores(request):
-    return render(request, 'indicadores.html', {})
+    setores = Setor.objects.all()
+    secretarias = Secretaria.objects.all()
+
+    context = {
+        'setores': setores,
+        'secretarias': secretarias
+    }
+    return render(request, 'indicadores.html', context)
 
 @login_required
 def atendentes(request):

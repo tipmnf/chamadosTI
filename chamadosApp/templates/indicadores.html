@@ -3,6 +3,18 @@
 Indicadores
 {% endblock  %}
 {% block main %}
-<link rel="stylesheet" href="/static/css/indicadores.css">
-<h2>Indicadores do mamus</h2>
+<h1>Indicadores</h1>
+    <h2>Chamados por Setor</h2>
+    <ul>
+        {% for setor in setores %}
+            <li>{{ setor.nome }}: {{ setor.total_chamados }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Chamados por Secretaria</h2>
+    <ul>
+        {% for secretaria in secretarias %}
+            <li>{{ secretaria.nome }}: {{ secretaria.total_chamados}}</li>
+        {% endfor %}
+    </ul>
 {% endblock %}
