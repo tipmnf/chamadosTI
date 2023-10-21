@@ -216,4 +216,8 @@ def indicadores(request):
 
 @login_required
 def atendentes(request):
-    return render(request, 'atendentes.html', {})
+    atendentes = Atendente.objects.all()
+    context = {
+        'atendentes': atendentes,
+    }
+    return render(request, 'atendentes.html', context)

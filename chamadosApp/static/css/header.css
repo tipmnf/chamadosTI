@@ -2,7 +2,10 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #e0e0e0;
+    margin-bottom: 20px;
 }
+
 
 .logo-container {
     display: flex;

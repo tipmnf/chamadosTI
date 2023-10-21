@@ -4,5 +4,19 @@ Indicadores
 {% endblock  %}
 {% block main %}
 <link rel="stylesheet" href="/static/css/atendentes.css">
-<h2>Atendentes do mamus</h2>
+<h1>Lista de Atendentes</h1>
+<ul>
+    {% for atendente in atendentes %}
+        <li>
+            <strong>Nome:</strong> {{ atendente.nome }}<br>
+            <strong>Setor:</strong> {{ atendente.setor.nome }}<br>
+            <strong>Tipos:</strong>
+            <ul>
+                {% for tipo in atendente.tipo.all %}
+                    <li>{{ tipo.nome }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+</ul>
 {% endblock %}
