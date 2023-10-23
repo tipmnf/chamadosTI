@@ -1,4 +1,4 @@
-{% extends "template.html" %}
+{% extends "template-login.html" %}
 {% block title %}
 Abrir Chamado
 {% endblock  %}
@@ -11,7 +11,12 @@ Abrir Chamado
                   <div class="row">
                       <div class="col px-4">                                             
                           <div class="pt-4 px-2">
-                            Hello World!!!
+                            <form method="POST">
+                                {% csrf_token %}
+                                {{formUser.as_p}}
+                                {{formServidor.as_p}}
+                                <button type='submit'> Cadastrar </button>
+                            </form>
                           </div>
                       </div>
                       
