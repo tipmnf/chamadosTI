@@ -5,8 +5,10 @@ Página principal
 {% block main %}
 
 <a id="button-chamado" href= {% url 'abrirChamado' %}>Abrir Chamado</a>
+<button id="button-pesquisa-chamado">Procurar Chamado</button>
 <div>
     <form method=POST id="form-pesquisa-chamado">
+        <h2 id="title-chamado">informações do chamado</h2>
         {% csrf_token %}
         {{form}}
         <button class="btn btn-success">Pesquisar</button>
