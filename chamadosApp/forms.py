@@ -2,7 +2,6 @@ from django import forms
 from django.forms import ModelForm, ValidationError, Form
 from .models import *
 from django.contrib.auth.forms import UserCreationForm
-from django_select2.forms import ModelSelect2Widget
 
 
 class Chamado_Form(ModelForm):

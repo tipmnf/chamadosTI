@@ -34,7 +34,7 @@ def mainPage(request):
         'form': form,
     }
     
-    return render(request, 'mainPage.html', context)
+    return render(request, '_pages_/mainPage.html', context)
 
 @login_required
 def abrirChamado(request):
@@ -50,7 +50,7 @@ def abrirChamado(request):
             chamado.setor = servidor.setor
             chamado.setNumero()
             
-            return render(request, 'chamado.html', {'chamado': chamado})
+            return render(request, '_pages_/chamado.html', {'chamado': chamado})
     
     context={
         'form': form,
@@ -58,7 +58,7 @@ def abrirChamado(request):
     }
             
     
-    return render(request, 'abrirChamado.html', context)
+    return render(request, '_pages_/abrirChamado.html', context)
 
 @login_required
 def chamado(request, idChamado):
@@ -73,7 +73,7 @@ def chamado(request, idChamado):
         'atendentes': atendentes,
     }
 
-    return render(request, 'chamado.html', context)
+    return render(request, '_pages_/chamado.html', context)
 
 def loginView(request):
     if request.user.is_authenticated:
@@ -91,7 +91,7 @@ def loginView(request):
         else:
             form =  AuthenticationForm()
         
-        return render(request, 'login.html', {'form': form})
+        return render(request, '_pages_/login.html', {'form': form})
     
 def cadastroView(request):
     if request.user.is_authenticated:
@@ -115,7 +115,7 @@ def cadastroView(request):
             formServidor = ServidorForm()
             print("apareci aqui")
                
-        return render(request, 'cadastro.html', {'formUser': formUser, 'formServidor': formServidor})
+        return render(request, '_pages_/cadastro.html', {'formUser': formUser, 'formServidor': formServidor})
     
 @login_required
 def sairFunc(request):
@@ -226,7 +226,7 @@ def editaChamado(request, idChamado):
     else:
         form = editaChamadoForm(instance=chamado)        
     
-    return render(request, 'editaChamado.html', {'form': form, 'chamado': chamado})
+    return render(request, '_pages_/editaChamado.html', {'form': form, 'chamado': chamado})
 
 
 @login_required
@@ -238,7 +238,7 @@ def indicadores(request):
         'setores': setores,
         'secretarias': secretarias
     }
-    return render(request, 'indicadores.html', context)
+    return render(request, '_pages_/indicadores.html', context)
 
 @login_required
 def atendentes(request):
@@ -246,7 +246,7 @@ def atendentes(request):
     context = {
         'atendentes': atendentes,
     }
-    return render(request, 'atendentes.html', context)
+    return render(request, '_pages_/atendentes.html', context)
 
 def addSetor(request):
     if request.method == 'POST':
@@ -257,4 +257,4 @@ def addSetor(request):
     else:
         form = SetorForm()
         
-    return render(request, 'addSetor.html', {'form': form})    
+    return render(request, '_pages_/addSetor.html', {'form': form})    
