@@ -40,6 +40,7 @@ class Setor(models.Model):
 class Servidor(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     nome = models.CharField(max_length=75)
+    email = models.EmailField(max_length=254, default='')
     setor = models.ForeignKey(Setor, verbose_name='Setor', on_delete=models.CASCADE)
     
     def __str__(self):

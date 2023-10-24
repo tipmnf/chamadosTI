@@ -25,7 +25,8 @@ def mainPage(request):
         if atendente:
             chamados = Chamado.objects.all()
         else:
-            chamados = Chamado.objects.filter(requisitante=request.user)
+            servidor = Servidor.objects.get(user=request.user)
+            chamados = Chamado.objects.filter(requisitante=servidor)
     chamados = chamados.order_by('-numero')
     
     context = {
@@ -96,7 +97,25 @@ def cadastroView(request):
     if request.user.is_authenticated:
         return redirect('/')
     else:
-        return render(request, 'cadastro.html')
+        if request.method == 'POST':
+            formUser = UserCreationForm(data=request.POST)
+            formServidor = ServidorForm(data=request.POST)
+            print('cheguei aqui')
+            if formUser.is_valid() and formServidor.is_valid():
+                print('formulário válido')
+                user = formUser.save()
+                servidor = formServidor.save(commit=False)
+                servidor.user = user
+                servidor.save()
+                login(request, user)
+                return redirect('/')
+                
+        else:
+            formUser = UserCreationForm()
+            formServidor = ServidorForm()
+            print("apareci aqui")
+               
+        return render(request, 'cadastro.html', {'formUser': formUser, 'formServidor': formServidor})
     
 @login_required
 def sairFunc(request):
@@ -228,3 +247,14 @@ def atendentes(request):
         'atendentes': atendentes,
     }
     return render(request, 'atendentes.html', context)
+
+def addSetor(request):
+    if request.method == 'POST':
+        form = SetorForm(data=request.POST)
+        if form.is_valid():
+            setor = form.save()
+            return redirect('cadastro')
+    else:
+        form = SetorForm()
+        
+    return render(request, 'addSetor.html', {'form': form})    
