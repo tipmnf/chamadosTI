@@ -1,8 +1,8 @@
 from django import forms
 from django.forms import ModelForm, ValidationError, Form
 from .models import *
-from django.contrib.auth.models import Group
 from django.contrib.auth.forms import UserCreationForm
+from django_select2.forms import ModelSelect2Widget
 
 
 class Chamado_Form(ModelForm):
@@ -57,3 +57,10 @@ class ServidorForm(ModelForm):
     class Meta:
         model = Servidor
         fields = ['nome', 'email', 'setor']
+        
+
+class SetorForm(ModelForm):
+    
+    class Meta:
+        model = Setor
+        fields = ['secretaria', 'nome', 'cep', 'bairro', 'logradouro']

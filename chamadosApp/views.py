@@ -247,3 +247,14 @@ def atendentes(request):
         'atendentes': atendentes,
     }
     return render(request, 'atendentes.html', context)
+
+def addSetor(request):
+    if request.method == 'POST':
+        form = SetorForm(data=request.POST)
+        if form.is_valid():
+            setor = form.save()
+            return redirect('cadastro')
+    else:
+        form = SetorForm()
+        
+    return render(request, 'addSetor.html', {'form': form})    
