@@ -234,9 +234,24 @@ def indicadores(request):
     setores = Setor.objects.all()
     secretarias = Secretaria.objects.all()
 
+    setoresComChamados = []
+    secretariasComChamados = []
+
+    for setor in setores:
+        totalChamadosSetor = setor.total_chamados()
+        if totalChamadosSetor:
+            setoresComChamados.append({'setor': setor, 'totalChamadosSetor': totalChamadosSetor})
+
+    for secretaria in secretarias:
+        totalChamadosSecretaria = secretaria.total_chamados()
+        if totalChamadosSecretaria:
+            secretariasComChamados.append({'secretaria': secretaria, 'totalChamadosSecretaria': totalChamadosSecretaria})
+
     context = {
         'setores': setores,
-        'secretarias': secretarias
+        'secretarias': secretarias,
+        'setoresComChamados': setoresComChamados,
+        'secretariasComChamados': secretariasComChamados
     }
     return render(request, '_pages_/indicadores.html', context)
 
