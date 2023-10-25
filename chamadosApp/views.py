@@ -42,7 +42,7 @@ def abrirChamado(request):
     form = Chamado_Form()
     
     if request.method=='POST':
-        form = Chamado_Form(request.POST)
+        form = Chamado_Form(request.POST, request.FILES)
         if form.is_valid():
             chamado=form.save(commit=False)
             chamado.requisitante = servidor
@@ -63,14 +63,13 @@ def abrirChamado(request):
 @login_required
 def chamado(request, idChamado):
     chamado = Chamado.objects.get(id=idChamado)
-    atendentes = Atendente.objects.all() 
-    
-    if request.method == 'POST':
-        chamado = atualizaChamado(request, chamado)
+    atendentes = Atendente.objects.all()
+    comentarios = Comentario.objects.filter(chamado=chamado).order_by('dataHora')
 
     context = {
         'chamado': chamado,
         'atendentes': atendentes,
+        'comentarios': comentarios,
     }
 
     return render(request, '_pages_/chamado.html', context)
@@ -194,24 +193,25 @@ def filtraChamado(request, form):
     return chamados
     
 
-def atualizaChamado(request, chamado):
-    
-    newPrioridade = request.POST.get('prioridade')
-    newStatus = request.POST.get('status')
-    
-    newAtendente = request.POST.get('atendente')
-    try:
-        newAtendente = Atendente.objects.get(id=newAtendente)
-    except:
-        newAtendente = None
-    
-    chamado.prioridade = newPrioridade
-    chamado.status = newStatus
-    chamado.atendente = newAtendente
-    
-    chamado.save()
-    
-    return chamado
+def atualizaChamado(request, idChamado):
+    chamado = Chamado.objects.get(id=idChamado)
+    if request.method == 'POST':
+        newPrioridade = request.POST.get('prioridade')
+        newStatus = request.POST.get('status')
+        
+        newAtendente = request.POST.get('atendente')
+        try:
+            newAtendente = Atendente.objects.get(id=newAtendente)
+        except:
+            newAtendente = None
+        
+        chamado.prioridade = newPrioridade
+        chamado.status = newStatus
+        chamado.atendente = newAtendente
+        
+        chamado.save()
+        
+    return redirect(reverse('chamado', args=[chamado.id]))
 
 
 @login_required
@@ -273,3 +273,18 @@ def addSetor(request):
         form = SetorForm()
         
     return render(request, '_pages_/addSetor.html', {'form': form})    
+
+def addComentario(request, idChamado):
+    chamado = Chamado.objects.get(id=idChamado)
+    if request.method == 'POST':
+        form = ComentarioForm(data=request.POST)
+        if form.is_valid():
+            servidor = Servidor.objects.get(user = request.user)
+            comentario = form.save(commit=False)
+            comentario.quemComentou = servidor
+            comentario.chamado = chamado
+            
+            comentario.save()
+            
+    return redirect(reverse('chamado', args=[chamado.id]))
+        
