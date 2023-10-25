@@ -63,3 +63,9 @@ class SetorForm(ModelForm):
     class Meta:
         model = Setor
         fields = ['secretaria', 'nome', 'cep', 'bairro', 'logradouro']
+
+class ComentarioForm(ModelForm):
+    
+    class Meta:
+        model = Comentario
+        fields = ['texto', 'confidencial']

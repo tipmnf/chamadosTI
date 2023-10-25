@@ -75,6 +75,7 @@ class Chamado(models.Model):
     dataAbertura = models.DateTimeField(auto_now_add=True)
     dataFechamento = models.DateTimeField(null=True, blank=False)
     numero = models.CharField(max_length=10, default=0)
+    anexo = models.ImageField(upload_to='images', default=None, null=True, blank=True)
     
     def getPrioridade(self):
         for choice in self.prioridadeChoices:
@@ -96,3 +97,10 @@ class Chamado(models.Model):
             self.numero = '00001'
         self.save()
 
+
+class Comentario(models.Model):
+    chamado = models.ForeignKey(Chamado, verbose_name='Chamado', on_delete=models.CASCADE)
+    quemComentou = models.ForeignKey(Servidor, verbose_name='quemComentou', on_delete=models.CASCADE)
+    dataHora = models.DateTimeField(auto_now_add=True)
+    texto = models.TextField(default='')
+    confidencial = models.BooleanField(default=False)
