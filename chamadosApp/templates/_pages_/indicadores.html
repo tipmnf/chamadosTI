@@ -27,14 +27,16 @@ Indicadores
 <div id="setor-div">
     <h2 id="setor">Chamados por Setor</h2>
     <ul>
-        {% for setor_info in setoresComChamados %}
-                <li><p class="item-name">{{ setor_info.setor.nome }}</p>
+        {% for setor in setores %}
+            {% if setor.total_chamados %}
+                <li><p class="item-name">{{ setor.nome }}</p>
                     <ul>
-                        {% for tipo_info in setor_info.setor.total_chamados %}
+                        {% for tipo_info in setor.total_chamados %}
                             <li>{{ tipo_info.tipo__nome }}: {{ tipo_info.total }}</li>
                         {% endfor %}
                     </ul>
                 </li>
+            {% endif %}
         {% endfor %}
     </ul>
 </div>
@@ -42,15 +44,17 @@ Indicadores
 <div id="secretaria-div">
     <h2 id="secretaria">Chamados por Secretaria</h2>
     <ul>
-    {% for secretaria_info in secretariasComChamados %}
-            <li><p class="item-name">{{ secretaria_info.secretaria.nome }}</p>
-                <ul>
-                    {% for tipo_info in secretaria_info.secretaria.total_chamados %}
-                        <li>{{ tipo_info.tipo__nome }}: {{ tipo_info.total }}</li>
-                    {% endfor %}
-                </ul>
-            </li>
-    {% endfor %}    
+        {% for secretaria in secretarias %}
+            {% if secretaria.total_chamados %}
+                <li><p class="item-name">{{ secretaria.nome }}</p>
+                    <ul>
+                        {% for tipo_info in secretaria.total_chamados %}
+                            <li>{{ tipo_info.tipo__nome }}: {{ tipo_info.total }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endif %}
+        {% endfor %}  
 
     
 </div>
