@@ -54,8 +54,8 @@ Chamados
     {% endif %}
 
     {% for comentario in comentarios%}
-        <p>{{comentario.quemComentou}}<br>
-        {{comentario.dataHora}}<br>
+     <p>{{comentario.dataHora|date:"d/m/y H:i"}}<br>
+        {{comentario.quemComentou}}:<br>
         {{comentario.texto}}</p>
     {% endfor %}
 
@@ -65,7 +65,7 @@ Chamados
         <textarea name="texto" id="id_texto" cols="91" rows="10"></textarea>
         <label for="id_confidencial">Confidencial:</label>
         <input type="checkbox" name="confidencial" id="id_confidencial"><br>
-        <button type="submit">Enviar</button>
+        <button class="btn btn-primary" type="submit">Enviar</button>
     </form>
 </div>
 

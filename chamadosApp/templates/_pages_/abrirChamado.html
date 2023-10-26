@@ -5,10 +5,6 @@ Abrir Chamado
 {% block main %}
 <link rel="stylesheet" href="/static/css/form-chamado.css">
 <div class="row">
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> b1616e01ab07f86731a2202467dece2c5c12f191
   <div class="col d-flex py-5">
       <div class="row w-100">
           <div class="col-10 pb-4 m-auto bg-white">
@@ -50,38 +46,6 @@ Abrir Chamado
                                   </div>
                               </div>
                           </form>
-<<<<<<< HEAD
-=======
-=======
-    <div class="col d-flex py-5"> 
-          <div class="row w-100">
-              <div class="col-10 pb-4 m-auto bg-white">                          
-                  <div class="row">
-                      <div class="col px-4">                                             
-                          <div class="pt-4 px-2">
-                              <form class="form-main" method="POST" enctype="multipart/form-data">
-                                  <h2 style="text-align: center; margin-bottom: 30px">Abrir Chamado</h2>
-                                  {% csrf_token %}
-                                  <p>
-                                    <label for="id_requisitante">Requisitante:</label>
-                                    <p id="id_requisitante" name="requisitante">{{ servidor }}</p>
-                                  </p>
-                                  <p>
-                                    <label for="id_secretaria">Secretaria:</label>
-                                    <p id="id_secretaria" name="secretaria">{{ servidor.setor.secretaria }}</p>
-                                  </p>
-                                  <p>
-                                    <label for="id_setor">Setor:</label>
-                                    <p id="id_setor" name="setor">{{ servidor.setor }}</p>
-                                  </p>
-                                  {{ form.as_p }}
-                                  <button id="save-button" type="submit" class="btn btn-primary">
-                                  Enviar
-                                  </button>
-                              </form>
-                          </div>
->>>>>>> 36bf21b3984fac8d8bdbb520c935f924c327c5a5
->>>>>>> b1616e01ab07f86731a2202467dece2c5c12f191
                       </div>
                   </div>
               </div>

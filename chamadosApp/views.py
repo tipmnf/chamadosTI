@@ -234,18 +234,29 @@ def indicadores(request):
     setores = Setor.objects.all()
     secretarias = Secretaria.objects.all()
 
-    setoresComChamados = []
-    secretariasComChamados = []
+    if request.method == 'POST':
+        selectSetor = request.POST.get('setor')
+        selectSecretaria = request.POST.get('secretaria')
+        setoresComChamados = Setor.objects.filter(nome=selectSetor)
+        secretariasComChamados = Secretaria.objects.filter(nome=selectSecretaria)
 
-    for setor in setores:
-        totalChamadosSetor = setor.total_chamados()
-        if totalChamadosSetor:
-            setoresComChamados.append({'setor': setor, 'totalChamadosSetor': totalChamadosSetor})
+    else:
+        setoresComChamados = []
+        secretariasComChamados = []
 
-    for secretaria in secretarias:
-        totalChamadosSecretaria = secretaria.total_chamados()
-        if totalChamadosSecretaria:
-            secretariasComChamados.append({'secretaria': secretaria, 'totalChamadosSecretaria': totalChamadosSecretaria})
+        setoresComChamados = Setor.objects.filter(Setor.total_chamados())
+
+        for setor in setores:
+            totalChamadosSetor = setor.total_chamados()
+            if totalChamadosSetor:
+                setoresComChamados.append({'setor': setor, 'totalChamadosSetor': totalChamadosSetor})
+
+        for secretaria in secretarias:
+            totalChamadosSecretaria = secretaria.total_chamados()
+            if totalChamadosSecretaria:
+                secretariasComChamados.append({'secretaria': secretaria, 'totalChamadosSecretaria': totalChamadosSecretaria})
+
+
 
     context = {
         'setores': setores,
