@@ -5,7 +5,7 @@ Chamados
 {% block main %}
 <link rel="stylesheet" href="/static/css/chamado.css">
 <h2>Detalhes do Chamado</h2>
-<form method=POST>
+<form method="POST" action="{% url 'atualizaChamado' chamado.id %}">
     {% csrf_token %}
 
     <label for="prioridade">Prioridade:</label>
@@ -49,6 +49,24 @@ Chamados
     <p>Prioridade: {{ chamado.getPrioridade }}</p>
     <p>Descricao: {{ chamado.descricao }}</p>
     <p>Atendente responsável: {{ chamado.atendente }}</p>
+    {% if chamado.anexo != '' and chamado.anexo != None %}
+        <p>Anexo: <img src="/media/{{chamado.anexo}}" alt="Não foi encontrado anexo."></p>
+    {% endif %}
+
+    {% for comentario in comentarios%}
+        <p>{{comentario.quemComentou}}<br>
+        {{comentario.dataHora}}<br>
+        {{comentario.texto}}</p>
+    {% endfor %}
+
+    <form method="POST" action="{% url 'addComentario' chamado.id %}">
+        {% csrf_token %}
+        <label for="id_texto">Adicionar Comentário:</label>
+        <textarea name="texto" id="id_texto" cols="91" rows="10"></textarea>
+        <label for="id_confidencial">Confidencial:</label>
+        <input type="checkbox" name="confidencial" id="id_confidencial"><br>
+        <button type="submit">Enviar</button>
+    </form>
 </div>
 
 

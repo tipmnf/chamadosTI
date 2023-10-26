@@ -11,5 +11,7 @@ urlpatterns = [
     path('indicadores/', views.indicadores, name='indicadores'),
     path('atendentes/', views.atendentes, name='atendentes'),
     path('editaChamado/<int:idChamado>/', views.editaChamado, name='editaChamado'),
-    path('addSetor/', views.addSetor, name='addSetor'),   
+    path('addSetor/', views.addSetor, name='addSetor'), 
+    path('addComentario/<int:idChamado>/', views.addComentario, name='addComentario'), 
+    path('atualizaChamado/<int:idChamado>/', views.atualizaChamado, name='atualizaChamado'),   
 ]

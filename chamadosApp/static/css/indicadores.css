@@ -31,10 +31,12 @@ ul li {
 }
 #setor {
     color: #007bff;
+    text-align: center;
 }
 
 #secretaria {
     color: #ff6600;
+    text-align: center;
 }
 
 .item-name{
@@ -47,3 +49,5 @@ ul li {
     width: 50%; 
     vertical-align: top;
 }
+
+

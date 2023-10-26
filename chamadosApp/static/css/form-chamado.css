@@ -6,6 +6,7 @@
 }
 
 
+
 #id_descricao {
     width: 85%;
     padding: 10px;
@@ -58,4 +59,7 @@ label {
 #save-button{
     width: 40%;
     border-radius: 15px;
+}
+#id_requisitante, #id_secretaria, #id_setor{
+    margin-top: 15px;
 }
