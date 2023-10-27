@@ -11,22 +11,25 @@ from .models import *
 
 @login_required
 def mainPage(request):
+    
+    try:
+        atendente = Atendente.objects.get(user=request.user)
+    except:
+        atendente = False
+            
     if request.method == 'POST':
         form = SearchForm(request.POST)
         if form.is_valid():
-            chamados = filtraChamado(request, form)   
+            chamados = filtraChamado(request, form, atendente)   
     else:
         form = SearchForm()    
-        try:
-            atendente = Atendente.objects.get(user=request.user)
-        except:
-            atendente = False
         
         if atendente:
             chamados = Chamado.objects.all()
         else:
             servidor = Servidor.objects.get(user=request.user)
             chamados = Chamado.objects.filter(requisitante=servidor)
+            
     chamados = chamados.order_by('-numero')
     
     context = {
@@ -122,7 +125,12 @@ def sairFunc(request):
     return redirect('/login/')
     
 @login_required
-def filtraChamado(request, form):
+def filtraChamado(request, form, atendente):
+    
+    if not atendente:
+        servidor = Servidor.objects.get(user=request.user)
+    else:
+        servidor = False
     
     numero = form.cleaned_data['numero']
     assunto = form.cleaned_data['assunto']
@@ -176,6 +184,10 @@ def filtraChamado(request, form):
     elif dataFim:
         sql+= " AND DATE(dataAbertura) <= %s"
         params.append(dataFim)
+        
+    if servidor:
+        sql+= " AND requisitante_id LIKE %s"
+        params.append(servidor.id)
         
     with connection.cursor() as cursor:
         cursor.execute(sql, params)
@@ -287,4 +299,10 @@ def addComentario(request, idChamado):
             comentario.save()
             
     return redirect(reverse('chamado', args=[chamado.id]))
+
+def transformaParaAtendente(request):
+    servidor = request.POST.get('servidor')
+    
+    atendente = Atendente(
         
+    )    

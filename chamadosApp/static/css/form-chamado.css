@@ -13,12 +13,16 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     resize: none; 
-    height: 70px;
+    height: 20%;
 }
 
 #id_descricao:focus {
     border-color: #011c3a; 
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+}
+
+label[for=id_descricao]{
+    float: left;
 }
 
 select {
@@ -60,6 +64,7 @@ label {
     width: 40%;
     border-radius: 15px;
 }
+
 #id_requisitante, #id_secretaria, #id_setor{
     margin-top: 15px;
 }
