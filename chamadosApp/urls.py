@@ -13,5 +13,6 @@ urlpatterns = [
     path('editaChamado/<int:idChamado>/', views.editaChamado, name='editaChamado'),
     path('addSetor/', views.addSetor, name='addSetor'), 
     path('addComentario/<int:idChamado>/', views.addComentario, name='addComentario'), 
-    path('atualizaChamado/<int:idChamado>/', views.atualizaChamado, name='atualizaChamado'),   
+    path('atualizaChamado/<int:idChamado>/', views.atualizaChamado, name='atualizaChamado'),
+    path('transformaParaAtendente/', views.transformaParaAtendente, name='transformaParaAtendente'),    
 ]

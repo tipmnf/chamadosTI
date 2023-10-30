@@ -20,4 +20,24 @@ Indicadores
         </li>
     {% endfor %}
 </ul>
+
+
+<form method="POST" action="{% url 'transformaParaAtendente' %}">
+    {% csrf_token %}
+    <label for="id_servidor">Servidor:</label>
+    <select name="servidor" id="id_servidor">
+        {% for servidor in servidores %}
+            <option value={{servidor.id}}>{{servidor.nome}}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label for="tipo">Tipos:</label>
+    {% for tipo in tipos %}
+        <input type="checkbox" id="tipo_{{ tipo.id }}" name="tipo" value="{{ tipo.id }}">
+        <label for="tipo_{{ tipo.id }}">{{ tipo.nome }}</label><br>
+    {% endfor %}
+
+    <button type="submit">Novo Atendente</button>
+</form>
+
 {% endblock %}

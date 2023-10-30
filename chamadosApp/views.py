@@ -266,8 +266,12 @@ def indicadores(request):
 @login_required
 def atendentes(request):
     atendentes = Atendente.objects.all()
+    servidores = Servidor.objects.all()
+    tipos = Tipo.objects.all()
     context = {
         'atendentes': atendentes,
+        'servidores': servidores,
+        'tipos': tipos
     }
     return render(request, '_pages_/atendentes.html', context)
 
@@ -296,9 +300,30 @@ def addComentario(request, idChamado):
             
     return redirect(reverse('chamado', args=[chamado.id]))
 
+@login_required
 def transformaParaAtendente(request):
-    servidor = request.POST.get('servidor')
     
-    atendente = Atendente(
+    servidor = request.POST.get('servidor')
+    try:
+        atendente = Atendente.objects.get(id=servidor)
+    except:
+        servidor = Servidor.objects.get(id=servidor)
+        idTipos = request.POST.getlist('tipo')
         
-    )    
+        
+        atendente = Atendente(
+            user = servidor.user,
+            nome = servidor.nome,
+            email = servidor.email,
+            setor = servidor.setor,
+        )
+        
+        for id in idTipos:
+            atendente.tipo.add(id)
+        
+        atendente.save()
+        servidor.delete()
+
+    return redirect('atendentes')
+    
+        
