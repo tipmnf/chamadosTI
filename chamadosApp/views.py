@@ -318,6 +318,8 @@ def transformaParaAtendente(request):
             setor = servidor.setor,
         )
         
+        atendente.save()
+        
         for id in idTipos:
             atendente.tipo.add(id)
         
