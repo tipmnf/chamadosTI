@@ -68,3 +68,71 @@ label {
 #id_requisitante, #id_secretaria, #id_setor{
     margin-top: 15px;
 }
+label[for=id_requisitante]{
+    position: absolute;
+    left: 19%;
+    width: 15%;
+    margin-top: 15px;
+  }
+  label[for=id_secretaria]{
+    position: absolute;
+    left: 19%;
+    width: 15%;
+    margin-top: 15px;
+  }
+  label[for=id_setor]{
+    position: absolute;
+    left: 19%;
+    width: 15%;
+    margin-top: 15px;
+  }
+  label[for=id_tipo]{
+    position: absolute;
+    left: 19%;
+    width: 15%;
+  }
+  label[for=id_assunto]{
+    position: absolute;
+    left: 19%;
+    width: 15%;
+  }
+  label[for=id_descricao]{
+    position: absolute;
+    left: 19%;
+    width: 15%;
+    margin-top: -1px;
+  }
+  label[for=id_anexo]{
+    position: absolute;
+    left: 19%;
+    width: 15%;
+  }
+
+  .form-group{
+    margin: 0 auto;
+  }
+
+  .div-form-main{
+     margin-left: 27.5%;
+  }
+
+  #id_requisitante, #id_secretaria, #id_setor{
+    width: 65%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  #id_tipo, #id_assunto, #id_anexo{
+    margin-top: 10px;
+    width: 52.5%;
+    margin-left: 10%;
+  }
+  #id_descricao{
+    width: 52.5%;
+    height: 150px;
+    margin-left: 10%;
+  }
+
+  #id_requisitante:hover, #id_secretaria:hover, #id_setor:hover, #id_tipo:hover, #id_assunto:hover, #id_descricao:hover, #id_anexo:hover{
+    border-color: black;
+  }
