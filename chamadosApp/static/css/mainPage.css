@@ -50,10 +50,10 @@
 }
 
 #id_numero, #id_assunto{
-    width: 43%;
+    width: 26.5%;
 }
 #id_requisitante, #id_tipo{
-    width: 43%;
+    width: 26.5%;
 }
 
 #id_setor{
@@ -92,4 +92,20 @@
   margin-bottom: 25px;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
+}
+/* .select2-container{
+  width: 26.5%!important;
+  margin-left: 14px;
+} */
+span[data-select2-id="1"]{
+  width: 26.5%!important;
+}
+span[data-select2-id="5"]{
+  width: 26.5%!important;
+}
+span[data-select2-id="3"]{
+  width: 26.5%!important;
+}
+label[for=id_secretaria]{
+  margin-left: 15px;
 }
