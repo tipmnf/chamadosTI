@@ -4,7 +4,16 @@ Página principal
 {% endblock  %}
 {% block main %}
 
-<a id="button-chamado" href= {% url 'abrirChamado' %}>Abrir Chamado</a>
+<a id="button-chamado">Abrir Chamado</a>
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="fechar">x</span>
+    <p>Qual o tipo de chamado desejado?</p>
+    {% for tipo in tipos  %}
+      <button class="btn btn-primary">{{tipo.nome}}</button>
+    {% endfor %}
+  </div>
+</div>
 <button id="button-pesquisa-chamado">Procurar Chamado</button>
 <div>
     <form method=POST id="form-pesquisa-chamado">

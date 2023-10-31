@@ -10,4 +10,14 @@ document.addEventListener('DOMContentLoaded', function() {
             formMainPage.style.display = 'none';
         }
     });
+
+    var modal = document.getElementById('modal');
+
+    document.getElementById('button-chamado').addEventListener('click', function() {
+        modal.style.display = 'block';
+      });
+      
+    document.querySelector('.fechar').addEventListener('click', function(){
+        modal.style.display = "none";
+    })
 });

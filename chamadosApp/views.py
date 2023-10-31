@@ -11,6 +11,7 @@ from .models import *
 
 @login_required
 def mainPage(request):
+    tipos = Tipo.objects.all()
     
     try:
         atendente = Atendente.objects.get(user=request.user)
@@ -35,6 +36,7 @@ def mainPage(request):
     context = {
         'chamados': chamados,
         'form': form,
+        'tipos': tipos
     }
     
     return render(request, '_pages_/mainPage.html', context)
