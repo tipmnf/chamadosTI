@@ -9,9 +9,11 @@ Página principal
   <div class="modal-content">
     <span class="fechar">x</span>
     <p>Qual o tipo de chamado desejado?</p>
-    {% for tipo in tipos  %}
-      <button class="btn btn-primary">{{tipo.nome}}</button>
-    {% endfor %}
+    <button class="btn btn-primary"><a href="{% url "abrirChamadoImpressora" %}">Impressora</a></button>
+    <button class="btn btn-primary"><a href="{% url "abrirChamado" %}">Computadores</a></button>
+    <button class="btn btn-primary"><a href="{% url "abrirChamadoInternet" %}">Internet</a></button>
+    <button class="btn btn-primary"><a href="{% url "abrirChamadoSistema" %}">Sistema de Gestão Pública</a></button>
+    <button class="btn btn-primary"><a href="{% url "abrirChamado" %}">Telefonia</a></button>
   </div>
 </div>
 <button id="button-pesquisa-chamado">Procurar Chamado</button>
