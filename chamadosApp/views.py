@@ -66,6 +66,70 @@ def abrirChamado(request):
     return render(request, '_pages_/abrirChamado.html', context)
 
 @login_required
+def abrirChamadoInternet(request):
+    servidor = Servidor.objects.get(user=request.user)
+    form = OSInternet_Form()
+    
+    if request.method=='POST':
+        form = OSInternet_Form(request.POST, request.FILES)
+        if form.is_valid():
+            chamado=form.save(commit=False)
+            chamado.requisitante = servidor
+            chamado.secretaria = servidor.setor.secretaria
+            chamado.setor = servidor.setor
+            chamado.setNumero()
+            
+            return render(request, '_pages_/chamado.html', {'chamado': chamado})
+    
+    context={
+        'form': form,
+        'servidor': servidor,
+    }
+            
+@login_required
+def abrirChamadoSistema(request):
+    servidor = Servidor.objects.get(user=request.user)
+    form = OSSistema_Form()
+    
+    if request.method=='POST':
+        form = OSSistema_Form(request.POST, request.FILES)
+        if form.is_valid():
+            chamado=form.save(commit=False)
+            chamado.requisitante = servidor
+            chamado.secretaria = servidor.setor.secretaria
+            chamado.setor = servidor.setor
+            chamado.setNumero()
+            
+            return render(request, '_pages_/chamado.html', {'chamado': chamado})
+    
+    context={
+        'form': form,
+        'servidor': servidor,
+    }
+            
+@login_required
+def abrirChamadoImpressora(request):
+    servidor = Servidor.objects.get(user=request.user)
+    form = OSImpressora_Form()
+    
+    if request.method=='POST':
+        form = OSImpressora_Form(request.POST, request.FILES)
+        if form.is_valid():
+            chamado=form.save(commit=False)
+            chamado.requisitante = servidor
+            chamado.secretaria = servidor.setor.secretaria
+            chamado.setor = servidor.setor
+            chamado.setNumero()
+            
+            return render(request, '_pages_/chamado.html', {'chamado': chamado})
+    
+    context={
+        'form': form,
+        'servidor': servidor,
+    }
+            
+    
+@login_required
 def chamado(request, idChamado):
     chamado = Chamado.objects.get(id=idChamado)
     atendentes = Atendente.objects.all()

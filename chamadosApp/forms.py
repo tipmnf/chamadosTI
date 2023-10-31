@@ -55,7 +55,7 @@ class ServidorForm(ModelForm):
     
     class Meta:
         model = Servidor
-        fields = ['nome', 'email', 'setor']
+        fields = ['nome', 'contato', 'email', 'setor']
         
 
 class SetorForm(ModelForm):
@@ -69,3 +69,28 @@ class ComentarioForm(ModelForm):
     class Meta:
         model = Comentario
         fields = ['texto', 'confidencial']
+        
+
+class OSInternet_Form(ModelForm):
+    class Meta:
+        model = OSInternet
+        widgets = {
+            'tipo': forms.Select(attrs={'readonly': True}),
+        }
+        exclude = ['dataAbertura', 'dataFechamento', 'prioridade', 'status', 'numero', 'atendente', 'requisitante', 'secretaria', 'setor']
+
+class OSSistema_Form(ModelForm):
+    class Meta:
+        model = OSSistema
+        widgets = {
+            'tipo': forms.Select(attrs={'readonly': True}),
+        }
+        exclude = ['dataAbertura', 'dataFechamento', 'prioridade', 'status', 'numero', 'atendente', 'requisitante', 'secretaria', 'setor']
+
+class OSImpressora_Form(ModelForm):
+    class Meta:
+        model = OSImpressora
+        widgets = {
+            'tipo': forms.Select(attrs={'readonly': True}),
+        }
+        exclude = ['dataAbertura', 'dataFechamento', 'prioridade', 'status', 'numero', 'atendente', 'requisitante', 'secretaria', 'setor']
