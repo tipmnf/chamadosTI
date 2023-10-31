@@ -85,6 +85,8 @@ def abrirChamadoInternet(request):
         'form': form,
         'servidor': servidor,
     }
+    
+    return render(request, '_pages_/abrirChamado.html', context)
             
 @login_required
 def abrirChamadoSistema(request):
@@ -106,6 +108,8 @@ def abrirChamadoSistema(request):
         'form': form,
         'servidor': servidor,
     }
+    
+    return render(request, '_pages_/abrirChamado.html', context)
             
 @login_required
 def abrirChamadoImpressora(request):
@@ -127,6 +131,8 @@ def abrirChamadoImpressora(request):
         'form': form,
         'servidor': servidor,
     }
+    
+    return render(request, '_pages_/abrirChamado.html', context)
             
     
 @login_required
