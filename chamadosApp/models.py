@@ -1,8 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models import Count
-
-
+from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
 class Tipo(models.Model):
@@ -40,6 +39,7 @@ class Setor(models.Model):
 class Servidor(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     nome = models.CharField(max_length=75)
+    contato = PhoneNumberField(default='')
     email = models.EmailField(max_length=254, default='')
     setor = models.ForeignKey(Setor, verbose_name='Setor', on_delete=models.CASCADE)
     
@@ -104,3 +104,13 @@ class Comentario(models.Model):
     dataHora = models.DateTimeField(auto_now_add=True)
     texto = models.TextField(default='')
     confidencial = models.BooleanField(default=False)
+    
+class OSInternet(Chamado):
+    nofcip = models.CharField(max_length=8)
+    
+class OSImpressora(Chamado):
+    serie = models.CharField(max_length=8)
+    contador = models.PositiveIntegerField()
+    
+class OSSistema(Chamado):
+    sistema = models.CharField(max_length=50)
