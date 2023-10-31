@@ -168,7 +168,6 @@ def cadastroView(request):
         if request.method == 'POST':
             formUser = UserCreationForm(data=request.POST)
             formServidor = ServidorForm(data=request.POST)
-            print('cheguei aqui')
             if formUser.is_valid() and formServidor.is_valid():
                 print('formulário válido')
                 user = formUser.save()
@@ -181,7 +180,6 @@ def cadastroView(request):
         else:
             formUser = UserCreationForm()
             formServidor = ServidorForm()
-            print("apareci aqui")
                
         return render(request, '_pages_/cadastro.html', {'formUser': formUser, 'formServidor': formServidor})
     
