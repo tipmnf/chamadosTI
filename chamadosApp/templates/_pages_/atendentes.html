@@ -8,6 +8,7 @@ Indicadores
 <ul>
     {% for atendente in atendentes %}
         <li>
+            <a href="{% url "transformaParaServidor" atendente.id %}">apagar</a><br>
             <strong>Nome:</strong> {{ atendente.nome }}<br>
             <strong>Setor:</strong> {{ atendente.setor.nome }}<br>
             <strong>Secretaria:</strong> {{ atendente.setor.secretaria }}<br>
@@ -21,7 +22,7 @@ Indicadores
     {% endfor %}
 </ul>
 
-
+{% if user.is_staff %}
 <form method="POST" action="{% url 'transformaParaAtendente' %}">
     {% csrf_token %}
     <label for="id_servidor">Servidor:</label>
@@ -39,9 +40,11 @@ Indicadores
 
     <button type="submit">Novo Atendente</button>
 </form>
+{% endif %}
+
 <script>
     $(document).ready(function() {
       $('#id_servidor').select2();
     });
-  </script>
+</script>
 {% endblock %}

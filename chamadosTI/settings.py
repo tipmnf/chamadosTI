@@ -117,7 +117,19 @@ USE_I18N = True
 
 USE_TZ = True
 
+
+
+# Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # Replace with your SMTP server's details
+EMAIL_PORT = 587  # Replace with your SMTP server's port
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = ''  # Replace with your SMTP username
+EMAIL_HOST_PASSWORD = ''  # Replace with your SMTP password
+
+
 LOGIN_URL='/login'
+PASSWORD_RESET_TIMEOUT_DAYS = 1
 
 
 # Static files (CSS, JavaScript, Images)

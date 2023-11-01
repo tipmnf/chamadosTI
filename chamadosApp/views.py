@@ -69,6 +69,7 @@ def abrirChamado(request):
 def abrirChamadoInternet(request):
     servidor = Servidor.objects.get(user=request.user)
     form = OSInternet_Form()
+    tipo = Tipo.objects.get(sigla='INT')
     
     if request.method=='POST':
         form = OSInternet_Form(request.POST, request.FILES)
@@ -77,6 +78,7 @@ def abrirChamadoInternet(request):
             chamado.requisitante = servidor
             chamado.secretaria = servidor.setor.secretaria
             chamado.setor = servidor.setor
+            chamado.tipo = tipo
             chamado.setNumero()
             
             return render(request, '_pages_/chamado.html', {'chamado': chamado})
@@ -92,6 +94,7 @@ def abrirChamadoInternet(request):
 def abrirChamadoSistema(request):
     servidor = Servidor.objects.get(user=request.user)
     form = OSSistema_Form()
+    tipo = Tipo.objects.get(sigla='SGP')
     
     if request.method=='POST':
         form = OSSistema_Form(request.POST, request.FILES)
@@ -100,6 +103,7 @@ def abrirChamadoSistema(request):
             chamado.requisitante = servidor
             chamado.secretaria = servidor.setor.secretaria
             chamado.setor = servidor.setor
+            chamado.tipo = tipo
             chamado.setNumero()
             
             return render(request, '_pages_/chamado.html', {'chamado': chamado})
@@ -115,6 +119,7 @@ def abrirChamadoSistema(request):
 def abrirChamadoImpressora(request):
     servidor = Servidor.objects.get(user=request.user)
     form = OSImpressora_Form()
+    tipo = Tipo.objects.get(sigla='IMP')
     
     if request.method=='POST':
         form = OSImpressora_Form(request.POST, request.FILES)
@@ -123,6 +128,7 @@ def abrirChamadoImpressora(request):
             chamado.requisitante = servidor
             chamado.secretaria = servidor.setor.secretaria
             chamado.setor = servidor.setor
+            chamado.tipo = tipo
             chamado.setNumero()
             
             return render(request, '_pages_/chamado.html', {'chamado': chamado})
@@ -387,6 +393,7 @@ def transformaParaAtendente(request):
             user = servidor.user,
             nome = servidor.nome,
             email = servidor.email,
+            contato = servidor.contato,
             setor = servidor.setor,
         )
         
@@ -395,9 +402,41 @@ def transformaParaAtendente(request):
         for id in idTipos:
             atendente.tipo.add(id)
         
+        atendente.user.is_staff = True
+        atendente.user.save()
+        
         atendente.save()
         servidor.delete()
 
     return redirect('atendentes')
     
+@login_required
+def transformaParaServidor(request, atendente):
+    atendente = Atendente.objects.get(id=atendente)
         
+        
+    servidor = Servidor(
+        user = atendente.user,
+        nome = atendente.nome,
+        email = atendente.email,
+        contato = atendente.contato,
+        setor = atendente.setor,
+    )
+    
+    servidor.user.is_staff = False
+    servidor.user.save()
+    
+    servidor.save()
+    atendente.delete()
+
+    return redirect('atendentes')
+
+def listaServidores(request):
+    servidores = Servidor.objects.all()
+    
+    return render(request, '_pages_/listaServidores.html', {'servidores': servidores})
+
+def servidor(request, idServidor):
+    servidor = Servidor.objects.get(id=idServidor)
+    
+    return render(request, '_pages_/servidor.html', {'servidor': servidor})

@@ -46,7 +46,7 @@ Chamados
         <p>Atendente responsável: {{ chamado.atendente }}</p>
     {% endif %}
     <p>Número: {{ chamado.numero }}/{{chamado.dataAbertura.year}}</p>
-    <p>Requisitante: {{ chamado.requisitante }}</p>
+    <p>Requisitante: <a href="{% url "servidor" chamado.requisitante.id %}">{{ chamado.requisitante }}</a></p>
     <p>Tipo: {{ chamado.tipo }}</p>
     <p>Assunto: {{ chamado.assunto }}</p>
     <p>Status: {{ chamado.getStatus }}</p>
@@ -56,6 +56,19 @@ Chamados
 
     {% if chamado.anexo != '' and chamado.anexo != None %}
         <p>Anexo: <img src="/media/{{chamado.anexo}}" alt="Não foi encontrado anexo."></p>
+    {% endif %}
+
+    {% if chamado.tipo.sigla == "INT" %}
+        <p>Nofcip: {{chamado.nofcip}}</p>
+    {% endif %}
+
+    {% if chamado.tipo.sigla == "IMP" %}
+        <p>Série da máquina: {{chamado.serie}}</p>
+        <p>Contador: {{chamado.contador}}</p>
+    {% endif %}
+
+    {% if chamado.tipo.sigla == "SGP" %}
+        <p>Sistema: {{chamado.sistema}}</p>
     {% endif %}
 
     
