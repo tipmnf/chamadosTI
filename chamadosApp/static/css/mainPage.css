@@ -49,20 +49,26 @@
   margin-bottom: 20px;
 }
 
-#id_numero, #id_assunto{
-    width: 26.5%;
+#id_numero{
+    width: 24.5%;
+}
+#id_assunto{
+  width: 26.5%;
 }
 #id_requisitante, #id_tipo{
-    width: 26.5%;
+    width: 24.5%;
 }
 
 #id_setor{
-  width: 43%;
+  width: 41%;
 }
 #id_secretaria{
-    width: 44%;
+    width: 30%;
 }
-#id_status, #id_dataInicio, #id_dataFim{
+#id_status{
+  width: 24.5%;
+}
+#id_dataInicio, #id_dataFim{
   width: 26.5%;
 }
 
@@ -145,3 +151,27 @@ label[for=id_secretaria]{
 .fechar:hover{
   color: gray;
 }
+label[for=id_requisitante]{
+    margin-left: 28px;
+  }
+  label[for=id_setor]{
+    margin-left: 78px;
+  }
+  label[for=id_assunto]{
+    margin-left: 28px;
+  }
+  label[for=id_secretaria]{
+    margin-left: 18px;
+  }
+  label[for=id_tipo]{
+    margin-left: 25px;
+  }
+  label[for=id_status]{
+    margin-left: 13px;
+  }
+  label[for=id_dataInicio]{
+    margin-left: 12px;
+  }
+  label[for=id_dataFim]{
+    margin-left: 56px;
+  }
