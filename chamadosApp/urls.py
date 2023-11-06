@@ -13,9 +13,12 @@ urlpatterns = [
     path('abrirChamadoImpressora/', views.abrirChamadoImpressora, name='abrirChamadoImpressora'),
     path('indicadores/', views.indicadores, name='indicadores'),
     path('atendentes/', views.atendentes, name='atendentes'),
+    path('servidores/', views.listaServidores, name='servidores'),
+    path('servidor/<int:idServidor>', views.servidor, name='servidor'),
     path('editaChamado/<int:idChamado>/', views.editaChamado, name='editaChamado'),
     path('addSetor/', views.addSetor, name='addSetor'), 
     path('addComentario/<int:idChamado>/', views.addComentario, name='addComentario'), 
     path('atualizaChamado/<int:idChamado>/', views.atualizaChamado, name='atualizaChamado'),
-    path('transformaParaAtendente/', views.transformaParaAtendente, name='transformaParaAtendente'),    
+    path('transformaParaAtendente/', views.transformaParaAtendente, name='transformaParaAtendente'),
+    path('transformaParaServidor/<int:atendente>', views.transformaParaServidor, name='transformaParaServidor'),    
 ]

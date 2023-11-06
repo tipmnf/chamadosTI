@@ -77,7 +77,7 @@ class OSInternet_Form(ModelForm):
         widgets = {
             'tipo': forms.Select(attrs={'readonly': True}),
         }
-        exclude = ['dataAbertura', 'dataFechamento', 'prioridade', 'status', 'numero', 'atendente', 'requisitante', 'secretaria', 'setor']
+        exclude = ['dataAbertura', 'dataFechamento', 'prioridade', 'status', 'numero', 'atendente', 'requisitante', 'secretaria', 'setor', 'tipo']
 
 class OSSistema_Form(ModelForm):
     class Meta:
@@ -85,7 +85,7 @@ class OSSistema_Form(ModelForm):
         widgets = {
             'tipo': forms.Select(attrs={'readonly': True}),
         }
-        exclude = ['dataAbertura', 'dataFechamento', 'prioridade', 'status', 'numero', 'atendente', 'requisitante', 'secretaria', 'setor']
+        exclude = ['dataAbertura', 'dataFechamento', 'prioridade', 'status', 'numero', 'atendente', 'requisitante', 'secretaria', 'setor', 'tipo']
 
 class OSImpressora_Form(ModelForm):
     class Meta:
@@ -93,4 +93,4 @@ class OSImpressora_Form(ModelForm):
         widgets = {
             'tipo': forms.Select(attrs={'readonly': True}),
         }
-        exclude = ['dataAbertura', 'dataFechamento', 'prioridade', 'status', 'numero', 'atendente', 'requisitante', 'secretaria', 'setor']
+        exclude = ['dataAbertura', 'dataFechamento', 'prioridade', 'status', 'numero', 'atendente', 'requisitante', 'secretaria', 'setor', 'tipo']

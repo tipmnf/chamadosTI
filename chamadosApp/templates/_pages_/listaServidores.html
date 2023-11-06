@@ -1,0 +1,26 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Contato</th>
+            <th>Setor</th>
+        </tr>
+    </thead>
+    <tbody>
+      {% for servidor in servidores  %}
+      <tr>
+        <td>{{servidor.nome}}</td>
+        <td>{{servidor.email}}</td>
+        <td>{{servidor.contato}}</td>
+        <td>{{servidor.setor}}</td>
+        <td>
+          <a href="{% url 'servidor' servidor.id %}">
+            <button class="btn btn-primary">Detalhes</button>
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+      <!-- Add more rows here if needed -->
+    </tbody>
+  </table>
