@@ -184,16 +184,28 @@ label[for=id_dataFim]{
   font-size: 18px;
 }
 
-.button-abrir-chamado{
-  width: 100%;
-}
-.table{
-  border: 1px solid black;
-}
-.tr-table-chamado{
-  border: 1px solid black;
-}
 
-table:nth-child(odd){
-  background-color: green;
+.button-abrir-chamado{
+  width: 70%;
+}
+#div-table-chamado{
+  border: 1px solid grey;
+  border-radius: 15px;
+  padding: 12px;
+}
+.table-chamado{
+  width: 101.70%;
+  margin-left: -11.5px;
+}
+.table-chamado td, th{
+  padding: 7px;
+}
+.table-chamado tr:nth-child(even){
+  background-color: #bfbfbf
+}
+.table-chamado tr:nth-child(odd){
+  background-color: #fff;
+}
+.table-chamado thead tr{
+  background-color: white!important;
 }
