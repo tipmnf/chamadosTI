@@ -6,6 +6,6 @@ This project is a service order. Therefore, its functionality is restricted to i
 
 - [@gustavonerywe](https://www.github.com/gustavonerywe)
 - [@YanIgnacio](https://www.github.com/YanIgnacio)
-- [@PedroSchuenk](https://www.github.com/PedroSchuenk)
+- [@PedroSchuenck](https://www.github.com/PedroSchuenck)
 
 
