@@ -19,7 +19,7 @@ Página principal
 <button id="button-pesquisa-chamado">Procurar Chamado</button>
 <div>
     <form method=POST id="form-pesquisa-chamado">
-        <h2 id="title-chamado">informações do chamado</h2>
+        <h2 id="title-chamado">Informações do chamado</h2>
         {% csrf_token %}
         {{form}}
         <button class="btn btn-success">Pesquisar</button>
@@ -56,7 +56,6 @@ Página principal
         </td>
       </tr>
     {% endfor %}    
-      <!-- Add more rows here if needed -->
     </tbody>
   </table>
 </div>
