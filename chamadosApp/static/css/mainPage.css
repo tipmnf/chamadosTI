@@ -141,37 +141,71 @@ label[for=id_secretaria]{
 
 .fechar{
   position: absolute;
-  top: 10px; 
+  top: -3px; 
   right: 10px; 
-  font-size: 0.8em;
+  font-size: 2em;
   color: rgba(153, 152, 152, 0.904);
   cursor: pointer;
 }
 
 .fechar:hover{
-  color: gray;
+  color: black;
 }
 label[for=id_requisitante]{
     margin-left: 28px;
-  }
-  label[for=id_setor]{
-    margin-left: 78px;
-  }
-  label[for=id_assunto]{
-    margin-left: 28px;
-  }
-  label[for=id_secretaria]{
-    margin-left: 18px;
-  }
-  label[for=id_tipo]{
-    margin-left: 25px;
-  }
-  label[for=id_status]{
-    margin-left: 13px;
-  }
-  label[for=id_dataInicio]{
-    margin-left: 12px;
-  }
-  label[for=id_dataFim]{
-    margin-left: 56px;
-  }
+}
+label[for=id_setor]{
+  margin-left: 78px;
+}
+label[for=id_assunto]{
+  margin-left: 28px;
+}
+label[for=id_secretaria]{
+  margin-left: 18px;
+}
+label[for=id_tipo]{
+  margin-left: 25px;
+}
+label[for=id_status]{
+  margin-left: 13px;
+}
+label[for=id_dataInicio]{
+  margin-left: 12px;
+}
+label[for=id_dataFim]{
+  margin-left: 56px;
+}
+.link-modal-abrir-chamado{
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+#title-modal-abir-chamado{
+  font-size: 18px;
+}
+
+
+.button-abrir-chamado{
+  width: 70%;
+}
+#div-table-chamado{
+  border: 1px solid grey;
+  border-radius: 15px;
+  padding: 12px;
+}
+.table-chamado{
+  width: 101.70%;
+  margin-left: -11.5px;
+}
+.table-chamado td, th{
+  padding: 7px;
+}
+.table-chamado tr:nth-child(even){
+  background-color: #bfbfbf
+}
+.table-chamado tr:nth-child(odd){
+  background-color: #fff;
+}
+.table-chamado thead tr{
+  background-color: white!important;
+}

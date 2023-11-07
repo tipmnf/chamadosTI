@@ -8,12 +8,12 @@ Página principal
 <div id="modal" class="modal">
   <div class="modal-content">
     <span class="fechar">x</span>
-    <p>Qual o tipo de chamado desejado?</p>
-    <button class="btn btn-primary"><a href="{% url "abrirChamadoImpressora" %}">Impressora</a></button>
-    <button class="btn btn-primary"><a href="{% url "abrirChamado" %}">Computadores</a></button>
-    <button class="btn btn-primary"><a href="{% url "abrirChamadoInternet" %}">Internet</a></button>
-    <button class="btn btn-primary"><a href="{% url "abrirChamadoSistema" %}">Sistema de Gestão Pública</a></button>
-    <button class="btn btn-primary"><a href="{% url "abrirChamado" %}">Telefonia</a></button>
+    <p id="title-modal-abir-chamado">Qual o tipo de chamado desejado?</p>
+    <button class="btn btn-primary"><a class="link-modal-abrir-chamado" href="{% url "abrirChamadoImpressora" %}">Impressora</a></button>
+    <button class="btn btn-primary"><a class="link-modal-abrir-chamado"  href="{% url "abrirChamado" %}">Computadores</a></button>
+    <button class="btn btn-primary"><a class="link-modal-abrir-chamado"  href="{% url "abrirChamadoInternet" %}">Internet</a></button>
+    <button class="btn btn-primary"><a class="link-modal-abrir-chamado"  href="{% url "abrirChamadoSistema" %}">Sistema de Gestão Pública</a></button>
+    <button class="btn btn-primary"><a class="link-modal-abrir-chamado"  href="{% url "abrirChamado" %}">Telefonia</a></button>
   </div>
 </div>
 <button id="button-pesquisa-chamado">Procurar Chamado</button>
@@ -25,7 +25,8 @@ Página principal
         <button class="btn btn-success">Pesquisar</button>
     </form>
 </div>
-<table class="table">
+<div id="div-table-chamado">
+<table class="table-chamado">
     <thead>
       <tr>
         <th>Número</th>
@@ -39,25 +40,26 @@ Página principal
       </tr>
     </thead>
     <tbody>
-      {% for chamado in chamados  %}
-      <tr>
-        <td>{{chamado.numero}}</td>
-        <td>{{chamado.requisitante}}</td>
-        <td>{{chamado.setor}}</td>
-        <td>{{chamado.getStatus}}</td>
-        <td>{{chamado.tipo.sigla}}</td>
-        <td>{{chamado.assunto}}</td>
-        <td>{{chamado.dataAbertura|date:"d/m/y H:i"}}</td>
+      {% for chamado in chamados %}
+      <tr class="tr-table-chamado">
+        <td>{{ chamado.numero }}</td>
+        <td>{{ chamado.requisitante }}</td>
+        <td>{{ chamado.setor }}</td>
+        <td>{{ chamado.getStatus }}</td>
+        <td>{{ chamado.tipo.sigla }}</td>
+        <td>{{ chamado.assunto }}</td>
+        <td>{{ chamado.dataAbertura|date:"d/m/y H:i" }}</td>
         <td>
           <a href="{% url 'chamado' chamado.id %}">
-            <button class="btn btn-primary">Detalhes</button>
+            <button class="btn btn-primary button-abrir-chamado"><i class="bi bi-box-arrow-up-right"></i></button>
           </a>
         </td>
       </tr>
-      {% endfor %}
+    {% endfor %}    
       <!-- Add more rows here if needed -->
     </tbody>
   </table>
+</div>
   
   <script>
     $(document).ready(function() {

@@ -8,7 +8,7 @@ Indicadores
 <ul>
     {% for atendente in atendentes %}
         <li>
-            <a href="{% url "transformaParaServidor" atendente.id %}">apagar</a><br>
+            <a href="{% url "transformaParaServidor" atendente.id %}"><button class="btn btn-primary">apagar</button></a><br>
             <strong>Nome:</strong> {{ atendente.nome }}<br>
             <strong>Setor:</strong> {{ atendente.setor.nome }}<br>
             <strong>Secretaria:</strong> {{ atendente.setor.secretaria }}<br>

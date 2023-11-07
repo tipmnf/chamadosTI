@@ -185,6 +185,8 @@ def cadastroView(request):
                 user = formUser.save()
                 servidor = formServidor.save(commit=False)
                 servidor.user = user
+                user.email = servidor.email
+                user.save()
                 servidor.save()
                 login(request, user)
                 return redirect('/')

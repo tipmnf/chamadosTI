@@ -105,6 +105,9 @@ class Comentario(models.Model):
     dataHora = models.DateTimeField(auto_now_add=True)
     texto = models.TextField(default='')
     confidencial = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.chamado} - {self.texto}'
     
 class OSInternet(Chamado):
     nofcip = models.CharField(max_length=8)
