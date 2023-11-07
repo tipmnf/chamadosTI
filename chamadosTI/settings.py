@@ -127,11 +127,20 @@ USE_TZ = True
 
 # Email settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+<<<<<<< HEAD
 EMAIL_HOST = env('EMAIL_HOST')
 EMAIL_PORT = env('EMAIL_PORT')
 EMAIL_USE_TLS = env('EMAIL_USE_TLS')
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+=======
+EMAIL_HOST = 'smtp.gmail.com'  # Replace with your SMTP server's details
+EMAIL_PORT = 587  # Replace with your SMTP server's port
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_HOST_USER = 'sebsecretaria.ti@gmail.com'  # Replace with your SMTP username
+EMAIL_HOST_PASSWORD = 'fjcd niqm fhks ggec'  # Replace with your SMTP password
+>>>>>>> d3e7ec7581fbd45904c6defdf5b27ab963ef5961
 
 
 LOGIN_URL='/login'

@@ -9,7 +9,7 @@ Login
         {{form.as_p}}
         <input type="submit" value="Entrar">
         <a href="{% url 'cadastro' %}">Quero me cadastrar</a>
-        <button class="btn btn-primary"><a style="text-decoration: none;color: white" href="">Esqueceu sua senha?</a></button>
+        <button class="btn btn-primary"><a style="text-decoration: none;color: white" href="{% url "password_reset" %}">Esqueceu sua senha?</a></button>
     </form>
 {% endblock %}
     
