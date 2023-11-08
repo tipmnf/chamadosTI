@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models import Count
 from phonenumber_field.modelfields import PhoneNumberField
 from django.contrib.auth.forms import UserCreationForm
+from django.core.mail import send_mail
 
 # Create your models here.
 class Tipo(models.Model):
@@ -42,6 +43,7 @@ class Servidor(models.Model):
     nome = models.CharField(max_length=75)
     contato = PhoneNumberField(default='')
     email = models.EmailField(max_length=254, default='')
+    matricula = models.CharField(max_length=6, default='')
     setor = models.ForeignKey(Setor, verbose_name='Setor', on_delete=models.CASCADE)
     
     def __str__(self):
@@ -98,6 +100,23 @@ class Chamado(models.Model):
             self.numero = '00001'
         self.save()
 
+    def notificaAtendente(self):
+        atendentes = Atendente.objects.filter(tipo=self.tipo)
+        emailList = []
+        for atendente in atendentes:
+            emailList.append(atendente.user.email)
+            
+        
+        send_mail(
+            'Um Novo Chamado foi aberto!',
+            self.assunto + self.descricao,
+            "sebsecretaria.ti@gmail.com",
+            emailList,
+            fail_silently=False,
+        )
+        
+            
+        return None
 
 class Comentario(models.Model):
     chamado = models.ForeignKey(Chamado, verbose_name='Chamado', on_delete=models.CASCADE)

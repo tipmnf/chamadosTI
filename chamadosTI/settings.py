@@ -21,7 +21,11 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-env = environ.Env()
+env = environ.Env(
+    EMAIL_HOST=(str),
+    EMAIL_HOST_USER=(str),
+    EMAIL_HOST_PASSWORD=(str)
+)
 
 env.read_env()
 
@@ -124,15 +128,13 @@ USE_I18N = True
 USE_TZ = True
 
 
-
-# Email settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = env('EMAIL_HOST')
-EMAIL_PORT = env('EMAIL_PORT')
-EMAIL_USE_TLS = env('EMAIL_USE_TLS')
+EMAIL_HOST = env('EMAIL_HOST') 
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
-
 
 LOGIN_URL='/login'
 PASSWORD_RESET_TIMEOUT_DAYS = 1

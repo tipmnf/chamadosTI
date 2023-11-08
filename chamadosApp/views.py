@@ -54,6 +54,7 @@ def abrirChamado(request):
             chamado.secretaria = servidor.setor.secretaria
             chamado.setor = servidor.setor
             chamado.setNumero()
+            chamado.notificaAtendente()
             
             return render(request, '_pages_/chamado.html', {'chamado': chamado})
     
@@ -80,6 +81,7 @@ def abrirChamadoInternet(request):
             chamado.setor = servidor.setor
             chamado.tipo = tipo
             chamado.setNumero()
+            chamado.notificaAtendente()
             
             return render(request, '_pages_/chamado.html', {'chamado': chamado})
     
@@ -105,6 +107,7 @@ def abrirChamadoSistema(request):
             chamado.setor = servidor.setor
             chamado.tipo = tipo
             chamado.setNumero()
+            chamado.notificaAtendente()
             
             return render(request, '_pages_/chamado.html', {'chamado': chamado})
     
@@ -130,6 +133,7 @@ def abrirChamadoImpressora(request):
             chamado.setor = servidor.setor
             chamado.tipo = tipo
             chamado.setNumero()
+            chamado.notificaAtendente()
             
             return render(request, '_pages_/chamado.html', {'chamado': chamado})
     
