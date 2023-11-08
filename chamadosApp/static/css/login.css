@@ -36,3 +36,43 @@
     padding-left: 0;
     padding-right: 0;
 }
+/* .footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+} */
+@media screen and (min-width:320px) and (max-width:378px) {
+    .login-form{
+        width:85%;
+        margin: 0 auto;
+    }
+    .a-login{
+        font-size: 15px;
+        margin-top: -10px;
+    }
+}
+@media screen and (min-width:378px) and (max-width:450px){
+    .login-form{
+        width:85%;
+        margin: 0 auto;
+    }
+    .a-login{
+        font-size: 15px;
+    }
+    .login-form button{
+        margin-top: 5px;
+    }
+    #footer-form-login{
+        display: flex;
+        justify-content: space-between;
+    }
+}
+@media screen and (min-width:450px){
+    #footer-form-login{
+        display: flex;
+        justify-content: space-between;
+    }
+    .login-form button{
+        margin-top: 5px;
+    }
+}
