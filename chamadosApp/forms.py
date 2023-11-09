@@ -15,7 +15,7 @@ class Chamado_Form(ModelForm):
 class SearchForm(Form):
 
     REQUISITANTE_CHOICES = [(None,'-')]+[(obj.id, obj.nome) for obj in Servidor.objects.all()]
-    TIPO_CHOICES = [(None,'-')]+[(obj.id, obj.sigla) for obj in Tipo.objects.all()]
+    TIPO_CHOICES = [(None,'-')]+[(obj.id, obj.nome) for obj in Tipo.objects.all()]
     SECRETARIA_CHOICES = [(None,'-')]+[(obj.id, obj.nome) for obj in Secretaria.objects.all()]
     SETOR_CHOICES = [(None,'-')]+[(obj.id, obj.nome) for obj in Setor.objects.all()]
     STATUS_CHOICES = (

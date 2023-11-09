@@ -139,6 +139,7 @@ EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 LOGIN_URL='/login'
 PASSWORD_RESET_TIMEOUT_DAYS = 1
 
+PASSWORD_RESET_TEMPLATE = 'registration/password_reset_email.html'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
