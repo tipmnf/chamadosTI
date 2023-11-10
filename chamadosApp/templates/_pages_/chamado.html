@@ -3,6 +3,7 @@
 Chamados
 {% endblock  %}
 {% block main %}
+<script src="/static/js/chamado.js" defer></script>
 <link rel="stylesheet" href="/static/css/chamado.css">
 <h2>Detalhes do Chamado</h2>
 {% if user.is_staff %}
@@ -42,14 +43,14 @@ Chamados
 {% endif %}
 <div id="p-div">
     {% if user.is_staff %}
-        <p>Prioridade: {{ chamado.getPrioridade }}</p>
+        <p id="prioridade-chamado">Prioridade: {{ chamado.get_prioridade_display }}</p>
         <p>Atendente responsável: {{ chamado.atendente }}</p>
     {% endif %}
     <p>Número: {{ chamado.numero }}/{{chamado.dataAbertura.year}}</p>
     <p>Requisitante: <a href="{% url "servidor" chamado.requisitante.id %}"><button class="btn btn-success">{{ chamado.requisitante }}</button></a></p>
     <p>Tipo: {{ chamado.tipo }}</p>
     <p>Assunto: {{ chamado.assunto }}</p>
-    <p>Status: {{ chamado.getStatus }}</p>
+    <p>Status: {{ chamado.get_status_display }}</p>
     <p>Secretaria: {{ chamado.secretaria }}</p>
     <p>Setor: {{ chamado.setor }}</p>
     <p>Descricao: {{ chamado.descricao }}</p>

@@ -80,18 +80,6 @@ class Chamado(models.Model):
     numero = models.CharField(max_length=10, default=0)
     anexo = models.ImageField(upload_to='images', default=None, null=True, blank=True)
     
-    def getPrioridade(self):
-        for choice in self.prioridadeChoices:
-            if choice[0] == self.prioridade:
-                return choice[1]
-        return "Desconhecido"
-    
-    def getStatus(self):
-        for choice in self.statusChoices:
-            if choice[0] == self.status:
-                return choice[1]
-        return "Desconhecido"
-    
     def setNumero(self):
         ultimoChamado = Chamado.objects.last()
         if ultimoChamado:
@@ -127,6 +115,28 @@ class Comentario(models.Model):
 
     def __str__(self):
         return f'{self.chamado} - {self.texto}'
+    
+    def notificaEnvolvidos(self):
+
+        atendente = self.chamado.atendente
+        requisitante = self.chamado.requisitante            
+        emailList = []
+        
+        if atendente:
+            emailList.append(atendente.user.email)
+        if self.confidencial == False:
+            emailList.append(requisitante.user.email)
+        
+        send_mail(
+            'Há um novo comentário no seu chamado!',
+            self.quemComentou.nome + ":\n" + self.texto + "\nhttp://localhost:8000/chamado/" + str(self.chamado.id),
+            "sebsecretaria.ti@gmail.com",
+            emailList,
+            fail_silently=False,
+        )
+        
+            
+        return None    
     
 class OSInternet(Chamado):
     nofcip = models.CharField(max_length=8)

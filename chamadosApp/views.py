@@ -234,7 +234,7 @@ def filtraChamado(request, form, atendente):
             sql += " status LIKE %s"
             params.append(f'%{status}%')
         else:
-            sql += " status IS NOT NULL ORDER BY status DESC"
+            sql += " status IS NOT NULL"
     if numero:
         sql += " AND numero LIKE %s"
         params.append(f'%{numero}%')
@@ -379,6 +379,7 @@ def addComentario(request, idChamado):
             comentario.chamado = chamado
             
             comentario.save()
+            comentario.notificaEnvolvidos()
             
     return redirect(reverse('chamado', args=[chamado.id]))
 
