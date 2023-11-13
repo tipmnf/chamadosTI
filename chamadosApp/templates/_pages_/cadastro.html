@@ -15,8 +15,10 @@ Abrir Chamado
                 {{formUser.errors.as_text}}
               </div>                     
             {% endif %}
+          <div id="footer-cadastro">
           <a href="{% url 'addSetor' %}">Não encontrou seu Setor? Clique aqui para adicionar!</a>
-          <button type='submit'> Cadastrar </button>
+          <button class="button-cadastro" type='submit'> Cadastrar </button>
+          </div>
       </form>
   </div>
 
