@@ -16,7 +16,7 @@ Página principal
     <button class="btn btn-primary"><a class="link-modal-abrir-chamado"  href="{% url "abrirChamado" %}">Telefonia</a></button>
   </div>
 </div>
-<input type="button" value="Ver Todos Chamados" id="verTodos">
+<button id="verTodos" class="btn btn-danger">Ver Todos Chamados</button>
 <button id="button-pesquisa-chamado">Procurar Chamado</button>
 <div>
     <form method=POST id="form-pesquisa-chamado">
@@ -69,6 +69,16 @@ Página principal
       $('#id_secretaria').select2();
       $('#id_requisitante').select2();
     });
+
+    $(document).ready(function() {
+      $('#verTodos').on('click', function() {
+        if($('.tr-table-chamado').css('display') === 'none')
+           $('.tr-table-chamado').removeAttr('style');
+        else
+          $('.tr-table-chamado').css('display', 'none')
+      });
+    });
+  
   </script>
 
   <script src="/static/js/mainPage.js"></script>

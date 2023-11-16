@@ -5,6 +5,25 @@
   margin: 0 auto;
 }
 
+#verTodos {
+  background-color: rgb(231, 26, 26);
+  color: #ffffff; 
+  padding: 10px 20px; 
+  border: none; 
+  border-radius: 5px; 
+  font-size: 16px; 
+  cursor: pointer; 
+  width: 15%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  text-align: center;
+  text-decoration: none;
+}
+
+#verTodos:hover{
+  background-color: rgb(255, 3, 3);
+}
+
 #button-chamado {
     background-color: #0074d9; 
     color: #ffffff; 
