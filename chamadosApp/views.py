@@ -446,3 +446,12 @@ def servidor(request, idServidor):
     servidor = Servidor.objects.get(id=idServidor)
     
     return render(request, '_pages_/servidor.html', {'servidor': servidor})
+
+def passwordEmail(request):
+   chamado = Chamado.objects.get(id=idChamado)
+
+   context = {
+    'chamado': chamado,
+   }
+
+   return render(request, 'registration/password_reset_email.html', context)
