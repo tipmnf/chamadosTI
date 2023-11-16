@@ -36,7 +36,8 @@ def mainPage(request):
     context = {
         'chamados': chamados,
         'form': form,
-        'tipos': tipos
+        'tipos': tipos,
+        'atendente': atendente
     }
     
     return render(request, '_pages_/mainPage.html', context)
