@@ -84,15 +84,15 @@ def abrirChamadoInternet(request):
             chamado.setNumero()
             chamado.notificaAtendente()
             
+            print(chamado.nofcip)
             return render(request, '_pages_/chamado.html', {'chamado': chamado})
     
     context={
         'form': form,
         'servidor': servidor,
     }
-    
     return render(request, '_pages_/abrirChamado.html', context)
-            
+        
 @login_required
 def abrirChamadoSistema(request):
     servidor = Servidor.objects.get(user=request.user)
