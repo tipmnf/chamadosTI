@@ -459,6 +459,12 @@ def servidor(request, idServidor):
     
     return render(request, '_pages_/servidor.html', {'servidor': servidor})
 
+def apagaServidor(request, idServidor):
+    servidor = Servidor.objects.get(id=idServidor)
+    servidor.delete()
+    
+    return redirect('servidores')
+
 def passwordEmail(request, idChamado):
    chamado = Chamado.objects.get(id=idChamado)
 
@@ -483,6 +489,7 @@ async def send_message(chamado):
         'tipo': chamado.tipo.sigla,
         'assunto': chamado.assunto,
         'dataAbertura': chamado.dataAbertura.strftime('%d/%m/%Y %H:%M:%S'),
+        'id': chamado.id
     }
     
     jsonChamado = json.dumps(dictChamado)

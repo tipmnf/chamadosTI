@@ -7,6 +7,7 @@ Servidores
 <table class="table">
     <thead>
         <tr>
+            <th>Apagar</th>
             <th>Nome</th>
             <th>E-mail</th>
             <th>Contato</th>
@@ -17,6 +18,13 @@ Servidores
     <tbody>
       {% for servidor in servidores  %}
       <tr>
+        {% if user.is_staff %}
+        <td>
+          <a href="{% url 'apagaServidor' servidor.id %}">
+            <button class="btn btn-danger button-abrir-chamado"><i class="bi bi-trash-fill"></i></button>
+          </a>
+        </td>
+        {% endif %}
         <td>{{servidor.nome}}</td>
         <td>{{servidor.email}}</td>
         <td>{{servidor.contato}}</td>

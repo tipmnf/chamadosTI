@@ -27,7 +27,7 @@ async function updateChamados(chamado){
   // Create the last cell with the link and button
   var lastCell = document.createElement("td");
   var link = document.createElement("a");
-  link.href = "{% url 'chamado' " + chamado.pk + " %}";
+  link.href = "/chamado/" + chamado.id;
 
   var button = document.createElement("button");
   button.className = "btn btn-primary button-abrir-chamado";
@@ -36,6 +36,7 @@ async function updateChamados(chamado){
   link.appendChild(button);
   lastCell.appendChild(link);
   newRow.appendChild(lastCell);
+  newRow.style.backgroundColor = '#198754';
 
   // Get the table reference and insert the new row at the top
   var table = document.getElementById("tabelaDeChamados");

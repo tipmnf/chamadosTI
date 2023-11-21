@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     buttonYes.addEventListener('click', function(){
         if (atendenteIdToDelete) {
-                window.location.href = "{% url 'transformaParaServidor' " + atendenteIdToDelete + ' %}'
+                window.location.href = "/transformaParaServidor/" + atendenteIdToDelete
         }
     });
 
