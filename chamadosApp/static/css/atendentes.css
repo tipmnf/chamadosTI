@@ -48,20 +48,24 @@ ul ul {
     align-self: flex-end;
 }
 
+.fechar-sair:hover {
+    color: #5e5c5c;
+}
+
 .button-container {
     display: flex;
     margin-top: 15px;
 }
 
-#buttonNoSair:hover {
+#buttonNo:hover {
     background-color: #e62c3e;
 }
 
-#buttonYesSair:hover{
+#buttonYes:hover{
     background-color: #6ae9ae;
 }
 
-#buttonYesSair, #buttonNoSair {
+#buttonYes, #buttonNo {
     width: 40%;
     text-align: center;
     margin: 0 auto;
@@ -70,10 +74,10 @@ ul ul {
     margin-bottom: 10px;
 }
 
-#buttonNoSair{
+#buttonNo{
     background-color: #e35d6a;
 }
 
-#buttonYesSair {
+#buttonYes {
     background-color: #479f76;
 }

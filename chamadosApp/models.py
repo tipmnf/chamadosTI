@@ -97,7 +97,7 @@ class Chamado(models.Model):
         
         send_mail(
             'Um Novo Chamado foi aberto!',
-            self.assunto + self.descricao,
+            'Requisitante de nome ' + str(self.requisitante) + '\nNúmero do chamado: ' + self.numero + '\nCom o tipo: ' + str(self.tipo) + '\nNa data: ' + str(self.dataAbertura.strftime('%d/%m/%y')) + '\nAbriu um chamado com o assunto: ' + self.assunto + '\nE descrição: ' + self.descricao + '\nVeja os detalhes em: ' + '\nhttp://localhost:8000/chamado/' + str(self.id),
             "sebsecretaria.ti@gmail.com",
             emailList,
             fail_silently=False,

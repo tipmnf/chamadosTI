@@ -1,27 +1,32 @@
-const modal = document.querySelector('#modal');
-const buttonYesSair = document.querySelector('#buttonYesSair');
-const buttonNoSair = document.querySelector('#buttonNoSair');
-const fecharSair = document.querySelector('.fechar-sair');
-const btnsApagar = document.querySelectorAll('.btn-apagar');
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.querySelector('#modal');
+    const buttonYes = document.querySelector('#buttonYes');
+    const buttonNo = document.querySelector('#buttonNo');
+    const fecharSair = document.querySelector('.fechar-sair');
+    const btnsApagar = document.querySelectorAll('.btn-apagar');
 
-btnsApagar.forEach(btnApagar => {
-    btnApagar.addEventListener('click', function (e) {
-        e.preventDefault();
-        console.log("Botão de apagar clicado");
-        modal.style.display = 'block';
+    let atendenteIdToDelete;
+
+    btnsApagar.forEach(btnApagar => {
+        btnApagar.addEventListener('click', function (e) {
+            e.preventDefault();
+            modal.style.display = 'block';
+            atendenteIdToDelete = this.getAttribute('data-atendente-id');
+        });
     });
-});
 
+    buttonNo.addEventListener('click', function(){
+        modal.style.display = 'none';
+    });
 
-buttonNoSair.addEventListener('click', function(){
-    modal.style.display = 'none';
-});
+    buttonYes.addEventListener('click', function(){
+        if (atendenteIdToDelete) {
+                window.location.href = "{% url 'transformaParaServidor' " + atendenteIdToDelete + ' %}'
+        }
+    });
 
-buttonYesSair.addEventListener('click', function(){
-    const atendenteId = btnsApagar.getAttribute('href').split("/").pop();
-    window.location.href = 'transformaParaServidor/' + atendenteId;
-});
+    fecharSair.addEventListener('click', function(){
+        modal.style.display = 'none';
+    });
 
-fecharSair.addEventListener('click', function(){
-    modal.style.display = 'none';
 });
