@@ -6,6 +6,11 @@ from django.db import connection
 from django.urls import reverse
 from .forms import *
 from .models import *
+from django.http import JsonResponse
+from django.core.serializers import serialize
+import websockets
+import asyncio
+import json
 
 # Create your views here
 
@@ -57,6 +62,8 @@ def abrirChamado(request):
             chamado.setNumero()
             chamado.notificaAtendente()
             
+            asyncio.run(send_message(chamado))
+            
             return render(request, '_pages_/chamado.html', {'chamado': chamado})
     
     context={
@@ -84,6 +91,8 @@ def abrirChamadoInternet(request):
             chamado.setNumero()
             chamado.notificaAtendente()
             
+            asyncio.run(send_message(chamado))
+            
             return render(request, '_pages_/chamado.html', {'chamado': chamado})
     
     context={
@@ -110,6 +119,8 @@ def abrirChamadoSistema(request):
             chamado.setNumero()
             chamado.notificaAtendente()
             
+            asyncio.run(send_message(chamado))
+            
             return render(request, '_pages_/chamado.html', {'chamado': chamado})
     
     context={
@@ -135,6 +146,8 @@ def abrirChamadoImpressora(request):
             chamado.tipo = tipo
             chamado.setNumero()
             chamado.notificaAtendente()
+            
+            asyncio.run(send_message(chamado))
             
             return render(request, '_pages_/chamado.html', {'chamado': chamado})
     
@@ -447,7 +460,7 @@ def servidor(request, idServidor):
     
     return render(request, '_pages_/servidor.html', {'servidor': servidor})
 
-def passwordEmail(request):
+def passwordEmail(request, idChamado):
    chamado = Chamado.objects.get(id=idChamado)
 
    context = {
@@ -455,3 +468,26 @@ def passwordEmail(request):
    }
 
    return render(request, 'registration/password_reset_email.html', context)
+
+def userIsStaff(request):
+    return JsonResponse(request.user.is_staff, safe=False)
+    
+async def send_message(chamado):
+    uri = "ws://localhost:8000/ws/"
+    
+    dictChamado = {
+        'numero': chamado.numero,
+        'requisitante': chamado.requisitante.nome,
+        'prioridade': chamado.get_prioridade_display(),
+        'setor': chamado.setor.nome,
+        'status': chamado.get_status_display(),
+        'tipo': chamado.tipo.sigla,
+        'assunto': chamado.assunto,
+        'dataAbertura': chamado.dataAbertura.strftime('%d/%m/%Y %H:%M:%S'),
+    }
+    
+    jsonChamado = json.dumps(dictChamado)
+    
+    async with websockets.connect(uri) as websocket:
+        message = jsonChamado
+        await websocket.send(message)

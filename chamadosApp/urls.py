@@ -20,5 +20,6 @@ urlpatterns = [
     path('addComentario/<int:idChamado>/', views.addComentario, name='addComentario'), 
     path('atualizaChamado/<int:idChamado>/', views.atualizaChamado, name='atualizaChamado'),
     path('transformaParaAtendente/', views.transformaParaAtendente, name='transformaParaAtendente'),
-    path('transformaParaServidor/<int:atendente>', views.transformaParaServidor, name='transformaParaServidor'),    
+    path('transformaParaServidor/<int:atendente>', views.transformaParaServidor, name='transformaParaServidor'),
+    path('userIsStaff/', views.userIsStaff, name='userIsStaff'),        
 ]

@@ -1,12 +1,22 @@
-const chatSocket = new WebSocket(`ws://${window.location.host}/`);
+// const chatSocket = new WebSocket(`ws://${window.location.host}/ws/`);
 
-const $chamadoForm = document.querySelector("#chamadoForm");
+// console.log(chatSocket);
 
-//Logic to send a message when the $chatForm is submitted.
-$chatForm.addEventListener("submit", event => {
-    const message = true;
-    chatSocket.send(JSON.stringify({
-        "message": message
-    }));
+// chatSocket.addEventListener("close", event => {
+//     console.error("The WebSocket socked unexpectedly");
+// });
 
-});
+// chatSocket.addEventListener("error", (event) => {
+//     console.error("WebSocket error:", event);
+// });
+
+// const $chamadoForm = document.querySelector("#chamadoForm");
+
+// $chamadoForm.addEventListener("submit", event => {
+//     const message = true;
+//     console.log("to no submit")
+//     chatSocket.send(JSON.stringify({
+//         "message": message
+//     }));
+
+// });
