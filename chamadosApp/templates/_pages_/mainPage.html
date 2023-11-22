@@ -10,10 +10,10 @@ Página principal
     <span class="fechar">x</span>
     <p id="title-modal-abir-chamado">Qual o tipo de chamado desejado?</p>
     <button class="btn btn-primary"><a class="link-modal-abrir-chamado" href="{% url "abrirChamadoImpressora" %}">Impressora</a></button>
-    <button class="btn btn-primary"><a class="link-modal-abrir-chamado"  href="{% url "abrirChamado" %}">Computadores</a></button>
+    <button class="btn btn-primary"><a class="link-modal-abrir-chamado"  href="{% url "abrirChamado" 'COM' %}">Computadores</a></button>
     <button class="btn btn-primary"><a class="link-modal-abrir-chamado"  href="{% url "abrirChamadoInternet" %}">Internet</a></button>
     <button class="btn btn-primary"><a class="link-modal-abrir-chamado"  href="{% url "abrirChamadoSistema" %}">Sistema de Gestão Pública</a></button>
-    <button class="btn btn-primary"><a class="link-modal-abrir-chamado"  href="{% url "abrirChamado" %}">Telefonia</a></button>
+    <button class="btn btn-primary"><a class="link-modal-abrir-chamado"  href="{% url "abrirChamado" 'TEL' %}">Telefonia</a></button>
   </div>
 </div>
 <button id="button-pesquisa-chamado">Procurar Chamado</button>
