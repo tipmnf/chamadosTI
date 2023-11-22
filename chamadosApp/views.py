@@ -48,9 +48,10 @@ def mainPage(request):
     return render(request, '_pages_/mainPage.html', context)
 
 @login_required
-def abrirChamado(request):
+def abrirChamado(request, tipo):
     servidor = Servidor.objects.get(user=request.user)
     form = Chamado_Form()
+    tipo = Tipo.objects.get(sigla=tipo)
     
     if request.method=='POST':
         form = Chamado_Form(request.POST, request.FILES)
@@ -59,6 +60,7 @@ def abrirChamado(request):
             chamado.requisitante = servidor
             chamado.secretaria = servidor.setor.secretaria
             chamado.setor = servidor.setor
+            chamado.tipo = tipo
             chamado.setNumero()
             chamado.notificaAtendente()
             
@@ -161,11 +163,28 @@ def abrirChamadoImpressora(request):
 @login_required
 def chamado(request, idChamado):
     chamado = Chamado.objects.get(id=idChamado)
+
+    try:
+        chamadoInt = OSInternet.objects.get(id=idChamado)
+    except OSInternet.DoesNotExist:
+        chamadoInt = None
+    try:
+        chamadoSis = OSSistema.objects.get(id=idChamado)
+    except OSSistema.DoesNotExist:
+        chamadoSis = None
+    try:
+        chamadoImp = OSImpressora.objects.get(id=idChamado)
+    except OSImpressora.DoesNotExist:
+        chamadoImp = None
+    
     atendentes = Atendente.objects.all()
     comentarios = Comentario.objects.filter(chamado=chamado).order_by('dataHora')
 
     context = {
         'chamado': chamado,
+        'chamadoInt': chamadoInt,
+        'chamadoImp': chamadoImp,
+        'chamadoSis': chamadoSis,
         'atendentes': atendentes,
         'comentarios': comentarios,
     }

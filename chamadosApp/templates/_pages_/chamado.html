@@ -5,11 +5,12 @@ Chamados
 {% block main %}
 <script src="/static/js/chamado.js" defer></script>
 <link rel="stylesheet" href="/static/css/chamado.css">
-<h2>Detalhes do Chamado</h2>
+<h1>Detalhes do Chamado</h1>
+<div id="quickMenu">
 {% if user.is_staff %}
     <form method="POST" action="{% url 'atualizaChamado' chamado.id %}">
         {% csrf_token %}
-
+        <h2>Menu Rápido</h2>
         <label for="prioridade">Prioridade:</label>
         <select name="prioridade" id="prioridade">
             {% for choice in chamado.prioridadeChoices %}
@@ -41,18 +42,26 @@ Chamados
         <input class="btn btn-success" type="submit" value="Salvar">
     </form>
 {% endif %}
+</div>
+
 <div id="p-div">
-    {% if user.is_staff %}
-        <p id="prioridade-chamado">Prioridade: {{ chamado.get_prioridade_display }}</p>
-        <p>Atendente responsável: {{ chamado.atendente }}</p>
-    {% endif %}
-    <p>Número: {{ chamado.numero }}/{{chamado.dataAbertura.year}}</p>
-    <p>Requisitante: <a href="{% url "servidor" chamado.requisitante.id %}"><button class="btn btn-success">{{ chamado.requisitante }}</button></a></p>
-    <p>Tipo: {{ chamado.tipo }}</p>
+    <div class="PAS">
+        {% if user.is_staff %}
+            <p id="prioridade-chamado">Prioridade: {{ chamado.get_prioridade_display }}</p>
+            <p>Atendente responsável: {{ chamado.atendente }}</p>
+        {% endif %}
+        <p>Status: {{ chamado.get_status_display }}</p>
+    </div>
+    <div class="NRT">
+        <p>Número: {{ chamado.numero }}/{{chamado.dataAbertura.year}}</p>
+        <p>Requisitante: <a href="{% url "servidor" chamado.requisitante.id %}"><button class="btn btn-success">{{ chamado.requisitante }}</button></a></p>
+        <p>Tipo: {{ chamado.tipo }}</p>
+    </div>
+    <div class="SS">
+        <p>Secretaria: {{ chamado.secretaria }}</p>
+        <p>Setor: {{ chamado.setor }}</p>
+    </div>
     <p>Assunto: {{ chamado.assunto }}</p>
-    <p>Status: {{ chamado.get_status_display }}</p>
-    <p>Secretaria: {{ chamado.secretaria }}</p>
-    <p>Setor: {{ chamado.setor }}</p>
     <p>Descricao: {{ chamado.descricao }}</p>
 
     {% if chamado.anexo != '' and chamado.anexo != None %}
@@ -60,50 +69,50 @@ Chamados
     {% endif %}
 
     {% if chamado.tipo.sigla == "INT" %}
-        <p>Nofcip: {{chamado.nofcip}}</p>
+        <p>Nofcip: {{chamadoInt.nofcip}}</p>
     {% endif %}
 
     {% if chamado.tipo.sigla == "IMP" %}
-        <p>Série da máquina: {{chamado.serie}}</p>
-        <p>Contador: {{chamado.contador}}</p>
+        <p>Série da máquina: {{chamadoImp.serie}}</p>
+        <p>Contador: {{chamadoImp.contador}}</p>
     {% endif %}
 
     {% if chamado.tipo.sigla == "SGP" %}
-        <p>Sistema: {{chamado.sistema}}</p>
+        <p>Sistema: {{chamadoSis.sistema}}</p>
     {% endif %}
 
-    
-    {% for comentario in comentarios%}
-        {% if user.is_staff %}
-            <p>
-                {{comentario.quemComentou}}<br>
-                {{comentario.dataHora}}<br>
-                {{comentario.texto}}
-            </p>
-        {% else %}
-            {% if not comentario.confidencial %}
-                <p>
-                    {{comentario.quemComentou}}<br>
-                    {{comentario.dataHora}}<br>
-                    {{comentario.texto}}
-                </p>
-            {% endif %}
-        {% endif %}
-    {% endfor %}
-    
-
-    <form method="POST" action="{% url 'addComentario' chamado.id %}">
-        {% csrf_token %}
-        <label for="id_texto">Adicionar Comentário:</label>
-        <textarea name="texto" id="id_texto" cols="91" rows="10"></textarea>
-        {% if user.is_staff %}
-            <label for="id_confidencial">Confidencial:</label>
-            <input type="checkbox" name="confidencial" id="id_confidencial"><br>
-        {% endif %}
-        <button type="submit">Enviar</button>
-
-    </form>
 </div>
+
+{% for comentario in comentarios%}
+{% if user.is_staff %}
+    <p>
+        {{comentario.quemComentou}}<br>
+        {{comentario.dataHora}}<br>
+        {{comentario.texto}}
+    </p>
+{% else %}
+    {% if not comentario.confidencial %}
+        <p>
+            {{comentario.quemComentou}}<br>
+            {{comentario.dataHora}}<br>
+            {{comentario.texto}}
+        </p>
+    {% endif %}
+{% endif %}
+{% endfor %}
+
+
+<form method="POST" action="{% url 'addComentario' chamado.id %}">
+{% csrf_token %}
+<label for="id_texto">Adicionar Comentário:</label>
+<textarea name="texto" id="id_texto" cols="91" rows="10"></textarea>
+{% if user.is_staff %}
+    <label for="id_confidencial">Confidencial:</label>
+    <input type="checkbox" name="confidencial" id="id_confidencial"><br>
+{% endif %}
+<button type="submit">Enviar</button>
+
+</form>
 
 {% if user.is_staff %}
    <a id="edita-chamado" class="btn btn-primary" href="{% url 'editaChamado' chamado.id %}">Editar o Chamado</a>
