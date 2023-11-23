@@ -20,3 +20,30 @@
 //     }));
 
 // });
+
+const saveButton = document.querySelector('#save-button');
+const form = document.querySelector('#form-chamado');
+
+saveButton.addEventListener('click', e => {
+    e.preventDefault();
+
+    const requiredInputs = form.querySelectorAll('[required]');
+    let allFieldsFilled = true;
+
+    requiredInputs.forEach(input => {
+        if (input.value.trim() === '') {
+            allFieldsFilled = false;
+            input.style.border = '1px solid red';
+        } else {
+            input.style.border = ''; 
+        }
+    });
+
+    if (allFieldsFilled) {
+        saveButton.setAttribute("disabled", "disabled");
+        saveButton.textContent = "Gerando Chamado...";
+        saveButton.style.transition = "ease 3s"
+        saveButton.classList.add('btn-success')
+        form.submit()
+    }
+});
