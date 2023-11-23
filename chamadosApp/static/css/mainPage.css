@@ -62,8 +62,8 @@
 #id_setor{
   width: 41%;
 }
-#id_secretaria{
-    width: 30%;
+#id_prioridade{
+    width: 26.2%;
 }
 #id_status{
   width: 24.5%;
@@ -112,7 +112,7 @@ span[data-select2-id="5"]{
 span[data-select2-id="3"]{
   width: 26.5%!important;
 }
-label[for=id_secretaria]{
+label[for=id_prioridade]{
   margin-left: 15px;
 }
 
@@ -160,7 +160,7 @@ label[for=id_setor]{
 label[for=id_assunto]{
   margin-left: 28px;
 }
-label[for=id_secretaria]{
+label[for=id_prioridade]{
   margin-left: 18px;
 }
 label[for=id_tipo]{
@@ -208,4 +208,24 @@ label[for=id_dataFim]{
 }
 .table-chamado thead tr{
   background-color: white!important;
+}
+@media screen and (min-width:320px){
+  #div-table-chamado{
+  padding: 0;
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 0;
+}
+.table-chamado{
+  margin-left:0;
+}
+}
+@media screen and (min-width:320px) and (max-width:400px){
+    #button-chamado{
+      width: 40%;
+    }
+    #button-pesquisa-chamado{
+      width: 40%;
+    }
 }

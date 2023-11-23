@@ -250,7 +250,7 @@ def filtraChamado(request, form, atendente):
     assunto = form.cleaned_data['assunto']
     requisitante = form.cleaned_data['requisitante']
     tipo = form.cleaned_data['tipo']
-    secretaria = form.cleaned_data['secretaria']
+    prioridade = form.cleaned_data['prioridade']
     setor = form.cleaned_data['setor']
     dataInicio = form.cleaned_data['dataInicio']
     dataFim = form.cleaned_data['dataFim']
@@ -279,9 +279,12 @@ def filtraChamado(request, form, atendente):
     if tipo:
         sql += " AND tipo_id LIKE %s"
         params.append(f'%{tipo}%')
-    if secretaria:
-        sql += " AND secretaria_id LIKE %s"
-        params.append(f'%{secretaria}%')
+    if prioridade:
+        if prioridade != '3':
+            sql += "AND prioridade LIKE %s"
+            params.append(f'%{prioridade}%')
+        else:
+            sql += "AND prioridade IS NOT NULL"
     if setor:
         sql += " AND setor_id LIKE %s"
         params.append(f'%{setor}%')
