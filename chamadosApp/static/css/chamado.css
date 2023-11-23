@@ -49,20 +49,13 @@ p {
     margin-bottom: 0px;
 }
 
-p:nth-child(odd) {
-    background-color: #f2f2f2;
-}
-
-p:nth-child(even) {
-    background-color: #e6e6e6;
-}
-
 #p-div{
     width: 100%;
     float: left;
     margin-bottom: 20px;
     margin-top: 20px;
     border: 1px solid #ccc;
+    background-color: #eeeeee;
 }
 
 #quickMenu{
@@ -72,23 +65,39 @@ p:nth-child(even) {
     margin-bottom: 20px;
 }
 
-.PAS{
-    display: flex;
+.detalhes{
+    display: inline;
 }
 
-.PAS p{
+.detalhesTopo{
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+}
+
+.detalhesTopo p{
     width: 30%;
     margin: 0 auto;
 }
 
-.NRT{
-    width: 50%;
+.detalhesLeft{
+    width: 40%;
     float: left;
     text-align: left;
 }
 
-.SS{
-    width: 50%;
+/* .detalhesCenter{
+    width: 20%;
+} */
+
+.detalhesRight{
+    width: 40%;
     float: right;
     text-align: right;
+}
+
+#descricao{
+    border: 1px solid #ccc;
+    display: flex;
+    width: 100%;
 }

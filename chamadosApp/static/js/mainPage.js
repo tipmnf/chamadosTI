@@ -36,7 +36,7 @@ async function updateChamados(chamado){
   link.appendChild(button);
   lastCell.appendChild(link);
   newRow.appendChild(lastCell);
-  newRow.style.backgroundColor = '#198754';
+  newRow.style.backgroundColor = '#BDECD6';
 
   // Get the table reference and insert the new row at the top
   var table = document.getElementById("tabelaDeChamados");

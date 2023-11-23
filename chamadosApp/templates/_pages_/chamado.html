@@ -5,7 +5,7 @@ Chamados
 {% block main %}
 <script src="/static/js/chamado.js" defer></script>
 <link rel="stylesheet" href="/static/css/chamado.css">
-<h1>Detalhes do Chamado</h1>
+<h1>Detalhes do Chamado {{ chamado.numero }}/{{chamado.dataAbertura.year}}</h1>
 <div id="quickMenu">
 {% if user.is_staff %}
     <form method="POST" action="{% url 'atualizaChamado' chamado.id %}">
@@ -45,41 +45,46 @@ Chamados
 </div>
 
 <div id="p-div">
-    <div class="PAS">
-        {% if user.is_staff %}
-            <p id="prioridade-chamado">Prioridade: {{ chamado.get_prioridade_display }}</p>
-            <p>Atendente responsável: {{ chamado.atendente }}</p>
-        {% endif %}
-        <p>Status: {{ chamado.get_status_display }}</p>
+    
+        <div class="detalhesTopo">
+            {% if user.is_staff %}
+                <p id="prioridade-chamado">Prioridade: {{ chamado.get_prioridade_display }}</p>
+                <p>Atendente responsável: {{ chamado.atendente }}</p>
+            {% endif %}
+            <p>Status: {{ chamado.get_status_display }}</p>
+        </div>
+        <div class="detalhes">
+        <div class="detalhesLeft">
+            <p>Número: {{ chamado.numero }}/{{chamado.dataAbertura.year}}</p>
+            <p>Tipo: {{ chamado.tipo }}</p>
+            <p>Assunto: {{ chamado.assunto }}</p>
+        </div>
+        <div class="detalhesCenter">
+            {% if chamado.anexo != '' and chamado.anexo != None %}
+                <p>Anexo: <img src="/media/{{chamado.anexo}}" alt="Não foi encontrado anexo."></p>
+            {% endif %}
+        
+            {% if chamado.tipo.sigla == "INT" %}
+                <p>Nofcip: {{chamadoInt.nofcip}}</p>
+            {% endif %}
+        
+            {% if chamado.tipo.sigla == "IMP" %}
+                <p>Série da máquina: {{chamadoImp.serie}}</p>
+                <p>Contador: {{chamadoImp.contador}}</p>
+            {% endif %}
+        
+            {% if chamado.tipo.sigla == "SGP" %}
+                <p>Sistema: {{chamadoSis.sistema}}</p>
+            {% endif %}
+        </div>
+        <div class="detalhesRight">
+            <p>Secretaria: {{ chamado.secretaria }}</p>
+            <p>Setor: {{ chamado.setor }}</p>
+            <p>Requisitante: <a href="{% url "servidor" chamado.requisitante.id %}"><button class="btn btn-success">{{ chamado.requisitante }}</button></a></p>
+        </div>
     </div>
-    <div class="NRT">
-        <p>Número: {{ chamado.numero }}/{{chamado.dataAbertura.year}}</p>
-        <p>Requisitante: <a href="{% url "servidor" chamado.requisitante.id %}"><button class="btn btn-success">{{ chamado.requisitante }}</button></a></p>
-        <p>Tipo: {{ chamado.tipo }}</p>
-    </div>
-    <div class="SS">
-        <p>Secretaria: {{ chamado.secretaria }}</p>
-        <p>Setor: {{ chamado.setor }}</p>
-    </div>
-    <p>Assunto: {{ chamado.assunto }}</p>
-    <p>Descricao: {{ chamado.descricao }}</p>
-
-    {% if chamado.anexo != '' and chamado.anexo != None %}
-        <p>Anexo: <img src="/media/{{chamado.anexo}}" alt="Não foi encontrado anexo."></p>
-    {% endif %}
-
-    {% if chamado.tipo.sigla == "INT" %}
-        <p>Nofcip: {{chamadoInt.nofcip}}</p>
-    {% endif %}
-
-    {% if chamado.tipo.sigla == "IMP" %}
-        <p>Série da máquina: {{chamadoImp.serie}}</p>
-        <p>Contador: {{chamadoImp.contador}}</p>
-    {% endif %}
-
-    {% if chamado.tipo.sigla == "SGP" %}
-        <p>Sistema: {{chamadoSis.sistema}}</p>
-    {% endif %}
+    
+    <p id="descricao">Descricao:<br> {{ chamado.descricao }}</p>
 
 </div>
 
