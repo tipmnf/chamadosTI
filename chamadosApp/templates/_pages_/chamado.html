@@ -48,8 +48,8 @@ Chamados
     
         <div class="detalhesTopo">
             {% if user.is_staff %}
-                <p id="prioridade-chamado">Prioridade: {{ chamado.get_prioridade_display }}</p>
                 <p>Atendente responsável: {{ chamado.atendente }}</p>
+                <p id="prioridade-chamado">Prioridade: {{ chamado.get_prioridade_display }}</p>
             {% endif %}
             <p>Status: {{ chamado.get_status_display }}</p>
         </div>
@@ -60,6 +60,7 @@ Chamados
             <p>Assunto: {{ chamado.assunto }}</p>
         </div>
         <div class="detalhesCenter">
+            <p>Informações adicionais:</p>
             {% if chamado.anexo != '' and chamado.anexo != None %}
                 <p>Anexo: <img src="/media/{{chamado.anexo}}" alt="Não foi encontrado anexo."></p>
             {% endif %}
@@ -84,38 +85,42 @@ Chamados
         </div>
     </div>
     
-    <p id="descricao">Descricao:<br> {{ chamado.descricao }}</p>
-
+    <div class="divDescricao">
+        <p id="descricao">Descricao:<br> {{ chamado.descricao }}</p>
+    </div>
 </div>
 
-{% for comentario in comentarios%}
-{% if user.is_staff %}
-    <p>
-        {{comentario.quemComentou}}<br>
-        {{comentario.dataHora}}<br>
-        {{comentario.texto}}
-    </p>
-{% else %}
-    {% if not comentario.confidencial %}
+<div class="divComentarios">
+    {% for comentario in comentarios%}
+    <div class="comentario">
+    {% if user.is_staff %}
         <p>
             {{comentario.quemComentou}}<br>
             {{comentario.dataHora}}<br>
             {{comentario.texto}}
         </p>
+    {% else %}
+        {% if not comentario.confidencial %}
+            <p>
+                {{comentario.quemComentou}}<br>
+                {{comentario.dataHora}}<br>
+                {{comentario.texto}}
+            </p>
+        {% endif %}
     {% endif %}
-{% endif %}
-{% endfor %}
+    </div>
+    {% endfor %}
+</div>
 
-
-<form method="POST" action="{% url 'addComentario' chamado.id %}">
+<form method="POST" action="{% url 'addComentario' chamado.id %}" class="formComentario">
 {% csrf_token %}
 <label for="id_texto">Adicionar Comentário:</label>
-<textarea name="texto" id="id_texto" cols="91" rows="10"></textarea>
+<textarea name="texto" id="id_texto" cols="91" rows="5"></textarea>
 {% if user.is_staff %}
-    <label for="id_confidencial">Confidencial:</label>
+    <label for="id_confidencial">Confidencial (Aparecerá somente para outros atendentes):</label>
     <input type="checkbox" name="confidencial" id="id_confidencial"><br>
 {% endif %}
-<button type="submit">Enviar</button>
+<button class="btn btn-success" type="submit">Enviar</button>
 
 </form>
 
