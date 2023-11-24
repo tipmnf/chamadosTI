@@ -1,6 +1,9 @@
 const prioridadeChamado = document.getElementById('prioridade-chamado')
+const statusChamado = document.querySelector('#status-chamado')
+const atendenteResponsavel = document.querySelector('#atendente-responsavel')
+
 if(prioridadeChamado.textContent == "Prioridade: Média"){
-    prioridadeChamado.style.border = '1px solid yellow'
+    prioridadeChamado.style.border = '1px solid orange'
 }
 
 if(prioridadeChamado.textContent == "Prioridade: Alta"){
@@ -9,6 +12,22 @@ if(prioridadeChamado.textContent == "Prioridade: Alta"){
 
 if(prioridadeChamado.textContent == "Prioridade: Baixa"){
     prioridadeChamado.style.border = '1px solid blue'
+}
+
+if(statusChamado.textContent == "Status: Aberto"){
+    statusChamado.style.border = '1px solid green'
+}
+
+if(statusChamado.textContent == "Status: Pendente"){
+    statusChamado.style.border = '1px solid orange'
+}
+
+if(statusChamado.textContent == "Status: Finalizado"){
+    statusChamado.style.border = '1px solid red'
+}
+
+if (atendenteResponsavel.textContent != 'Atendente responsável: None'){
+    atendenteResponsavel.style.border = '1px solid blue'
 }
 
 const submitChamado = document.querySelector('#submit-chamado');

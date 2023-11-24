@@ -144,3 +144,8 @@ p {
 #btn-atendente:hover{
     color: #ffff;
 }
+
+#atendente-responsavel, #status-chamado, #prioridade-chamado {
+    border-radius: 25px;
+    padding: 15px 15px;
+}
