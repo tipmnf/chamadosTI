@@ -78,7 +78,7 @@ class Chamado(models.Model):
     dataAbertura = models.DateTimeField(auto_now_add=True)
     dataFechamento = models.DateTimeField(null=True, blank=False)
     numero = models.CharField(max_length=10, default=0)
-    anexo = models.ImageField(upload_to='images', default=None, null=True, blank=True)
+    anexo = models.ImageField(upload_to='media\images', default=None, null=True, blank=True)
     
     def setNumero(self):
         ultimoChamado = Chamado.objects.last()
