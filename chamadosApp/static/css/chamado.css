@@ -1,8 +1,7 @@
 #edita-chamado{
-    width: 58%;
+    width: 48%;
     margin: 0 auto;
-    padding: 10px 10px;
-    border-radius: 15px;
+    border-radius: 20px;
 }
 
 h1 {
@@ -130,4 +129,18 @@ p {
     margin-top: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
+}
+
+#submit-chamado{
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 20px;
+}
+
+#btn-atendente{
+    border-radius: 15px;
+}
+
+#btn-atendente:hover{
+    color: #ffff;
 }
