@@ -13,7 +13,7 @@
     border-radius: 5px; 
     font-size: 16px; 
     cursor: pointer; 
-    width: 15%;
+    width: 45%;
     margin: 0 auto;
     margin-bottom: 30px;
     text-align: center;
@@ -84,7 +84,7 @@
     border-radius: 5px; 
     font-size: 16px; 
     cursor: pointer; 
-    width: 20%;
+    width: 45%;
     margin: 0 auto;
     margin-bottom: 30px;
     text-align: center;
@@ -192,6 +192,8 @@ label[for=id_dataFim]{
   border: 1px solid grey;
   border-radius: 15px;
   padding: 12px;
+  overflow-x: auto;
+  margin-bottom: 30px!important;
 }
 .table-chamado{
   width: 101.70%;
@@ -210,11 +212,9 @@ label[for=id_dataFim]{
   margin-left:0;
 }
 }
-@media screen and (min-width:320px) and (max-width:400px){
-    #button-chamado{
-      width: 40%;
-    }
-    #button-pesquisa-chamado{
-      width: 40%;
-    }
+.div-button-chamado{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
 }

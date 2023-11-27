@@ -132,6 +132,12 @@ label[for=id_contador] {
   width: 20%;
 }
 
+label[for=id_sistema] {
+  position: absolute;
+  left: 23.3%;
+  width: 20%;
+}
+
 .form-group {
   margin: 0 auto;
 }
@@ -154,7 +160,8 @@ label[for=id_contador] {
 #id_assunto,
 #id_anexo,
 #id_contador,
-#id_serie {
+#id_serie,
+#id_sistema{
   margin-top: 10px;
   width: 52.5%;
   margin-left: 15%;
