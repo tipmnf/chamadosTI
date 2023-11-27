@@ -3,8 +3,8 @@ nav {
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
-    background: rgb(255,255,255);
-    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(45,185,253,1) 100%);
+    background: rgb(0,100,237);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(0,100,237,1) 100%); 
 }
 
 

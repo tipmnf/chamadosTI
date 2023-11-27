@@ -2,6 +2,7 @@
     font-family: 'Inter', sans-sarif;
     font-size: 18px;
 }
+
 @media screen and (min-width:320px) and (max-width:450px) {
     .mobile-flex-column{
         display: block;
@@ -12,4 +13,9 @@
     .col ul{
         margin-top: 20px;
     }
+}
+
+footer{
+    background: rgb(0,100,237);
+    background: linear-gradient(0deg, rgba(0,100,237,1) 25%, rgba(255,255,255,1) 100%); 
 }

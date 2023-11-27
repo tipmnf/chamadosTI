@@ -24,40 +24,43 @@ Indicadores
     </select>
     <button type="submit" class="btn btn-primary">Enviar</button>
 </form>
-<div id="setor-div">
-    <h2 id="setor">Chamados por Setor</h2>
-    <ul>
-        {% for setor in setores %}
-            {% if setor.total_chamados %}
-                <li><p class="item-name">{{ setor.nome }}</p>
-                    <ul>
-                        {% for tipo_info in setor.total_chamados %}
-                            <li>{{ tipo_info.tipo__nome }}: {{ tipo_info.total }}</li>
-                        {% endfor %}
-                    </ul>
-                </li>
-            {% endif %}
-        {% endfor %}
-    </ul>
-</div>
-   
-<div id="secretaria-div">
-    <h2 id="secretaria">Chamados por Secretaria</h2>
-    <ul>
-        {% for secretaria in secretarias %}
-            {% if secretaria.total_chamados %}
-                <li><p class="item-name">{{ secretaria.nome }}</p>
-                    <ul>
-                        {% for tipo_info in secretaria.total_chamados %}
-                            <li>{{ tipo_info.tipo__nome }}: {{ tipo_info.total }}</li>
-                        {% endfor %}
-                    </ul>
-                </li>
-            {% endif %}
-        {% endfor %}  
-
+<div id="div-indicadores">
+    <div id="setor-div">
+        <h2 id="setor">Chamados por Setor</h2>
+        <ul>
+            {% for setor in setores %}
+                {% if setor.total_chamados %}
+                    <li><p class="item-name">{{ setor.nome }}</p>
+                        <ul>
+                            {% for tipo_info in setor.total_chamados %}
+                                <li>{{ tipo_info.tipo__nome }}: {{ tipo_info.total }}</li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+       
+    <div id="secretaria-div">
+        <h2 id="secretaria">Chamados por Secretaria</h2>
+        <ul>
+            {% for secretaria in secretarias %}
+                {% if secretaria.total_chamados %}
+                    <li><p class="item-name">{{ secretaria.nome }}</p>
+                        <ul>
+                            {% for tipo_info in secretaria.total_chamados %}
+                                <li>{{ tipo_info.tipo__nome }}: {{ tipo_info.total }}</li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endif %}
+            {% endfor %}  
     
+        
+    </div>
 </div>
+
 <script>
     $(document).ready(function() {
       $('#select-setor').select2();

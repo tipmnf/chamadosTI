@@ -30,6 +30,10 @@ if (atendenteResponsavel.textContent != 'Atendente responsável: None'){
     atendenteResponsavel.style.border = '1px solid blue'
 }
 
+if(atendenteResponsavel.textContent == 'Atendente responsável: None'){
+    atendenteResponsavel.textContent = 'Atendente responsável: Nenhum'
+}
+
 const submitChamado = document.querySelector('#submit-chamado');
 
 submitChamado.addEventListener('click', e =>{

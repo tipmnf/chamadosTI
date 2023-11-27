@@ -27,7 +27,7 @@ Página principal
 </div>
 <div id="div-table-chamado">
   <div class="table-responsive">
-    <table class="table-chamado" id="tabelaDeChamados">
+    <table class="table-chamado table table-striped" id="tabelaDeChamados">
       <thead>
         <tr>
           <th>Número</th>
@@ -46,7 +46,7 @@ Página principal
         <tr>
           <td>{{ chamado.numero }}</td>
           <td>{{ chamado.requisitante }}</td>
-          <td {% if chamado.prioridade == '0' %}style="color: blue"{% elif chamado.prioridade == '2' %} style="color: red;" {% else %} style="color: #ffa500" {% endif %}>{{ chamado.get_prioridade_display }}</td>
+          <td {% if chamado.prioridade == '0' %}style="color: blue"{% elif chamado.prioridade == '2' %} style="color: red;" {% else %} style="color: orange" {% endif %}>{{ chamado.get_prioridade_display }}</td>
           <td>{{ chamado.setor }}</td>
           <td>{{ chamado.get_status_display }}</td>
           <td>{{ chamado.tipo.sigla }}</td>

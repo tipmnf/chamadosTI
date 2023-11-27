@@ -1,147 +1,178 @@
-.form-main label, .form-main input, .form-main button {
-    margin: 10px 0;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.form-main label,
+.form-main input,
+.form-main button {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 #id_descricao {
-    width: 85%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    resize: none; 
-    height: 20%;
+  width: 85%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+  height: 20%;
 }
 
 #id_descricao:focus {
-    border-color: #011c3a; 
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+  border-color: #011c3a;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-label[for=id_descricao]{
-    float: left;
+label[for=id_descricao] {
+  float: left;
 }
 
 select {
-    width: 85%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    line-height: 1.5;
-    background-color: white;
+  width: 85%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: white;
 }
 
 
 select:focus {
-    border-color: #011c3a; 
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /
+  border-color: #011c3a;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);/
 }
 
 input[type="text"] {
-    width: 85%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    line-height: 1.5;
+  width: 85%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 
 input[type="text"]:focus {
-    border-color: #011c3a; 
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /
+  border-color: #011c3a;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);/
 }
 
 label {
-    width: 10%;
+  width: 10%;
 }
 
-#save-button{
-    width: 40%;
-    border-radius: 15px;
+#save-button {
+  width: 40%;
+  border-radius: 15px;
 }
 
-#id_requisitante, #id_secretaria, #id_setor{
-    margin-top: 15px;
+#id_requisitante,
+#id_secretaria,
+#id_setor {
+  margin-top: 15px;
 }
-label[for=id_requisitante]{
-    position: absolute;
-    left: 19%;
-    width: 15%;
-    margin-top: 15px;
-  }
-  label[for=id_secretaria]{
-    position: absolute;
-    left: 19%;
-    width: 15%;
-    margin-top: 15px;
-  }
-  label[for=id_setor]{
-    position: absolute;
-    left: 19%;
-    width: 15%;
-    margin-top: 15px;
-  }
-  label[for=id_tipo]{
-    position: absolute;
-    left: 19%;
-    width: 15%;
-  }
-  label[for=id_assunto]{
-    position: absolute;
-    left: 19%;
-    width: 15%;
-  }
-  label[for=id_descricao]{
-    position: absolute;
-    left: 19%;
-    width: 15%;
-    margin-top: -1px;
-  }
-  label[for=id_anexo]{
-    position: absolute;
-    left: 19%;
-    width: 15%;
-    height: 51px;
-  }
-  label[for=id_serie]{
-    position: absolute;
-    left: 19%;
-    width: 15%;
-  }
-  label[for=id_contador]{
-    position: absolute;
-    left: 19%;
-    width: 15%;
-  }
 
-  .form-group{
-    margin: 0 auto;
-  }
+label[for=id_requisitante] {
+  position: absolute;
+  left: 19%;
+  width: 15%;
+  margin-top: 15px;
+}
 
-  .div-form-main{
-     margin-left: 27.5%;
-  }
+label[for=id_secretaria] {
+  position: absolute;
+  left: 19%;
+  width: 15%;
+  margin-top: 15px;
+}
 
-  #id_requisitante, #id_secretaria, #id_setor{
-    width: 65%;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-  }
-  #id_tipo, #id_assunto, #id_anexo, #id_contador, #id_serie{
-    margin-top: 10px;
-    width: 52.5%;
-    margin-left: 10%;
-  }
-  #id_descricao{
-    width: 52.5%;
-    height: 150px;
-    margin-left: 10%;
-  }
+label[for=id_setor] {
+  position: absolute;
+  left: 19%;
+  width: 15%;
+  margin-top: 15px;
+}
 
-  #id_requisitante:hover, #id_secretaria:hover, #id_setor:hover, #id_tipo:hover, #id_assunto:hover, #id_descricao:hover, #id_anexo:hover{
-    border-color: black;
-  }
+label[for=id_tipo] {
+  position: absolute;
+  left: 19%;
+  width: 15%;
+}
+
+label[for=id_assunto] {
+  position: absolute;
+  left: 19%;
+  width: 15%;
+}
+
+label[for=id_descricao] {
+  position: absolute;
+  left: 19%;
+  width: 15%;
+  margin-top: -1px;
+}
+
+label[for=id_anexo] {
+  position: absolute;
+  left: 19%;
+  width: 15%;
+  height: 51px;
+}
+
+label[for=id_serie] {
+  position: absolute;
+  left: 19%;
+  width: 15%;
+}
+
+label[for=id_contador] {
+  position: absolute;
+  left: 19%;
+  width: 15%;
+}
+
+.form-group {
+  margin: 0 auto;
+}
+
+.div-form-main {
+  margin-left: 27.5%;
+}
+
+#id_requisitante,
+#id_secretaria,
+#id_setor {
+  width: 65%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+#id_tipo,
+#id_assunto,
+#id_anexo,
+#id_contador,
+#id_serie {
+  margin-top: 10px;
+  width: 52.5%;
+  margin-left: 10%;
+}
+
+#id_descricao {
+  width: 52.5%;
+  height: 150px;
+  margin-left: 10%;
+}
+
+#id_requisitante:hover,
+#id_secretaria:hover,
+#id_setor:hover,
+#id_tipo:hover,
+#id_assunto:hover,
+#id_descricao:hover,
+#id_anexo:hover {
+  border-color: black;
+}
+
+#div-abrir-chamado {
+  display: initial !important;
+}

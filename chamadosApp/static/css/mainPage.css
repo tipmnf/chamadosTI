@@ -197,18 +197,7 @@ label[for=id_dataFim]{
   width: 101.70%;
   margin-left: -11.5px;
 }
-.table-chamado td, th{
-  padding: 7px;
-}
-.table-chamado tr:nth-child(even){
-  background-color: #bfbfbf
-}
-.table-chamado tr:nth-child(odd){
-  background-color: #fff;
-}
-.table-chamado thead tr{
-  background-color: white!important;
-}
+
 @media screen and (min-width:320px){
   #div-table-chamado{
   padding: 0;
