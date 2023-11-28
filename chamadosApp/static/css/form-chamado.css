@@ -63,6 +63,8 @@ label {
 #save-button {
   width: 40%;
   border-radius: 15px;
+  margin-left: -150px;
+
 }
 
 #id_requisitante,
@@ -73,61 +75,67 @@ label {
 
 label[for=id_requisitante] {
   position: absolute;
-  left: 19%;
-  width: 15%;
+  left: 23.3%;
+  width: 20%;
   margin-top: 15px;
 }
 
 label[for=id_secretaria] {
   position: absolute;
-  left: 19%;
-  width: 15%;
+  left: 23.3%;
+  width: 20%;
   margin-top: 15px;
 }
 
 label[for=id_setor] {
   position: absolute;
-  left: 19%;
-  width: 15%;
+  left: 23.3%;
+  width: 20%;
   margin-top: 15px;
 }
 
 label[for=id_tipo] {
   position: absolute;
-  left: 19%;
-  width: 15%;
+  left: 23.3%;
+  width: 20%;
 }
 
 label[for=id_assunto] {
   position: absolute;
-  left: 19%;
-  width: 15%;
+  left: 23.3%;
+  width: 20%;
 }
 
 label[for=id_descricao] {
   position: absolute;
-  left: 19%;
-  width: 15%;
+  left: 23.3%;
+  width: 20%;
   margin-top: -1px;
 }
 
 label[for=id_anexo] {
   position: absolute;
-  left: 19%;
-  width: 15%;
+  left: 23.3%;
+  width: 20%;
   height: 51px;
 }
 
 label[for=id_serie] {
   position: absolute;
-  left: 19%;
-  width: 15%;
+  left: 23.3%;
+  width: 20%;
 }
 
 label[for=id_contador] {
   position: absolute;
-  left: 19%;
-  width: 15%;
+  left: 23.3%;
+  width: 20%;
+}
+
+label[for=id_sistema] {
+  position: absolute;
+  left: 23.3%;
+  width: 20%;
 }
 
 .form-group {
@@ -145,22 +153,24 @@ label[for=id_contador] {
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 10px;
+  margin-left: 3%;
 }
 
 #id_tipo,
 #id_assunto,
 #id_anexo,
 #id_contador,
-#id_serie {
+#id_serie,
+#id_sistema{
   margin-top: 10px;
   width: 52.5%;
-  margin-left: 10%;
+  margin-left: 15%;
 }
 
 #id_descricao {
   width: 52.5%;
   height: 150px;
-  margin-left: 10%;
+  margin-left: 15%;
 }
 
 #id_requisitante:hover,
@@ -175,4 +185,7 @@ label[for=id_contador] {
 
 #div-abrir-chamado {
   display: initial !important;
+}
+#div-form{
+  margin-left: 150px;
 }

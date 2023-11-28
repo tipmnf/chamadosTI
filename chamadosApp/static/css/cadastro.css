@@ -1,3 +1,9 @@
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+
 .form-container, .form-setor{
     background-color: #f4f4f4;
     padding: 20px;

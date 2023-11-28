@@ -13,12 +13,13 @@
     border-radius: 5px; 
     font-size: 16px; 
     cursor: pointer; 
-    width: 15%;
+    width: 45%;
     margin: 0 auto;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     text-align: center;
     text-decoration: none;
-  }
+    height: 50px;
+}
 
   #button-chamado:hover {
     background-color: #0056b3; 
@@ -40,6 +41,7 @@
     flex-wrap: wrap; 
     justify-content: space-between; 
     display: none;
+    height: fit-content;
 }
 
 #form-pesquisa-chamado button {
@@ -84,11 +86,12 @@
     border-radius: 5px; 
     font-size: 16px; 
     cursor: pointer; 
-    width: 20%;
+    width: 45%;
     margin: 0 auto;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     text-align: center;
     text-decoration: none;
+    height: 50px;
 }
 #button-pesquisa-chamado:hover{
   background-color: #146c43; 
@@ -184,7 +187,6 @@ label[for=id_dataFim]{
   font-size: 18px;
 }
 
-
 .button-abrir-chamado{
   width: 70%;
 }
@@ -192,16 +194,18 @@ label[for=id_dataFim]{
   border: 1px solid grey;
   border-radius: 15px;
   padding: 12px;
+  overflow-x: auto;
+  margin-bottom: 30px !important;
+  height: fit-content;
 }
 .table-chamado{
-  width: 101.70%;
+  width: 100%;
   margin-left: -11.5px;
 }
 
 @media screen and (min-width:320px){
   #div-table-chamado{
   padding: 0;
-  margin: 0;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 0;
@@ -210,11 +214,16 @@ label[for=id_dataFim]{
   margin-left:0;
 }
 }
-@media screen and (min-width:320px) and (max-width:400px){
-    #button-chamado{
-      width: 40%;
-    }
-    #button-pesquisa-chamado{
-      width: 40%;
-    }
+
+.div-button-chamado{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: fit-content;
+}
+
+.message-table-empty{
+  text-align: center;
+  color: red !important;
+  text-transform: uppercase;
 }
