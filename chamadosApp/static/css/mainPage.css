@@ -196,6 +196,7 @@ label[for=id_dataFim]{
   padding: 12px;
   overflow-x: auto;
   margin-bottom: 30px !important;
+  height: fit-content;
 }
 .table-chamado{
   width: 100%;
@@ -219,4 +220,10 @@ label[for=id_dataFim]{
   flex-direction: row;
   justify-content: space-between;
   height: fit-content;
+}
+
+.message-table-empty{
+  text-align: center;
+  color: red !important;
+  text-transform: uppercase;
 }

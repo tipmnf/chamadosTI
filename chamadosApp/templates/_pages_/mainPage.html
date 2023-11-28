@@ -45,23 +45,29 @@ Página principal
            </tr>
         </thead>
         <tbody>
-           {% for chamado in chamados %}
-           <tr>
-              <td>{{ chamado.numero }}</td>
-              <td>{{ chamado.requisitante }}</td>
-              <td {% if chamado.prioridade == '0' %}style="color: blue"{% elif chamado.prioridade == '2' %} style="color: red;" {% else %} style="color: orange" {% endif %}>{{ chamado.get_prioridade_display }}</td>
-              <td>{{ chamado.setor }}</td>
-              <td>{{ chamado.get_status_display }}</td>
-              <td>{{ chamado.tipo.sigla }}</td>
-              <td>{{ chamado.assunto }}</td>
-              <td>{{ chamado.dataAbertura|date:"d/m/y H:i" }}</td>
-              <td>
-                 <a href="{% url 'chamado' chamado.id %}">
-                 <button class="btn btn-primary button-abrir-chamado"><i class="bi bi-box-arrow-up-right"></i></button>
-                 </a>
-              </td>
-           </tr>
-           {% endfor %} 
+         {% if chamados %}
+            {% for chamado in chamados %}
+            <tr>
+               <td>{{ chamado.numero }}</td>
+               <td>{{ chamado.requisitante }}</td>
+               <td {% if chamado.prioridade == '0' %}style="color: blue"{% elif chamado.prioridade == '2' %} style="color: red;" {% else %} style="color: orange" {% endif %}>{{ chamado.get_prioridade_display }}</td>
+               <td>{{ chamado.setor }}</td>
+               <td>{{ chamado.get_status_display }}</td>
+               <td>{{ chamado.tipo.sigla }}</td>
+               <td>{{ chamado.assunto }}</td>
+               <td>{{ chamado.dataAbertura|date:"d/m/y H:i" }}</td>
+               <td>
+                  <a href="{% url 'chamado' chamado.id %}">
+                  <button class="btn btn-primary button-abrir-chamado"><i class="bi bi-box-arrow-up-right"></i></button>
+                  </a>
+               </td>
+            </tr>
+            {% endfor %} 
+         {% else %}
+               <tr>
+                  <td class="message-table-empty" colspan="9">Não há chamados.</td>
+               </tr>
+         {% endif %}
         </tbody>
      </table>
   </div>
