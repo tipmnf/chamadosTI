@@ -483,7 +483,9 @@ def servidor(request, idServidor):
 
 def apagaServidor(request, idServidor):
     servidor = Servidor.objects.get(id=idServidor)
+    user = servidor.user
     servidor.delete()
+    user.delete()
     
     return redirect('servidores')
 
