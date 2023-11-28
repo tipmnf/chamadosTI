@@ -37,6 +37,8 @@ DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = ['http://chamadosti.pmnf.rj.gov.br']
+
 
 # Application definition
 
