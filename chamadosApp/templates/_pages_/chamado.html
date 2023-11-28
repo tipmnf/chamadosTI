@@ -58,15 +58,18 @@ Chamados
         </div>
         <div class="detalhes">
         <div class="detalhesLeft">
+            <p style="text-align: center;">Informações do Chamado:</p>
+            <hr>
             <p>Número: {{ chamado.numero }}/{{chamado.dataAbertura.year}}</p>
             <p>Tipo: {{ chamado.tipo }}</p>
             <p>Assunto: {{ chamado.assunto }}</p>
         </div>
         <div class="detalhesCenter">
             <p>Informações adicionais:</p>
+            <hr>
 
             {% if chamado.anexo != '' and chamado.anexo != None %}
-                <p>Anexo: <img src="/media/{{chamado.anexo}}" alt="Não foi encontrado anexo."></p>
+                <p>Anexo: <br><br> <img src="/media/{{chamado.anexo}}" alt="Não foi encontrado anexo."></p>
             {% endif %}
         
             {% if chamado.tipo.sigla == "INT" %}
@@ -83,6 +86,8 @@ Chamados
             {% endif %}
         </div>
         <div class="detalhesRight">
+            <p style="text-align: center">Informações do Servidor:</p>
+            <hr>
             <p>Secretaria: {{ chamado.secretaria }}</p>
             <p>Setor: {{ chamado.setor }}</p>
             <p>Requisitante: <a href="{% url "servidor" chamado.requisitante.id %}"><button id="btn-atendente" class="btn btn-warning">{{ chamado.requisitante }}</button></a></p>
@@ -124,7 +129,7 @@ Chamados
     <label for="id_confidencial">Confidencial (Aparecerá somente para outros atendentes):</label>
     <input type="checkbox" name="confidencial" id="id_confidencial"><br>
 {% endif %}
-<button id="submit-chamado" class="btn btn-success" type="submit">Enviar</button>
+<button id="submit-chamado" class="btn btn-success" type="submit">Enviar Comentário</button>
 
 </form>
 
