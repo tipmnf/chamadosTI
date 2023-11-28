@@ -20,7 +20,7 @@ Página principal
   <a id="button-chamado">Abrir Chamado</a>
   <button id="button-pesquisa-chamado">Procurar Chamado</button>
 </div>
-<div>
+<div id="pesquisa-chamado">
   <form method=POST id="form-pesquisa-chamado">
      <h2 id="title-chamado">Informações do chamado</h2>
      {% csrf_token %}
@@ -61,7 +61,7 @@ Página principal
                  </a>
               </td>
            </tr>
-           {% endfor %}    
+           {% endfor %} 
         </tbody>
      </table>
   </div>
