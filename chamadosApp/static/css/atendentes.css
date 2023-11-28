@@ -81,3 +81,7 @@ ul ul {
 #buttonYes {
     background-color: #479f76;
 }
+
+.modal-content{
+    border: 1px solid black;
+}

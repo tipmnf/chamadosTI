@@ -3,6 +3,7 @@
 Servidores
 {% endblock  %}
 {% block main %}
+<script src="/static/js/listaServidores.js"></script>
 <link rel="stylesheet" href="/static/css/listaServidores.css">
 <table class="table">
     <thead>
@@ -20,7 +21,7 @@ Servidores
       <tr>
         {% if user.is_staff %}
         <td>
-          <a href="{% url 'apagaServidor' servidor.id %}">
+          <a class="btn-apagar" data-servidor-id="{{servidor.id}}">
             <button class="btn btn-danger button-abrir-chamado"><i class="bi bi-trash-fill"></i></button>
           </a>
         </td>
@@ -36,6 +37,17 @@ Servidores
         </td>
       </tr>
       {% endfor %}
+      <div id="modal">
+        <div class="modal-content">
+            <span class="fechar-sair">&times;</span>
+            <p style="font-size: 17px;">Deseja apagar o servidor?</p>
+            <div class="button-container">
+                <button type="button" id="buttonNo">Não</button>
+                <button type="button" id="buttonYes">Sim</button>
+            </div>
+        </div>
+    </div>
+    
     </tbody>
   </table>
 
