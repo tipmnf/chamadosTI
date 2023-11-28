@@ -35,10 +35,16 @@ img {
     color: white;
 }
 
-.btn-header:hover, .logout-btn:hover {
-    color: #007bff;;
-    transform: scale(1.1)
+.btn-header:hover {
+    color: rgb(57, 238, 184);
+    transform: scale(1.1);
 }
+
+.logout-btn:hover{
+    color: rgb(219, 44, 44);
+    transform: scale(1.1);
+}
+
 .logo-container {
     display: flex;
     justify-content: space-between;
