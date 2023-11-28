@@ -30,7 +30,7 @@ class SearchForm(Form):
         ('3', 'Todos')
     )
     
-    numero = forms.CharField(label='Numero', max_length=10, required=False)
+    numero = forms.CharField(label='Número', max_length=10, required=False)
     assunto = forms.CharField(label='Assunto', required=False)
     requisitante = forms.ChoiceField(label='Requisitante', choices=REQUISITANTE_CHOICES, required=False)
     tipo = forms.ChoiceField(label='Tipo', choices=TIPO_CHOICES, required=False)
