@@ -11,6 +11,9 @@ class Chamado_Form(ModelForm):
             'tipo': forms.Select(attrs={'readonly': True}),
         }
         exclude = ['tipo', 'dataAbertura', 'dataFechamento', 'prioridade', 'status', 'numero', 'atendente', 'requisitante', 'secretaria', 'setor']
+        labels = {
+            'descricao': 'Descrição',
+        }
         
 class SearchForm(Form):
 
@@ -82,6 +85,9 @@ class OSInternet_Form(ModelForm):
             'tipo': forms.Select(attrs={'readonly': True}),
         }
         exclude = ['dataAbertura', 'dataFechamento', 'prioridade', 'status', 'numero', 'atendente', 'requisitante', 'secretaria', 'setor', 'tipo']
+        labels = {
+            'descricao': 'Descrição',
+        }
 
 class OSSistema_Form(ModelForm):
     class Meta:
@@ -90,6 +96,9 @@ class OSSistema_Form(ModelForm):
             'tipo': forms.Select(attrs={'readonly': True}),
         }
         exclude = ['dataAbertura', 'dataFechamento', 'prioridade', 'status', 'numero', 'atendente', 'requisitante', 'secretaria', 'setor', 'tipo']
+        labels = {
+            'descricao': 'Descrição',
+        }
 
 class OSImpressora_Form(ModelForm):
     class Meta:
@@ -98,3 +107,6 @@ class OSImpressora_Form(ModelForm):
             'tipo': forms.Select(attrs={'readonly': True}),
         }
         exclude = ['dataAbertura', 'dataFechamento', 'prioridade', 'status', 'numero', 'atendente', 'requisitante', 'secretaria', 'setor', 'tipo']
+        labels = {
+            'descricao': 'Descrição',
+        }

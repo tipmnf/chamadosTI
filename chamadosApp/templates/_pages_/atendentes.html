@@ -34,7 +34,7 @@ Indicadores
 </div>
 
 {% if user.is_staff %}
-<form method="POST" action="{% url 'transformaParaAtendente' %}">
+<form method="POST" action="{% url 'transformaParaAtendente' %}" class='form-control'>
     {% csrf_token %}
     <label for="id_servidor">Servidor:</label>
     <select name="servidor" id="id_servidor">
@@ -49,7 +49,7 @@ Indicadores
         <label for="tipo_{{ tipo.id }}">{{ tipo.nome }}</label><br>
     {% endfor %}
 
-    <button type="submit">Novo Atendente</button>
+    <button type="submit" class="btn btn-primary">Novo Atendente</button>
 </form>
 {% endif %}
 
