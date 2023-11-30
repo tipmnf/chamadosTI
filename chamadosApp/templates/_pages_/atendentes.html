@@ -43,13 +43,16 @@ Indicadores
         {% endfor %}
     </select>
     <br>
-    <label for="tipo">Tipos:</label>
+    <label for="tipo">Tipos do novo Atendente:</label>
+    <div class="divTipos">
     {% for tipo in tipos %}
-        <input type="checkbox" id="tipo_{{ tipo.id }}" name="tipo" value="{{ tipo.id }}">
-        <label for="tipo_{{ tipo.id }}">{{ tipo.nome }}</label><br>
+        <div class="itemTipo">
+            <input type="checkbox" id="tipo_{{ tipo.id }}" name="tipo" value="{{ tipo.id }}">
+            <label for="tipo_{{ tipo.id }}">{{ tipo.nome }}</label><br>
+        </div>
     {% endfor %}
-
-    <button type="submit" class="btn btn-primary">Novo Atendente</button>
+    </div>
+    <button type="submit" class="btn btn-primary novoAtendenteBtn">Novo Atendente</button>
 </form>
 {% endif %}
 

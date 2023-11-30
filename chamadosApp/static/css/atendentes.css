@@ -85,3 +85,19 @@ ul ul {
 .modal-content{
     border: 1px solid black;
 }
+
+.divTipos{
+    display: flex;
+}
+
+.divTipos .itemTipo{
+    padding: 5px;
+}
+
+.itemTipo input{
+    margin: auto 0;
+}
+
+.novoAtendenteBtn{
+    float: right;
+}
