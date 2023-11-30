@@ -21,12 +21,13 @@ Página principal
   <button id="button-pesquisa-chamado">Procurar Chamado</button>
 </div>
 <div id="pesquisa-chamado">
-  <form method=POST id="form-pesquisa-chamado">
-     <h2 id="title-chamado">Informações do chamado</h2>
-     {% csrf_token %}
-     {{form}}
-     <button class="btn btn-success">Pesquisar</button>
+   <form method="POST" id="form-pesquisa-chamado" class="container form-group">
+      <h2 id="title-chamado">Informações do chamado</h2>
+      {% csrf_token %}
+      {{ form }}
+      <button class="btn btn-success">Pesquisar</button>
   </form>
+  
 </div>
 <div id="div-table-chamado">
   <div class="table-responsive">
