@@ -25,13 +25,13 @@
     <title>
       {% block title %}{% endblock %} • Chamados TI
     </title>
-    <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="stylesheet" href="/static/css/template.css" />
     <script src="/static/js/app.js"></script>
   </head>
 
   <body class="container-fluid" cz-shortcut-listen="true">
     {% include 'header.html' %}
-    <main class='row'>{% block main %}{% endblock %}</main>
+    <main class='row'><div id="div-main">{% block main %}{% endblock %}</div> </main>
     {% include 'footer.html' %}
   </body>
 

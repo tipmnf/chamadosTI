@@ -1,8 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models import Count
-
-
+from phonenumber_field.modelfields import PhoneNumberField
+from django.contrib.auth.forms import UserCreationForm
+from django.core.mail import send_mail
 
 # Create your models here.
 class Tipo(models.Model):
@@ -40,7 +41,9 @@ class Setor(models.Model):
 class Servidor(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     nome = models.CharField(max_length=75)
+    contato = PhoneNumberField(default='')
     email = models.EmailField(max_length=254, default='')
+    matricula = models.CharField(max_length=6, default='')
     setor = models.ForeignKey(Setor, verbose_name='Setor', on_delete=models.CASCADE)
     
     def __str__(self):
@@ -77,18 +80,6 @@ class Chamado(models.Model):
     numero = models.CharField(max_length=10, default=0)
     anexo = models.ImageField(upload_to='images', default=None, null=True, blank=True)
     
-    def getPrioridade(self):
-        for choice in self.prioridadeChoices:
-            if choice[0] == self.prioridade:
-                return choice[1]
-        return "Desconhecido"
-    
-    def getStatus(self):
-        for choice in self.statusChoices:
-            if choice[0] == self.status:
-                return choice[1]
-        return "Desconhecido"
-    
     def setNumero(self):
         ultimoChamado = Chamado.objects.last()
         if ultimoChamado:
@@ -97,6 +88,23 @@ class Chamado(models.Model):
             self.numero = '00001'
         self.save()
 
+    def notificaAtendente(self):
+        atendentes = Atendente.objects.filter(tipo=self.tipo)
+        emailList = []
+        for atendente in atendentes:
+            emailList.append(atendente.user.email)
+            
+        
+        send_mail(
+            'Um Novo Chamado foi aberto!',
+            'Requisitante de nome ' + str(self.requisitante) + '\nNúmero do chamado: ' + self.numero + '\nCom o tipo: ' + str(self.tipo) + '\nNa data: ' + str(self.dataAbertura.strftime('%d/%m/%y')) + '\nAbriu um chamado com o assunto: ' + self.assunto + '\nE descrição: ' + self.descricao + '\nVeja os detalhes em: ' + '\nhttp://localhost:8000/chamado/' + str(self.id),
+            "sebsecretaria.ti@gmail.com",
+            emailList,
+            fail_silently=False,
+        )
+        
+            
+        return None
 
 class Comentario(models.Model):
     chamado = models.ForeignKey(Chamado, verbose_name='Chamado', on_delete=models.CASCADE)
@@ -104,3 +112,38 @@ class Comentario(models.Model):
     dataHora = models.DateTimeField(auto_now_add=True)
     texto = models.TextField(default='')
     confidencial = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.chamado} - {self.texto}'
+    
+    def notificaEnvolvidos(self):
+
+        atendente = self.chamado.atendente
+        requisitante = self.chamado.requisitante            
+        emailList = []
+        
+        if atendente:
+            emailList.append(atendente.user.email)
+        if self.confidencial == False:
+            emailList.append(requisitante.user.email)
+        
+        send_mail(
+            'Há um novo comentário no seu chamado!',
+            self.quemComentou.nome + ":\n" + self.texto + "\nhttp://localhost:8000/chamado/" + str(self.chamado.id),
+            "sebsecretaria.ti@gmail.com",
+            emailList,
+            fail_silently=False,
+        )
+        
+            
+        return None    
+    
+class OSInternet(Chamado):
+    nofcip = models.CharField(max_length=8)
+    
+class OSImpressora(Chamado):
+    serie = models.CharField(max_length=8)
+    contador = models.PositiveIntegerField()
+    
+class OSSistema(Chamado):
+    sistema = models.CharField(max_length=50)

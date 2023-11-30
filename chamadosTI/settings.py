@@ -12,29 +12,38 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import environ
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+env = environ.Env(
+    EMAIL_HOST=(str),
+    EMAIL_HOST_USER=(str),
+    EMAIL_HOST_PASSWORD=(str)
+)
 
+env.read_env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-z9x@e_@flnlys7x^jck6#&6+sp%j8_ob=awn--&ybw5*x1_n9n'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+CSRF_TRUSTED_ORIGINS = ['http://chamadosti.pmnf.rj.gov.br']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -75,6 +84,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'chamadosTI.wsgi.application'
 
+ASGI_APPLICATION = 'chamadosTI.asgi.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG':{
+            'hosts':[('127.0.0.1',6379)],
+        }
+    }
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -84,6 +103,17 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+    
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+
+    #     'NAME': 'chamados',
+    #     'PORT': '3306',
+
+    #     'USER': 'osuser',
+    #     'PASSWORD': 'osuser@pmnf2023',
+    #     'HOST': '192.168.3.210',
+    # },
 }
 
 
@@ -109,7 +139,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'America/Sao_Paulo' 
 
@@ -117,8 +147,19 @@ USE_I18N = True
 
 USE_TZ = True
 
-LOGIN_URL='/login'
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = env('EMAIL_HOST') 
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+
+LOGIN_URL='/login'
+PASSWORD_RESET_TIMEOUT_DAYS = 1
+
+PASSWORD_RESET_TEMPLATE = 'registration/password_reset_email.html'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
@@ -131,4 +172,4 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = env('DEFAULT_AUTO_FIELD')

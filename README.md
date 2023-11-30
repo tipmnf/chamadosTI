@@ -6,6 +6,70 @@ This project is a service order. Therefore, its functionality is restricted to i
 
 - [@gustavonerywe](https://www.github.com/gustavonerywe)
 - [@YanIgnacio](https://www.github.com/YanIgnacio)
-- [@PedroSchuenk](https://www.github.com/PedroSchuenk)
+- [@PedroSchuenck](https://www.github.com/PedroSchuenck)
 
+## Functionalities
+
+- Manage service orders from Nova Friburgo City Hall
+- Possibility of registering in the system
+- Cross-platform - mobile responsive
+- Reset access password via email and WSL
+- Monitoring of service orders sent
+
+## Installation
+
+Install service order with pip
+
+```bash
+  pip install django
+```
+
+```bash
+  pip install django-bootstrap5
+```
+```bash
+  pip install channels
+```
+```bash
+  pip install cryptography
+```
+```bash
+  pip install daphne
+```
+```bash
+  pip install django-bootstrap-form
+```
+```bash
+  pip install django-select2
+```
+```bash
+  pip install djangorestframework
+```
+```bash
+  pip install gunicorn
+```
+```bash
+  pip install nginx
+```
+```bash
+  pip install mysql
+```
+```bash
+  pip install websockets
+```
+
+
+for windows user:
+```bash
+  pip install channels-redis
+```
+```bash
+  pip install redis
+```
+## Feedback
+
+If you have any feedback, please let us know via
+sebsecretaria.ti@gmail.com
+
+![Logo](https://pedroschuenck.github.io/prefeituraImg.png)
 

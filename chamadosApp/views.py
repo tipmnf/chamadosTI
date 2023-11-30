@@ -6,11 +6,17 @@ from django.db import connection
 from django.urls import reverse
 from .forms import *
 from .models import *
+from django.http import JsonResponse
+from django.core.serializers import serialize
+import websockets
+import asyncio
+import json
 
 # Create your views here
 
 @login_required
 def mainPage(request):
+    tipos = Tipo.objects.all()
     
     try:
         atendente = Atendente.objects.get(user=request.user)
@@ -35,14 +41,17 @@ def mainPage(request):
     context = {
         'chamados': chamados,
         'form': form,
+        'tipos': tipos,
+        'atendente': atendente
     }
     
     return render(request, '_pages_/mainPage.html', context)
 
 @login_required
-def abrirChamado(request):
+def abrirChamado(request, tipo):
     servidor = Servidor.objects.get(user=request.user)
     form = Chamado_Form()
+    tipo = Tipo.objects.get(sigla=tipo)
     
     if request.method=='POST':
         form = Chamado_Form(request.POST, request.FILES)
@@ -51,7 +60,11 @@ def abrirChamado(request):
             chamado.requisitante = servidor
             chamado.secretaria = servidor.setor.secretaria
             chamado.setor = servidor.setor
+            chamado.tipo = tipo
             chamado.setNumero()
+            chamado.notificaAtendente()
+            
+            asyncio.run(send_message(chamado))
             
             return render(request, '_pages_/chamado.html', {'chamado': chamado})
     
@@ -64,13 +77,114 @@ def abrirChamado(request):
     return render(request, '_pages_/abrirChamado.html', context)
 
 @login_required
+def abrirChamadoInternet(request):
+    servidor = Servidor.objects.get(user=request.user)
+    form = OSInternet_Form()
+    tipo = Tipo.objects.get(sigla='INT')
+    
+    if request.method=='POST':
+        form = OSInternet_Form(request.POST, request.FILES)
+        if form.is_valid():
+            chamado=form.save(commit=False)
+            chamado.requisitante = servidor
+            chamado.secretaria = servidor.setor.secretaria
+            chamado.setor = servidor.setor
+            chamado.tipo = tipo
+            chamado.setNumero()
+            chamado.notificaAtendente()
+            
+            asyncio.run(send_message(chamado))
+            
+            return render(request, '_pages_/chamado.html', {'chamado': chamado})
+    
+    context={
+        'form': form,
+        'servidor': servidor,
+    }
+    return render(request, '_pages_/abrirChamado.html', context)
+        
+@login_required
+def abrirChamadoSistema(request):
+    servidor = Servidor.objects.get(user=request.user)
+    form = OSSistema_Form()
+    tipo = Tipo.objects.get(sigla='SGP')
+    
+    if request.method=='POST':
+        form = OSSistema_Form(request.POST, request.FILES)
+        if form.is_valid():
+            chamado=form.save(commit=False)
+            chamado.requisitante = servidor
+            chamado.secretaria = servidor.setor.secretaria
+            chamado.setor = servidor.setor
+            chamado.tipo = tipo
+            chamado.setNumero()
+            chamado.notificaAtendente()
+            
+            asyncio.run(send_message(chamado))
+            
+            return render(request, '_pages_/chamado.html', {'chamado': chamado})
+    
+    context={
+        'form': form,
+        'servidor': servidor,
+    }
+    
+    return render(request, '_pages_/abrirChamado.html', context)
+            
+@login_required
+def abrirChamadoImpressora(request):
+    servidor = Servidor.objects.get(user=request.user)
+    form = OSImpressora_Form()
+    tipo = Tipo.objects.get(sigla='IMP')
+    
+    if request.method=='POST':
+        form = OSImpressora_Form(request.POST, request.FILES)
+        if form.is_valid():
+            chamado=form.save(commit=False)
+            chamado.requisitante = servidor
+            chamado.secretaria = servidor.setor.secretaria
+            chamado.setor = servidor.setor
+            chamado.tipo = tipo
+            chamado.setNumero()
+            chamado.notificaAtendente()
+            
+            asyncio.run(send_message(chamado))
+            
+            return render(request, '_pages_/chamado.html', {'chamado': chamado})
+    
+    context={
+        'form': form,
+        'servidor': servidor,
+    }
+    
+    return render(request, '_pages_/abrirChamado.html', context)
+            
+    
+@login_required
 def chamado(request, idChamado):
     chamado = Chamado.objects.get(id=idChamado)
+
+    try:
+        chamadoInt = OSInternet.objects.get(id=idChamado)
+    except OSInternet.DoesNotExist:
+        chamadoInt = None
+    try:
+        chamadoSis = OSSistema.objects.get(id=idChamado)
+    except OSSistema.DoesNotExist:
+        chamadoSis = None
+    try:
+        chamadoImp = OSImpressora.objects.get(id=idChamado)
+    except OSImpressora.DoesNotExist:
+        chamadoImp = None
+    
     atendentes = Atendente.objects.all()
     comentarios = Comentario.objects.filter(chamado=chamado).order_by('dataHora')
 
     context = {
         'chamado': chamado,
+        'chamadoInt': chamadoInt,
+        'chamadoImp': chamadoImp,
+        'chamadoSis': chamadoSis,
         'atendentes': atendentes,
         'comentarios': comentarios,
     }
@@ -102,12 +216,13 @@ def cadastroView(request):
         if request.method == 'POST':
             formUser = UserCreationForm(data=request.POST)
             formServidor = ServidorForm(data=request.POST)
-            print('cheguei aqui')
             if formUser.is_valid() and formServidor.is_valid():
                 print('formulário válido')
                 user = formUser.save()
                 servidor = formServidor.save(commit=False)
                 servidor.user = user
+                user.email = servidor.email
+                user.save()
                 servidor.save()
                 login(request, user)
                 return redirect('/')
@@ -115,7 +230,6 @@ def cadastroView(request):
         else:
             formUser = UserCreationForm()
             formServidor = ServidorForm()
-            print("apareci aqui")
                
         return render(request, '_pages_/cadastro.html', {'formUser': formUser, 'formServidor': formServidor})
     
@@ -136,7 +250,7 @@ def filtraChamado(request, form, atendente):
     assunto = form.cleaned_data['assunto']
     requisitante = form.cleaned_data['requisitante']
     tipo = form.cleaned_data['tipo']
-    secretaria = form.cleaned_data['secretaria']
+    prioridade = form.cleaned_data['prioridade']
     setor = form.cleaned_data['setor']
     dataInicio = form.cleaned_data['dataInicio']
     dataFim = form.cleaned_data['dataFim']
@@ -152,7 +266,7 @@ def filtraChamado(request, form, atendente):
             sql += " status LIKE %s"
             params.append(f'%{status}%')
         else:
-            sql += " status IS NOT NULL ORDER BY status DESC"
+            sql += " status IS NOT NULL"
     if numero:
         sql += " AND numero LIKE %s"
         params.append(f'%{numero}%')
@@ -165,9 +279,12 @@ def filtraChamado(request, form, atendente):
     if tipo:
         sql += " AND tipo_id LIKE %s"
         params.append(f'%{tipo}%')
-    if secretaria:
-        sql += " AND secretaria_id LIKE %s"
-        params.append(f'%{secretaria}%')
+    if prioridade:
+        if prioridade != '3':
+            sql += "AND prioridade LIKE %s"
+            params.append(f'%{prioridade}%')
+        else:
+            sql += "AND prioridade IS NOT NULL"
     if setor:
         sql += " AND setor_id LIKE %s"
         params.append(f'%{setor}%')
@@ -297,6 +414,7 @@ def addComentario(request, idChamado):
             comentario.chamado = chamado
             
             comentario.save()
+            comentario.notificaEnvolvidos()
             
     return redirect(reverse('chamado', args=[chamado.id]))
 
@@ -315,6 +433,7 @@ def transformaParaAtendente(request):
             user = servidor.user,
             nome = servidor.nome,
             email = servidor.email,
+            contato = servidor.contato,
             setor = servidor.setor,
         )
         
@@ -323,9 +442,82 @@ def transformaParaAtendente(request):
         for id in idTipos:
             atendente.tipo.add(id)
         
+        atendente.user.is_staff = True
+        atendente.user.save()
+        
         atendente.save()
         servidor.delete()
 
     return redirect('atendentes')
     
+@login_required
+def transformaParaServidor(request, atendente):
+    atendente = Atendente.objects.get(id=atendente)
         
+        
+    servidor = Servidor(
+        user = atendente.user,
+        nome = atendente.nome,
+        email = atendente.email,
+        contato = atendente.contato,
+        setor = atendente.setor,
+    )
+    
+    servidor.user.is_staff = False
+    servidor.user.save()
+    
+    servidor.save()
+    atendente.delete()
+
+    return redirect('atendentes')
+
+def listaServidores(request):
+    servidores = Servidor.objects.all()
+    
+    return render(request, '_pages_/listaServidores.html', {'servidores': servidores})
+
+def servidor(request, idServidor):
+    servidor = Servidor.objects.get(id=idServidor)
+    
+    return render(request, '_pages_/servidor.html', {'servidor': servidor})
+
+def apagaServidor(request, idServidor):
+    servidor = Servidor.objects.get(id=idServidor)
+    user = servidor.user
+    servidor.delete()
+    user.delete()
+    
+    return redirect('servidores')
+
+def passwordEmail(request, idChamado):
+   chamado = Chamado.objects.get(id=idChamado)
+
+   context = {
+    'chamado': chamado,
+   }
+
+   return render(request, 'registration/password_reset_email.html', context)
+
+def userIsStaff(request):
+    return JsonResponse(request.user.is_staff, safe=False)
+    
+async def send_message(chamado):
+    uri = "ws://localhost:8000/ws/"
+    
+    dictChamado = {
+        'numero': chamado.numero,
+        'requisitante': chamado.requisitante.nome,
+        'prioridade': chamado.get_prioridade_display(),
+        'setor': chamado.setor.nome,
+        'status': chamado.get_status_display(),
+        'tipo': chamado.tipo.sigla,
+        'assunto': chamado.assunto,
+        'dataAbertura': chamado.dataAbertura.strftime('%d/%m/%Y %H:%M:%S'),
+        'id': chamado.id
+    }
+    
+    jsonChamado = json.dumps(dictChamado)
+    
+    async with websockets.connect(uri) as websocket:
+        message = jsonChamado
+        await websocket.send(message)

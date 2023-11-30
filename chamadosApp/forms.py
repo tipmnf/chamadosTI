@@ -10,13 +10,21 @@ class Chamado_Form(ModelForm):
         widgets = {
             'tipo': forms.Select(attrs={'readonly': True}),
         }
-        exclude = ['dataAbertura', 'dataFechamento', 'prioridade', 'status', 'numero', 'atendente', 'requisitante', 'secretaria', 'setor']
+        exclude = ['tipo', 'dataAbertura', 'dataFechamento', 'prioridade', 'status', 'numero', 'atendente', 'requisitante', 'secretaria', 'setor']
+        labels = {
+            'descricao': 'Descrição',
+        }
         
 class SearchForm(Form):
 
     REQUISITANTE_CHOICES = [(None,'-')]+[(obj.id, obj.nome) for obj in Servidor.objects.all()]
-    TIPO_CHOICES = [(None,'-')]+[(obj.id, obj.sigla) for obj in Tipo.objects.all()]
-    SECRETARIA_CHOICES = [(None,'-')]+[(obj.id, obj.nome) for obj in Secretaria.objects.all()]
+    TIPO_CHOICES = [(None,'-')]+[(obj.id, obj.nome) for obj in Tipo.objects.all()]
+    PRIORIDADE_CHOICES = (
+        ('0', 'Baixa'),
+        ('1', 'Média'),
+        ('2', 'Alta'),
+        ('3', 'Todas')
+    )    
     SETOR_CHOICES = [(None,'-')]+[(obj.id, obj.nome) for obj in Setor.objects.all()]
     STATUS_CHOICES = (
         ('0', 'Aberto'),
@@ -25,15 +33,14 @@ class SearchForm(Form):
         ('3', 'Todos')
     )
     
-    
-    numero = forms.CharField(label='Numero', max_length=10, required=False)
+    numero = forms.CharField(label='Número', max_length=10, required=False)
     assunto = forms.CharField(label='Assunto', required=False)
     requisitante = forms.ChoiceField(label='Requisitante', choices=REQUISITANTE_CHOICES, required=False)
     tipo = forms.ChoiceField(label='Tipo', choices=TIPO_CHOICES, required=False)
-    secretaria = forms.ChoiceField(label='Secretaria', choices=SECRETARIA_CHOICES, required=False)
+    prioridade = forms.ChoiceField(label='Prioridade', choices=PRIORIDADE_CHOICES, required=False)
     setor = forms.ChoiceField(label='Setor', choices=SETOR_CHOICES, required=False)
     status = forms.ChoiceField(label='Status', choices=STATUS_CHOICES, required=False)
-    
+      
     dataInicio = forms.DateField(label='Data início', widget=forms.DateInput(attrs={'type': 'date'}), required=False)
     dataFim = forms.DateField(label='Data fim', widget=forms.DateInput(attrs={'type': 'date'}), required=False)
     
@@ -55,7 +62,7 @@ class ServidorForm(ModelForm):
     
     class Meta:
         model = Servidor
-        fields = ['nome', 'email', 'setor']
+        fields = ['nome', 'contato', 'email', 'setor']
         
 
 class SetorForm(ModelForm):
@@ -69,3 +76,37 @@ class ComentarioForm(ModelForm):
     class Meta:
         model = Comentario
         fields = ['texto', 'confidencial']
+        
+
+class OSInternet_Form(ModelForm):
+    class Meta:
+        model = OSInternet
+        widgets = {
+            'tipo': forms.Select(attrs={'readonly': True}),
+        }
+        exclude = ['dataAbertura', 'dataFechamento', 'prioridade', 'status', 'numero', 'atendente', 'requisitante', 'secretaria', 'setor', 'tipo']
+        labels = {
+            'descricao': 'Descrição',
+        }
+
+class OSSistema_Form(ModelForm):
+    class Meta:
+        model = OSSistema
+        widgets = {
+            'tipo': forms.Select(attrs={'readonly': True}),
+        }
+        exclude = ['dataAbertura', 'dataFechamento', 'prioridade', 'status', 'numero', 'atendente', 'requisitante', 'secretaria', 'setor', 'tipo']
+        labels = {
+            'descricao': 'Descrição',
+        }
+
+class OSImpressora_Form(ModelForm):
+    class Meta:
+        model = OSImpressora
+        widgets = {
+            'tipo': forms.Select(attrs={'readonly': True}),
+        }
+        exclude = ['dataAbertura', 'dataFechamento', 'prioridade', 'status', 'numero', 'atendente', 'requisitante', 'secretaria', 'setor', 'tipo']
+        labels = {
+            'descricao': 'Descrição',
+        }

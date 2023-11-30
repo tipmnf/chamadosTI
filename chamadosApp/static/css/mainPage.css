@@ -13,12 +13,13 @@
     border-radius: 5px; 
     font-size: 16px; 
     cursor: pointer; 
-    width: 15%;
+    width: 45%;
     margin: 0 auto;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     text-align: center;
     text-decoration: none;
-  }
+    height: auto;
+}
 
   #button-chamado:hover {
     background-color: #0056b3; 
@@ -40,6 +41,7 @@
     flex-wrap: wrap; 
     justify-content: space-between; 
     display: none;
+    height: fit-content;
 }
 
 #form-pesquisa-chamado button {
@@ -49,20 +51,26 @@
   margin-bottom: 20px;
 }
 
-#id_numero, #id_assunto{
-    width: 26.5%;
+#id_numero{
+    width: 24.5%;
+}
+#id_assunto{
+  width: 26.5%;
 }
 #id_requisitante, #id_tipo{
-    width: 26.5%;
+    width: 24.5%;
 }
 
 #id_setor{
-  width: 43%;
+  width: 41%;
 }
-#id_secretaria{
-    width: 44%;
+#id_prioridade{
+    width: 26.2%;
 }
-#id_status, #id_dataInicio, #id_dataFim{
+#id_status{
+  width: 24.5%;
+}
+#id_dataInicio, #id_dataFim{
   width: 26.5%;
 }
 
@@ -78,11 +86,12 @@
     border-radius: 5px; 
     font-size: 16px; 
     cursor: pointer; 
-    width: 20%;
+    width: 45%;
     margin: 0 auto;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     text-align: center;
     text-decoration: none;
+    height: auto;
 }
 #button-pesquisa-chamado:hover{
   background-color: #146c43; 
@@ -106,6 +115,233 @@ span[data-select2-id="5"]{
 span[data-select2-id="3"]{
   width: 26.5%!important;
 }
-label[for=id_secretaria]{
+label[for=id_prioridade]{
   margin-left: 15px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  background-color: #fff;
+  width: 50%;
+  margin: 20% auto;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.modal-content button{
+  margin-top: 10px;
+}
+
+.fechar{
+  position: absolute;
+  top: -3px; 
+  right: 10px; 
+  font-size: 2em;
+  color: rgba(153, 152, 152, 0.904);
+  cursor: pointer;
+}
+
+.fechar:hover{
+  color: black;
+}
+label[for=id_requisitante]{
+    margin-left: 28px;
+}
+label[for=id_setor]{
+  margin-left: 78px;
+}
+label[for=id_assunto]{
+  margin-left: 28px;
+}
+label[for=id_prioridade]{
+  margin-left: 18px;
+}
+label[for=id_tipo]{
+  margin-left: 25px;
+}
+label[for=id_status]{
+  margin-left: 13px;
+}
+label[for=id_dataInicio]{
+  margin-left: 12px;
+}
+label[for=id_dataFim]{
+  margin-left: 56px;
+}
+.link-modal-abrir-chamado{
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+#title-modal-abir-chamado{
+  font-size: 18px;
+}
+
+.button-abrir-chamado{
+  width: 70%;
+}
+#div-table-chamado{
+  border: 1px solid grey;
+  border-radius: 15px;
+  padding: 12px;
+  overflow-x: auto;
+  margin-bottom: 30px !important;
+  height: fit-content;
+}
+.table-chamado{
+  width: 100%;
+  margin-left: -11.5px;
+}
+
+@media screen and (min-width:320px){
+  #div-table-chamado{
+  padding: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 0;
+}
+.table-chamado{
+  margin-left:0;
+}
+}
+
+.div-button-chamado{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: fit-content;
+}
+
+.message-table-empty{
+  text-align: center;
+  color: red !important;
+  text-transform: uppercase;
+}
+@media screen and (min-width:320px) and (max-width:500px){
+    .modal-content{
+      width: 75%;
+    }
+}
+@media screen and (min-width:320px) and (max-width:353px){
+  #id_numero{
+    width: 180px;
+  }
+  #id_assunto{
+    width: 180px;
+  }
+  label[for=id_assunto]{
+    margin-left: 0;
+  }
+  #id_tipo{
+    width: 207px;
+    margin-top: 20px
+  }
+  label[for=id_requisitante]{
+    margin-left: 0;
+  }
+  label[for=id_tipo]{
+    margin-left: 0;
+  }
+  span[data-select2-id="3"]{
+    width: 150px!important;
+  }
+  #id_setor{
+    width: 41%;
+  }
+  label[for=id_setor]{
+    margin-left: 0;
+  }
+  span[data-select2-id="1"]{
+    width: 200px!important;
+  }
+  #id_prioridade{
+    width: 165px;
+  }
+  label[for=id_prioridade]{
+    margin-left: 0;
+  }
+  #id_status{
+    width: 195px;
+    margin-top: 20px;
+  }
+  label[for=id_status]{
+    margin-left: 0;
+  }
+  #id_dataInicio{
+   width: 160px;
+  }
+  label[for=id_dataInicio]{
+    margin-left: 0;
+  }
+  label[for=id_dataFim]{
+    margin-left: 0;
+  }
+  #id_dataFim{
+    width: 175px;
+  }  
+}
+@media screen and (min-width:353px) and (max-width:400px){
+  #id_numero{
+    width: 205px;
+  }
+  #id_assunto{
+    width: 205px;
+  }
+  label[for=id_assunto]{
+    margin-left: 0;
+  }
+  #id_tipo{
+    width: 230px;
+    margin-top: 20px
+  }
+  label[for=id_requisitante]{
+    margin-left: 0;
+  }
+  span[data-select2-id="3"]{
+    width: 175px!important;
+  }
+  label[for=id_tipo]{
+    margin-left: 0;
+  }
+  span[data-select2-id="1"]{
+    width: 225px!important;
+  }
+  label[for=id_setor]{
+    margin-left: 0;
+  }
+  #id_prioridade{
+    width: 190px;
+  }
+  label[for=id_prioridade]{
+    margin-left: 0;
+  }
+  #id_status{
+    width: 220px;
+    margin-top: 20px;
+  }
+  label[for=id_status]{
+    margin-left: 0;
+  }
+  #id_dataInicio{
+   width: 185px;
+  }
+  label[for=id_dataInicio]{
+    margin-left: 0;
+  }
+  label[for=id_dataFim]{
+    margin-left: 0;
+  }
+  #id_dataFim{
+    width: 200px;
+  }  
 }
