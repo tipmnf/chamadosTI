@@ -54,6 +54,8 @@ Install service order with pip
 ```bash
   pip install websockets
 ```
+
+#### for run the server in remote environment
 for fedora or linux users:
 
 ```bash
