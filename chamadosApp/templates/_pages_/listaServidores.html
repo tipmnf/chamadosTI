@@ -8,7 +8,9 @@ Servidores
 <table class="table">
     <thead>
         <tr>
+          {% if user.is_staff %}
             <th>Apagar</th>
+          {% endif %}    
             <th>Nome</th>
             <th>E-mail</th>
             <th>Contato</th>

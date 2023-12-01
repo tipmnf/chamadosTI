@@ -18,7 +18,7 @@
     margin-bottom: 20px;
     text-align: center;
     text-decoration: none;
-    height: 50px;
+    height: auto;
 }
 
   #button-chamado:hover {
@@ -91,7 +91,7 @@
     margin-bottom: 20px;
     text-align: center;
     text-decoration: none;
-    height: 50px;
+    height: auto;
 }
 #button-pesquisa-chamado:hover{
   background-color: #146c43; 
@@ -127,12 +127,13 @@ label[for=id_prioridade]{
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
+  overflow-y: hidden;
 }
 
 .modal-content {
   background-color: #fff;
   width: 50%;
-  margin: 20% auto;
+  margin: 15% auto;
   padding: 20px;
   border-radius: 5px;
   text-align: center;
@@ -226,4 +227,122 @@ label[for=id_dataFim]{
   text-align: center;
   color: red !important;
   text-transform: uppercase;
+}
+@media screen and (min-width:320px) and (max-width:500px){
+    .modal-content{
+      width: 75%;
+    }
+}
+@media screen and (min-width:320px) and (max-width:353px){
+  #id_numero{
+    width: 180px;
+  }
+  #id_assunto{
+    width: 180px;
+  }
+  label[for=id_assunto]{
+    margin-left: 0;
+  }
+  #id_tipo{
+    width: 207px;
+    margin-top: 20px
+  }
+  label[for=id_requisitante]{
+    margin-left: 0;
+  }
+  label[for=id_tipo]{
+    margin-left: 0;
+  }
+  span[data-select2-id="3"]{
+    width: 150px!important;
+  }
+  #id_setor{
+    width: 41%;
+  }
+  label[for=id_setor]{
+    margin-left: 0;
+  }
+  span[data-select2-id="1"]{
+    width: 200px!important;
+  }
+  #id_prioridade{
+    width: 165px;
+  }
+  label[for=id_prioridade]{
+    margin-left: 0;
+  }
+  #id_status{
+    width: 195px;
+    margin-top: 20px;
+  }
+  label[for=id_status]{
+    margin-left: 0;
+  }
+  #id_dataInicio{
+   width: 160px;
+  }
+  label[for=id_dataInicio]{
+    margin-left: 0;
+  }
+  label[for=id_dataFim]{
+    margin-left: 0;
+  }
+  #id_dataFim{
+    width: 175px;
+  }  
+}
+@media screen and (min-width:353px) and (max-width:400px){
+  #id_numero{
+    width: 205px;
+  }
+  #id_assunto{
+    width: 205px;
+  }
+  label[for=id_assunto]{
+    margin-left: 0;
+  }
+  #id_tipo{
+    width: 230px;
+    margin-top: 20px
+  }
+  label[for=id_requisitante]{
+    margin-left: 0;
+  }
+  span[data-select2-id="3"]{
+    width: 175px!important;
+  }
+  label[for=id_tipo]{
+    margin-left: 0;
+  }
+  span[data-select2-id="1"]{
+    width: 225px!important;
+  }
+  label[for=id_setor]{
+    margin-left: 0;
+  }
+  #id_prioridade{
+    width: 190px;
+  }
+  label[for=id_prioridade]{
+    margin-left: 0;
+  }
+  #id_status{
+    width: 220px;
+    margin-top: 20px;
+  }
+  label[for=id_status]{
+    margin-left: 0;
+  }
+  #id_dataInicio{
+   width: 185px;
+  }
+  label[for=id_dataInicio]{
+    margin-left: 0;
+  }
+  label[for=id_dataFim]{
+    margin-left: 0;
+  }
+  #id_dataFim{
+    width: 200px;
+  }  
 }
