@@ -5,21 +5,22 @@ Servidores
 {% block main %}
 <script src="/static/js/listaServidores.js"></script>
 <link rel="stylesheet" href="/static/css/listaServidores.css">
-<table class="table">
+<div class="table-responsive">
+  <table class="table">
     <thead>
-        <tr>
-          {% if user.is_staff %}
-            <th>Apagar</th>
-          {% endif %}    
-            <th>Nome</th>
-            <th>E-mail</th>
-            <th>Contato</th>
-            <th>Setor</th>
-            <th>Detalhes</th>
-        </tr>
+      <tr>
+        {% if user.is_staff %}
+          <th>Apagar</th>
+        {% endif %}    
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th>Contato</th>
+        <th>Setor</th>
+        <th>Detalhes</th>
+      </tr>
     </thead>
     <tbody>
-      {% for servidor in servidores  %}
+      {% for servidor in servidores %}
       <tr>
         {% if user.is_staff %}
         <td>
@@ -39,18 +40,19 @@ Servidores
         </td>
       </tr>
       {% endfor %}
-      <div id="modal">
-        <div class="modal-content">
-            <span class="fechar-sair">&times;</span>
-            <p style="font-size: 17px;">Deseja apagar o servidor?</p>
-            <div class="button-container">
-                <button type="button" id="buttonNo">Não</button>
-                <button type="button" id="buttonYes">Sim</button>
-            </div>
-        </div>
-    </div>
-    
     </tbody>
   </table>
+</div>
+
+<div id="modal">
+  <div class="modal-content">
+    <span class="fechar-sair">&times;</span>
+    <p style="font-size: 17px;">Deseja apagar o servidor?</p>
+    <div class="button-container">
+      <button type="button" id="buttonNo">Não</button>
+      <button type="button" id="buttonYes">Sim</button>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
