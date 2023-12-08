@@ -106,3 +106,35 @@ ul ul {
     border-radius: 15px;
     margin: 5px;
 }
+@media screen and (min-width:320px){
+    .container-atendentes{
+        width: 100%;
+        margin: 0 auto;
+    }
+    .form-check-label{
+        margin-top: -20px;
+        margin-left: 5px;
+
+    }
+    .button-atendente{
+        display: flex;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+    .title-atendente{
+        margin-bottom: 10px;
+    }
+    @media screen and (min-width:800px){
+        .container-atendentes{
+        width: 47%;
+        display: inline-block;   
+        vertical-align: top;
+        }
+    }   
+    @media screen and (min-width:1000px) {
+        .button-atendente{
+            margin: 0;
+            margin-bottom: 20px;
+        }
+    }
+}

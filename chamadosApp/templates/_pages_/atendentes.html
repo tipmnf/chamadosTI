@@ -7,18 +7,17 @@ Indicadores
 <link rel="stylesheet" href="/static/css/atendentes.css">
 
 <div class="container mt-4">
-    <h1 class="text-center">Lista de Atendentes</h1>
     <ul class="list-unstyled">
         {% for atendente in atendentes %}
-            <li class="border p-3 m-2">
+            <li class="border p-3 m-2 container-atendentes">
                 <div class="d-flex justify-content-between">
-                    <div>
+                    <div class="box-atendente">
                         <button class="btn btn-danger btn-apagar" data-atendente-id="{{atendente.id}}"><i class="bi bi-trash-fill"></i></button> <br>
                         <strong>Nome:</strong>
                         <a class="btn btn-success" id="link-atendente" href="{% url "servidor" atendente.id %}">{{ atendente.nome }}</a><br>
                         <strong>Setor:</strong> {{ atendente.setor.nome }}<br>
                         <strong>Secretaria:</strong> {{ atendente.setor.secretaria }}<br>
-                        <strong>Tipos:</strong>
+                        <strong>Tipo(s):</strong>
                         <ul>
                             {% for tipo in atendente.tipo.all %}
                                 <li>{{ tipo.nome }}</li>
@@ -30,7 +29,7 @@ Indicadores
         {% endfor %}
     </ul>
     
-    <div id="modal" class="modal fade">
+    <div id="modal">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <span class="fechar-sair">&times;</span>
@@ -44,29 +43,30 @@ Indicadores
     </div>
     
     {% if user.is_staff %}
-        <form method="POST" action="{% url 'transformaParaAtendente' %}" class="mt-4">
-            {% csrf_token %}
-            <div class="mb-3">
-                <label for="id_servidor" class="form-label">Servidor:</label>
-                <select name="servidor" id="id_servidor" class="form-select">
-                    {% for servidor in servidores %}
-                        <option value="{{servidor.id}}">{{servidor.nome}}</option>
-                    {% endfor %}
-                </select>
+    <form method="POST" action="{% url 'transformaParaAtendente' %}" class="mt-4">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="id_servidor" class="form-label"><strong>Servidor:</strong></label>
+            <select name="servidor" id="id_servidor" class="form-select form-select-lg mb-3">
+                {% for servidor in servidores %}
+                    <option value="{{servidor.id}}">{{servidor.nome}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="tipo" class="form-label title-atendente"><strong>Tipos do novo Atendente:</strong></label>
+            <div class="divTipos d-flex flex-wrap">
+                {% for tipo in tipos %}
+                    <div class="form-check d-flex align-items-center mb-2 mr-3">
+                        <input type="checkbox" id="tipo_{{ tipo.id }}" name="tipo" value="{{ tipo.id }}">
+                        <label class="form-check-label ml-2" for="tipo_{{ tipo.id }}"><strong>{{ tipo.nome }}</strong></label>
+                    </div>
+                {% endfor %}
             </div>
-            <div class="mb-3">
-                <label for="tipo" class="form-label">Tipos do novo Atendente:</label>
-                <div class="divTipos">
-                    {% for tipo in tipos %}
-                        <div class="form-check">
-                            <input type="checkbox" id="tipo_{{ tipo.id }}" name="tipo" value="{{ tipo.id }}">
-                            <label class="form-check-label" for="tipo_{{ tipo.id }}">{{ tipo.nome }}</label>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-            <button type="submit" style="margin-bottom: 10px" class="btn btn-primary">Novo Atendente</button>
-        </form>
+        </div>
+        <button type="submit" class="btn btn-primary button-atendente">Novo Atendente</button>
+    </form>
+    
     {% endif %}
     
     <script>

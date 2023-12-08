@@ -46,18 +46,24 @@ Install service order with pip
   pip install djangorestframework
 ```
 ```bash
-  pip install gunicorn
-```
-```bash
-  pip install nginx
-```
-```bash
   pip install mysql
+```
+```bash
+  pip install pymysql
 ```
 ```bash
   pip install websockets
 ```
 
+#### for run the server in remote environment
+for fedora or linux users:
+
+```bash
+  dnf / yum install gunicorn
+```
+```bash
+  dnf / yum install nginx
+```
 
 for windows user:
 ```bash

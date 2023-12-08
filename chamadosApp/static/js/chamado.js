@@ -39,6 +39,7 @@ const submitChamado = document.querySelector('#submit-chamado');
 submitChamado.addEventListener('click', e =>{
     submitChamado.setAttribute("disabled", "disabled");
     submitChamado.textContent = "Enviando Comentário...";
+    submitChamado.style.background = "rgb(4,177,53)"
     submitChamado.style.transition = "ease 3s"
     submitChamado.classList.add('btn-success')
 });
