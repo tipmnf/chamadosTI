@@ -42,6 +42,8 @@
     justify-content: space-between; 
     display: none;
     height: fit-content;
+    margin: 0 auto;
+    margin-bottom: 20px;
 }
 
 #form-pesquisa-chamado button {
@@ -102,22 +104,6 @@
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
 }
-/* .select2-container{
-  width: 26.5%!important;
-  margin-left: 14px;
-} */
-span[data-select2-id="1"]{
-  width: 26.5%!important;
-}
-span[data-select2-id="5"]{
-  width: 26.5%!important;
-}
-span[data-select2-id="3"]{
-  width: 26.5%!important;
-}
-label[for=id_prioridade]{
-  margin-left: 15px;
-}
 
 .modal {
   display: none;
@@ -155,30 +141,7 @@ label[for=id_prioridade]{
 .fechar:hover{
   color: black;
 }
-label[for=id_requisitante]{
-    margin-left: 28px;
-}
-label[for=id_setor]{
-  margin-left: 78px;
-}
-label[for=id_assunto]{
-  margin-left: 28px;
-}
-label[for=id_prioridade]{
-  margin-left: 18px;
-}
-label[for=id_tipo]{
-  margin-left: 25px;
-}
-label[for=id_status]{
-  margin-left: 13px;
-}
-label[for=id_dataInicio]{
-  margin-left: 12px;
-}
-label[for=id_dataFim]{
-  margin-left: 56px;
-}
+
 .link-modal-abrir-chamado{
   color: white;
   text-decoration: none;
@@ -233,116 +196,29 @@ label[for=id_dataFim]{
       width: 75%;
     }
 }
-@media screen and (min-width:320px) and (max-width:353px){
-  #id_numero{
-    width: 180px;
+
+@media (min-width: 320px) {
+  #form-pesquisa-chamado {
+      padding: 10px;
+      margin: 0 auto;
+      margin-bottom: 20px;
   }
-  #id_assunto{
-    width: 180px;
+  #form-pesquisa-chamado label {
+      display: block;
+      margin-bottom: 5px;
   }
-  label[for=id_assunto]{
-    margin-left: 0;
-  }
-  #id_tipo{
-    width: 207px;
-    margin-top: 20px
-  }
-  label[for=id_requisitante]{
-    margin-left: 0;
-  }
-  label[for=id_tipo]{
-    margin-left: 0;
-  }
-  span[data-select2-id="3"]{
-    width: 150px!important;
-  }
-  #id_setor{
-    width: 41%;
-  }
-  label[for=id_setor]{
-    margin-left: 0;
+  #form-pesquisa-chamado input,
+  #form-pesquisa-chamado select {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
   }
   span[data-select2-id="1"]{
-    width: 200px!important;
-  }
-  #id_prioridade{
-    width: 165px;
-  }
-  label[for=id_prioridade]{
-    margin-left: 0;
-  }
-  #id_status{
-    width: 195px;
-    margin-top: 20px;
-  }
-  label[for=id_status]{
-    margin-left: 0;
-  }
-  #id_dataInicio{
-   width: 160px;
-  }
-  label[for=id_dataInicio]{
-    margin-left: 0;
-  }
-  label[for=id_dataFim]{
-    margin-left: 0;
-  }
-  #id_dataFim{
-    width: 175px;
-  }  
-}
-@media screen and (min-width:353px) and (max-width:400px){
-  #id_numero{
-    width: 205px;
-  }
-  #id_assunto{
-    width: 205px;
-  }
-  label[for=id_assunto]{
-    margin-left: 0;
-  }
-  #id_tipo{
-    width: 230px;
-    margin-top: 20px
-  }
-  label[for=id_requisitante]{
-    margin-left: 0;
+    width: 100%!important;
   }
   span[data-select2-id="3"]{
-    width: 175px!important;
+    width: 100%!important;
   }
-  label[for=id_tipo]{
-    margin-left: 0;
-  }
-  span[data-select2-id="1"]{
-    width: 225px!important;
-  }
-  label[for=id_setor]{
-    margin-left: 0;
-  }
-  #id_prioridade{
-    width: 190px;
-  }
-  label[for=id_prioridade]{
-    margin-left: 0;
-  }
-  #id_status{
-    width: 220px;
-    margin-top: 20px;
-  }
-  label[for=id_status]{
-    margin-left: 0;
-  }
-  #id_dataInicio{
-   width: 185px;
-  }
-  label[for=id_dataInicio]{
-    margin-left: 0;
-  }
-  label[for=id_dataFim]{
-    margin-left: 0;
-  }
-  #id_dataFim{
-    width: 200px;
-  }  
 }
+
