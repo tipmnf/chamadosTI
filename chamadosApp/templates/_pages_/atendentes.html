@@ -7,7 +7,6 @@ Indicadores
 <link rel="stylesheet" href="/static/css/atendentes.css">
 
 <div class="container mt-4">
-    <h1 class="text-center">Lista de Atendentes</h1>
     <ul class="list-unstyled">
         {% for atendente in atendentes %}
             <li class="border p-3 m-2 container-atendentes">
@@ -18,7 +17,7 @@ Indicadores
                         <a class="btn btn-success" id="link-atendente" href="{% url "servidor" atendente.id %}">{{ atendente.nome }}</a><br>
                         <strong>Setor:</strong> {{ atendente.setor.nome }}<br>
                         <strong>Secretaria:</strong> {{ atendente.setor.secretaria }}<br>
-                        <strong>Tipos:</strong>
+                        <strong>Tipo(s):</strong>
                         <ul>
                             {% for tipo in atendente.tipo.all %}
                                 <li>{{ tipo.nome }}</li>
