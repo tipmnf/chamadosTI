@@ -1,238 +1,112 @@
-.form-main label,
-.form-main input,
-.form-main button {
-  margin: 10px 0;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.form-main label{
-  position: absolute;
-  left: 10%;
-  width: 20%;
-}
-
-.form-main select{
-  width: 30%;
-  padding: 15px;
-}
-
-.form-main span {
-  width: 100%;
-}
-
-#id_descricao {
-  width: 85%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  resize: none;
-  height: 20%;
-}
-
-#id_atendente, #id_status, #id_prioridade{
-  margin-top: 10px;
-  width: 52.5%;
-  margin-left: 15%
-}
-
-span{
-  margin-top: 20px;
-}
-#id_descricao:focus {
-  border-color: #011c3a;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-label[for=id_descricao] {
-  float: left;
-}
-
-select {
-  width: 85%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  line-height: 1.5;
-  background-color: white;
-}
-
-
-select:focus {
-  border-color: #011c3a;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);/
-}
-
-input[type="text"] {
-  width: 85%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  line-height: 1.5;
-}
-
-
-input[type="text"]:focus {
-  border-color: #011c3a;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);/
-}
-
-#save-button {
-  width: 80%;
-  border-radius: 15px;
-}
-
 #id_requisitante,
 #id_secretaria,
-#id_setor {
-  margin-top: 15px;
+#id_setor, #id_assunto,
+#id_descricao, #id_anexo,
+#id_serie, #id_contador, #id_setor{
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 10px;
 }
-
-label[for=id_requisitante] {
-  position: absolute;
-  left: 22%;
-  width: 20%;
-  margin-top: 15px;
+@media screen and (min-width:320px) and (max-width:768px) {
+  label[for=id_requisitante]{
+    display: flex;
+    justify-content:flex-start;
+  }
+  #id_requisitante{
+    width: 95%;
+  }
+  #id_secretaria{
+    width: 95%;
+  }
+  label[for=id_secretaria]{
+    display: flex;
+    justify-content:flex-start;
+  }
+  #id_setor{
+    width: 95%;
+  }
+  label[for=id_setor]{
+    display: flex;
+    justify-content:flex-start;
+  }
+  #id_assunto{
+    width: 95%;
+    display: flex;
+    justify-content: flex-start;
+  }
+  label[for=id_assunto]{
+    display: flex;
+    justify-content: flex-start;
+  }
+  #id_descricao{
+    width: 95%;
+    display: flex;
+    justify-content: flex-start;
+  }
+  label[for=id_descricao]{
+    display: flex;
+    justify-content: flex-start;
+  }
+  #id_anexo{
+    width: 95%;
+    display: flex;
+    justify-content: flex-start;
+  }
+  label[for=id_anexo]{
+    display: flex;
+    justify-content: flex-start;
+  }
+  #id_serie{
+    width: 95%;
+    display: flex;
+    justify-content: flex-start;
+  }
+  label[for=id_serie]{
+    display: flex;
+    justify-content: flex-start;
+  }
+  #id_contador{
+    width: 95%;
+    display: flex;
+    justify-content: flex-start;
+  }
+  label[for=id_contador]{
+    display: flex;
+    justify-content: flex-start;
+  }
+  #save-button{
+    width: 95%;
+    margin-bottom: 20px;
+    border-radius: 20px;
+  }
 }
-
-label[for=id_secretaria] {
-  position: absolute;
-  left: 22%;
-  width: 20%;
-  margin-top: 15px;
-}
-
-label[for=id_setor] {
-  position: absolute;
-  left: 22%;
-  width: 20%;
-  margin-top: 15px;
-}
-
-label[for=id_tipo] {
-  position: absolute;
-  left: 22%;
-  width: 20%;
-}
-
-label[for=id_assunto] {
-  position: absolute;
-  width: 20%;
-  left: 22%;
-}
-
-label[for=id_descricao] {
-  position: absolute;
-  width: 20%;
-  margin-top: -1px;
-  left: 22%;
-}
-
-label[for=id_anexo] {
-  position: absolute;
-  width: 20%;
-  height: 51px;
-  left: 22%;
-}
-
-label[for=id_serie] {
-  position: absolute;
-  width: 20%;
-  left: 22%;
-}
-
-label[for=id_contador] {
-  position: absolute;;
-  width: 20%;
-  left: 22%;
-}
-
-label[for=id_sistema] {
-  position: absolute;
-  width: 20%;
-  left: 22%;
-}
-
-.form-group {
-  margin: 0 auto;
-}
-
-.div-form-main {
-  margin-left: 27.5%;
-}
-
+@media screen and (min-width:768px) {
+  label[for=id_requisitante],label[for=id_secretaria],
+  label[for=id_setor], label[for=id_assunto],label[for=id_descricao],label[for=id_anexo],label[for=id_serie],label[for=id_contador]{
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 10px;
+    display: flex;
+    width: 20%;
+    text-align: center;
+  }
 #id_requisitante,
 #id_secretaria,
-#id_setor {
-  width: 65%;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  margin-left: 3%;
+#id_setor{
+    margin-top: 18px;
+    justify-content: space-between;
+    width: 75%;
+    margin-left: 10px;
 }
-
-#id_tipo,
+.container-abrir-chamado{
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
 #id_assunto,
-#id_anexo,
-#id_contador,
-#id_serie,
-#id_sistema{
-  margin-top: 10px;
-  width: 52.5%;
-  margin-left: 15%;
+#id_descricao, #id_anexo,
+#id_serie, #id_contador{
+    width: 75%;
+}
 }
 
-#id_descricao {
-  width: 52.5%;
-  height: 150px;
-  margin-left: 15%;
-}
-
-#id_requisitante:hover,
-#id_secretaria:hover,
-#id_setor:hover,
-#id_tipo:hover,
-#id_assunto:hover,
-#id_descricao:hover,
-#id_anexo:hover {
-  border-color: black;
-}
-
-#div-abrir-chamado {
-  display: initial !important;
-}
-#div-form{
-  margin-left: 150px;
-}
-
-
-/* @media screen and (min-width: 320px) and (max-width: 500px) {
-  label[for=id_requisitante],
-  label[for=id_secretaria],
-  label[for=id_setor],
-  label[for=id_assunto],
-  label[for=id_descricao],
-  label[for=id_anexo],
-  label[for=id_serie],
-  label[for=id_contador] {
-      width: 35%; 
-      margin-bottom: 5px; 
-      display: block; 
-  }
-
-  #id_requisitante,
-  #id_secretaria,
-  #id_setor,
-  #id_assunto,
-  #id_descricao,
-  #id_anexo,
-  #id_serie,
-  #id_contador {
-      width: 150px; 
-      margin-left: -100px; 
-      margin-bottom: 10px; 
-  }
-} */
