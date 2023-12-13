@@ -2,7 +2,7 @@
 #id_secretaria,
 #id_setor, #id_assunto,
 #id_descricao, #id_anexo,
-#id_serie, #id_contador, #id_setor{
+#id_serie, #id_contador, #id_setor, #id_nofcip, #id_sistema{
   border: 1px solid black;
   padding: 5px;
   border-radius: 10px;
@@ -74,15 +74,35 @@
     display: flex;
     justify-content: flex-start;
   }
+  #id_nofcip{
+    width: 95%;
+    display: flex;
+    justify-content: flex-start;
+  }
+  label[for="id_nofcip"]{
+    display: flex;
+    justify-content: flex-start;
+  }
+  #id_sistema{
+    width: 95%;
+    display: flex;
+    justify-content: flex-start;
+  }
+  label[for="id_sistema"]{
+    display: flex;
+    justify-content: flex-start
+  }
+
   #save-button{
     width: 95%;
     margin-bottom: 20px;
     border-radius: 20px;
   }
 }
-@media screen and (min-width:768px) {
+@media screen and (min-width:769px) {
   label[for=id_requisitante],label[for=id_secretaria],
-  label[for=id_setor], label[for=id_assunto],label[for=id_descricao],label[for=id_anexo],label[for=id_serie],label[for=id_contador]{
+  label[for=id_setor], label[for=id_assunto],label[for=id_descricao],label[for=id_anexo],label[for=id_serie],
+  label[for=id_contador], label[for="id_nofcip"], label[for="id_sistema"]{
     border: 1px solid black;
     padding: 5px;
     border-radius: 10px;
@@ -98,15 +118,25 @@
     width: 75%;
     margin-left: 10px;
 }
-.container-abrir-chamado{
+.container-abrir-chamado {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 }
 #id_assunto,
 #id_descricao, #id_anexo,
-#id_serie, #id_contador{
-    width: 75%;
+#id_serie, #id_contador,#id_nofcip,#id_sistema{
+  position: relative;
+  width: 75%;
+  margin-left: 16.5%;
+  top: -35px;
+}
+#save-button{
+  width: 50%;
+  margin-bottom: 20px;
+  border-radius: 20px;
+}
+.container-button-abrir{
+  text-align: center;
 }
 }
-

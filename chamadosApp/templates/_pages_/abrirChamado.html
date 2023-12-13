@@ -22,14 +22,11 @@ Abrir Chamado
                 <label for="id_setor">Setor:</label>
                 <p id="id_setor" name="setor">{{ servidor.setor }}</p>
             </div>
-
-            <div class="container-abrir-chamado">
                 {{ form.as_p|safe }}
-            </div>
             
     </div>
 </form>
-    <div>
+    <div class="container-button-abrir">
         <button id="save-button" type="submit" class="btn btn-primary">Enviar</button>
     </div>
 <script src="/static/js/abrirChamado.js"></script>
