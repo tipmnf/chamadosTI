@@ -93,7 +93,10 @@ Chamados
             <p>Requisitante: <a href="{% url "servidor" chamado.requisitante.id %}"><button id="btn-atendente" class="btn btn-warning">{{ chamado.requisitante }}</button></a></p>
         </div>
     </div>
-    
+
+    <div class="divDescricao">
+        <p id="descricao">Contato: {{ chamado.contato }}</p>
+    </div>
     <div class="divDescricao">
         <p id="descricao">Descrição: {{ chamado.descricao }}</p>
     </div>

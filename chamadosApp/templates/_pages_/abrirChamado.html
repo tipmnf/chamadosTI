@@ -6,6 +6,7 @@ Abrir Chamado
 <link rel="stylesheet" href="/static/css/form-chamado.css">
 
 <div id="div-abrir-chamado">
+    <button class="btn btn-primary"><a style="text-decoration: none; color: white" href="{% url 'addSetor' %}">Não encontrou o Setor desejado? Clique aqui para adicionar!</a></button>
     <form id='form-chamado' class="form-main" method="POST" id="chamadoForm" enctype="multipart/form-data">
         <h2 style="text-align: center; margin-bottom: 30px">Abrir Chamado</h2>
         {% csrf_token %}
@@ -14,14 +15,14 @@ Abrir Chamado
                 <label for="id_requisitante">Requisitante:</label>
                 <p id="id_requisitante" name="requisitante">{{ servidor }}</p>
             </div>
-            <div class="container-abrir-chamado">
-                <label for="id_secretaria">Secretaria:</label>
-                <p id="id_secretaria" name="secretaria">{{ servidor.setor.secretaria }}</p>
+            {% comment %} <div class="container-abrir-chamado">
+                <label for="id_secretaria1">Secretaria:</label>
+                <p id="id_secretaria1" name="secretaria">{{ servidor.setor.secretaria }}</p>
             </div>
             <div class="container-abrir-chamado">
-                <label for="id_setor">Setor:</label>
-                <p id="id_setor" name="setor">{{ servidor.setor }}</p>
-            </div>
+                <label for="id_setor1">Setor:</label>
+                <p id="id_setor1" name="setor">{{ servidor.setor }}</p>
+            </div> {% endcomment %}
                 {{ form.as_p|safe }}
             
     </div>
@@ -30,4 +31,10 @@ Abrir Chamado
         <button id="save-button" type="submit" class="btn btn-primary">Enviar</button>
     </div>
 <script src="/static/js/abrirChamado.js"></script>
+{% comment %} <script>
+    $(document).ready(function() {
+      $('#id_setor').select2();
+      $('#id_secretaria').select2();
+    });
+</script> {% endcomment %}
 {% endblock %}

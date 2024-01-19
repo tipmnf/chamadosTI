@@ -58,8 +58,8 @@ def abrirChamado(request, tipo):
         if form.is_valid():
             chamado=form.save(commit=False)
             chamado.requisitante = servidor
-            chamado.secretaria = servidor.setor.secretaria
-            chamado.setor = servidor.setor
+            chamado.secretaria = chamado.setor.secretaria
+            # chamado.setor = servidor.setor
             chamado.tipo = tipo
             chamado.setNumero()
             chamado.notificaAtendente()
@@ -87,8 +87,8 @@ def abrirChamadoInternet(request):
         if form.is_valid():
             chamado=form.save(commit=False)
             chamado.requisitante = servidor
-            chamado.secretaria = servidor.setor.secretaria
-            chamado.setor = servidor.setor
+            chamado.secretaria = chamado.setor.secretaria
+            # chamado.setor = servidor.setor
             chamado.tipo = tipo
             chamado.setNumero()
             chamado.notificaAtendente()
@@ -114,8 +114,8 @@ def abrirChamadoSistema(request):
         if form.is_valid():
             chamado=form.save(commit=False)
             chamado.requisitante = servidor
-            chamado.secretaria = servidor.setor.secretaria
-            chamado.setor = servidor.setor
+            chamado.secretaria = chamado.setor.secretaria
+            # chamado.setor = servidor.setor
             chamado.tipo = tipo
             chamado.setNumero()
             chamado.notificaAtendente()
@@ -142,8 +142,8 @@ def abrirChamadoImpressora(request):
         if form.is_valid():
             chamado=form.save(commit=False)
             chamado.requisitante = servidor
-            chamado.secretaria = servidor.setor.secretaria
-            chamado.setor = servidor.setor
+            chamado.secretaria = chamado.setor.secretaria
+            # chamado.setor = servidor.setor
             chamado.tipo = tipo
             chamado.setNumero()
             chamado.notificaAtendente()

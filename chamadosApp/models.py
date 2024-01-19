@@ -68,6 +68,7 @@ class Chamado(models.Model):
     
     secretaria = models.ForeignKey(Secretaria, verbose_name='Secretaria', on_delete=models.CASCADE, null=True)
     setor = models.ForeignKey(Setor, verbose_name='Setor', on_delete=models.CASCADE, null=True)
+    contato = PhoneNumberField(default='')
     requisitante = models.ForeignKey(Servidor, on_delete=models.CASCADE, related_name='requisitante')
     tipo = models.ForeignKey(Tipo, on_delete=models.CASCADE)
     assunto = models.CharField(max_length=150)
@@ -79,6 +80,7 @@ class Chamado(models.Model):
     dataFechamento = models.DateTimeField(null=True, blank=False)
     numero = models.CharField(max_length=10, default=0)
     anexo = models.ImageField(upload_to='images', default=None, null=True, blank=True)
+    
     
     def setNumero(self):
         ultimoChamado = Chamado.objects.last()
