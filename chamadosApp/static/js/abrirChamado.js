@@ -23,6 +23,9 @@
 
 const saveButton = document.querySelector('#save-button');
 const form = document.querySelector('#form-chamado');
+const setorInput = document.getElementById('id_setor');
+
+setorInput.style.width = '75%!important';
 
 saveButton.addEventListener('click', e => {
     e.preventDefault();
