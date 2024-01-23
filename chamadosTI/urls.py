@@ -24,12 +24,12 @@ from django.contrib.auth.models import User
 from django.http import Http404
 
 class CustomPasswordResetView(PasswordResetView):
-    def form_valid(self, request, *args, **kwargs):
+    def form_valid(self, form):
         email = self.request.POST.get('email') or self.request.GET.get('email')
         if not User.objects.filter(email=email).exists():
             messages.error(self.request, 'Este e-mail não foi encontrado no sistema.')
-        return super().get(request, *args, **kwargs)
-
+            return super().get(self.request)
+        return super().form_valid(form)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('chamadosApp.urls')),
