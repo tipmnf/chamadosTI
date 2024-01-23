@@ -66,6 +66,7 @@ class ServidorForm(ModelForm):
     
         labels = {
             'nome': 'Nome Completo',
+            'contato': 'Telefone para contato (Completo, exemplo: +5522999991234)'
         }
         
 

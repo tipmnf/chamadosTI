@@ -42,4 +42,5 @@ submitChamado.addEventListener('click', e =>{
     submitChamado.style.background = "rgb(4,177,53)"
     submitChamado.style.transition = "ease 3s"
     submitChamado.classList.add('btn-success')
+    document.getElementById('formComentario').submit();
 });

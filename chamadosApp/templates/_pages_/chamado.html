@@ -124,7 +124,7 @@ Chamados
     {% endfor %}
 </div>
 
-<form method="POST" action="{% url 'addComentario' chamado.id %}" class="formComentario">
+<form method="POST" action="{% url 'addComentario' chamado.id %}" class="formComentario" id="formComentario">
 {% csrf_token %}
 <label for="id_texto">Adicionar Comentário:</label>
 <textarea name="texto" id="id_texto" cols="91" rows="5"></textarea>

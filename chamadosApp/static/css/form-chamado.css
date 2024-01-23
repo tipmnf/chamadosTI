@@ -138,9 +138,9 @@ select {
 }
 #id_assunto,
 #id_descricao, #id_anexo,
-#id_serie, #id_contador,#id_nofcip,#id_sistema, #id_setor, #id_secretaria, #id_contato{
+#id_serie, #id_contador,#id_nofcip,#id_sistema, #id_setor, #id_secretaria, #id_contato, .select2{
   position: relative;
-  width: 75%;
+  width: 75%!important;
   margin-left: 16.5%;
   top: -35px;
 }
