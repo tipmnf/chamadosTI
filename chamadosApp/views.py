@@ -521,3 +521,5 @@ async def send_message(chamado):
     async with websockets.connect(uri) as websocket:
         message = jsonChamado
         await websocket.send(message)
+        
+
