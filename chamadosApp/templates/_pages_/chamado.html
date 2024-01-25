@@ -93,7 +93,10 @@ Chamados
             <p>Requisitante: <a href="{% url "servidor" chamado.requisitante.id %}"><button id="btn-atendente" class="btn btn-warning">{{ chamado.requisitante }}</button></a></p>
         </div>
     </div>
-    
+
+    <div class="divDescricao">
+        <p id="descricao">Contato: {{ chamado.contato }}</p>
+    </div>
     <div class="divDescricao">
         <p id="descricao">Descrição: {{ chamado.descricao }}</p>
     </div>
@@ -121,7 +124,7 @@ Chamados
     {% endfor %}
 </div>
 
-<form method="POST" action="{% url 'addComentario' chamado.id %}" class="formComentario">
+<form method="POST" action="{% url 'addComentario' chamado.id %}" class="formComentario" id="formComentario">
 {% csrf_token %}
 <label for="id_texto">Adicionar Comentário:</label>
 <textarea name="texto" id="id_texto" cols="91" rows="5"></textarea>

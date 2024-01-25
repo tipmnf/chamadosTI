@@ -19,11 +19,21 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
+from django.contrib import messages
+from django.contrib.auth.models import User
+from django.http import Http404
 
+class CustomPasswordResetView(PasswordResetView):
+    def form_valid(self, form):
+        email = self.request.POST.get('email') or self.request.GET.get('email')
+        if not User.objects.filter(email=email).exists():
+            messages.error(self.request, 'Este e-mail não foi encontrado no sistema.')
+            return super().get(self.request)
+        return super().form_valid(form)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('chamadosApp.urls')),
-    path('reset-password', PasswordResetView.as_view(), name='password_reset'),
+    path('reset-password', CustomPasswordResetView.as_view(), name='password_reset'),
     path('reset-password/done', PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('reset-password/confirm/<uidb64>[0-9A-Za-z]+)-<token>/', PasswordResetConfirmView.as_view(), name='password_reset_confirm'), 
     path('reset-password/complete/',PasswordResetCompleteView.as_view(),name='password_reset_complete'),

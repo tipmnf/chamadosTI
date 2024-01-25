@@ -10,7 +10,7 @@ class Chamado_Form(ModelForm):
         widgets = {
             'tipo': forms.Select(attrs={'readonly': True}),
         }
-        exclude = ['tipo', 'dataAbertura', 'dataFechamento', 'prioridade', 'status', 'numero', 'atendente', 'requisitante', 'secretaria', 'setor']
+        exclude = ['tipo', 'dataAbertura', 'dataFechamento', 'prioridade', 'status', 'numero', 'atendente', 'requisitante', 'secretaria']
         labels = {
             'descricao': 'Descrição',
         }
@@ -63,6 +63,11 @@ class ServidorForm(ModelForm):
     class Meta:
         model = Servidor
         fields = ['nome', 'contato', 'email', 'setor']
+    
+        labels = {
+            'nome': 'Nome Completo',
+            'contato': 'Telefone para contato (Completo, exemplo: +5522999991234)'
+        }
         
 
 class SetorForm(ModelForm):
@@ -84,7 +89,7 @@ class OSInternet_Form(ModelForm):
         widgets = {
             'tipo': forms.Select(attrs={'readonly': True}),
         }
-        exclude = ['dataAbertura', 'dataFechamento', 'prioridade', 'status', 'numero', 'atendente', 'requisitante', 'secretaria', 'setor', 'tipo']
+        exclude = ['dataAbertura', 'dataFechamento', 'prioridade', 'status', 'numero', 'atendente', 'requisitante', 'tipo', 'secretaria']
         labels = {
             'descricao': 'Descrição',
         }
@@ -95,7 +100,7 @@ class OSSistema_Form(ModelForm):
         widgets = {
             'tipo': forms.Select(attrs={'readonly': True}),
         }
-        exclude = ['dataAbertura', 'dataFechamento', 'prioridade', 'status', 'numero', 'atendente', 'requisitante', 'secretaria', 'setor', 'tipo']
+        exclude = ['dataAbertura', 'dataFechamento', 'prioridade', 'status', 'numero', 'atendente', 'requisitante', 'tipo', 'secretaria']
         labels = {
             'descricao': 'Descrição',
         }
@@ -106,7 +111,7 @@ class OSImpressora_Form(ModelForm):
         widgets = {
             'tipo': forms.Select(attrs={'readonly': True}),
         }
-        exclude = ['dataAbertura', 'dataFechamento', 'prioridade', 'status', 'numero', 'atendente', 'requisitante', 'secretaria', 'setor', 'tipo']
+        exclude = ['dataAbertura', 'dataFechamento', 'prioridade', 'status', 'numero', 'atendente', 'requisitante', 'tipo', 'secretaria']
         labels = {
             'descricao': 'Descrição',
         }
